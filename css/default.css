@@ -1061,7 +1061,7 @@ a.gitment-editor-footer-tip:hover {
   padding: 0;
   margin: 0;
   font-size: 100%;
-  word-break: normal;
+  word-break: break-word;
   white-space: pre;
   background: transparent;
   border: 0;
@@ -1073,7 +1073,7 @@ a.gitment-editor-footer-tip:hover {
 
 .gitment-markdown .highlight pre {
   margin-bottom: 0;
-  word-break: normal;
+  word-break: break-word;
 }
 
 .gitment-markdown .highlight pre,
