@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Song Wang</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://swang251.github.io/"/>
+  <updated>2017-11-22T22:42:35.000Z</updated>
+  <id>http://swang251.github.io/</id>
+  
+  <author>
+    <name>Song Wang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Emacs Tutorial (cheat sheet version)</title>
+    <link href="http://swang251.github.io/2017/11/22/Emacs-Tutorial-short-version/"/>
+    <id>http://swang251.github.io/2017/11/22/Emacs-Tutorial-short-version/</id>
+    <published>2017-11-22T14:21:58.000Z</published>
+    <updated>2017-11-22T22:42:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is a cheat sheet of Emacs following the official tutorial.<br><a id="more"></a></p><ul><li>C-x C-c    Exit</li><li><p>C-x C-s    Save </p></li><li><p>C-v        View next screen</p></li><li>M-v        View previous screen</li><li><p>C-l        Redisplay screen (current line to center, top, bottom)</p></li><li><p>C-p        Move to previous line</p></li><li>C-n        Move to next line</li><li>C-f        Move forward a character</li><li>C-b        Move backward a character</li><li>M-f        Move forward a word</li><li>M-b        Move backward a word</li><li>C-a        Move to beginning of line</li><li>C-e        Move to end of line</li><li>M-a        Move back to beginning of sentence</li><li>M-e        Move forward to end of sentence</li><li>M-&lt;        Move to beginning of buffer</li><li>M-&gt;        Move to end of buffer</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is a cheat sheet of Emacs following the official tutorial.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Emacs" scheme="http://swang251.github.io/categories/Emacs/"/>
+    
+    
+      <category term="Emacs" scheme="http://swang251.github.io/tags/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Readings of the book: the theory of sound - 1. historical introduction</title>
+    <link href="http://swang251.github.io/2017/11/21/Readings-of-the-book-the-theory-of-sound/"/>
+    <id>http://swang251.github.io/2017/11/21/Readings-of-the-book-the-theory-of-sound/</id>
+    <published>2017-11-22T02:29:15.000Z</published>
+    <updated>2017-11-22T23:24:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a id="top"></a><br>The historical introduction by Robert Bruce Lindsay.<br><a id="more"></a></p><h3 id="I-Biographical-sketch-of-John-William-Strutt-third-Baron-Rayleigh-1942-1919"><a href="#I-Biographical-sketch-of-John-William-Strutt-third-Baron-Rayleigh-1942-1919" class="headerlink" title="I. Biographical sketch of John William Strutt, third Baron Rayleigh (1942-1919)"></a>I. Biographical sketch of John William Strutt, third Baron Rayleigh (1942-1919)</h3><h3 id="II-Historical-development-of-acoustics-to-the-time-of-Rayleigh"><a href="#II-Historical-development-of-acoustics-to-the-time-of-Rayleigh" class="headerlink" title="II. Historical development of acoustics to the time of Rayleigh"></a>II. Historical development of acoustics to the time of Rayleigh</h3><p>Sound is important. The science of sound is known as acoustics. However, the history of acoustics has been largely a neglected subject. At very early stage, the ancient Greeks proposed the basic theory of acoustics in substatially the form which we accept today. It is even more clear compared with the ancient views on the other mechanic branches. However, unlike the continuously development of the other branches, the basic theory of acoustics laid down early and tends to be merged in the larger development of mechanics as a whole. This article helps review the history of acoustics.</p><p>The problems of acoustics are divided into three main groups, viz.</p><ul><li>the production of sound</li><li>the propagation of sound</li><li>the reception of sound.</li></ul><p><a href="#top">Back to top</a> </p><h4 id="The-production-of-sound"><a href="#The-production-of-sound" class="headerlink" title="The production of sound"></a>The production of sound</h4><p>It is usually assumed that the first Greek philosopher to study the origin of musical sounds was Pythagoras in the 6th century B.C. The frequency concept emerged in the time of Galileo Galilei (1564-1641), the founder of modern physics.<br><a href="#top">Back to top</a> </p><h4 id="The-propagation-of-sound"><a href="#The-propagation-of-sound" class="headerlink" title="The propagation of sound"></a>The propagation of sound</h4><h4 id="The-reception-of-sound"><a href="#The-reception-of-sound" class="headerlink" title="The reception of sound"></a>The reception of sound</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a id=&quot;top&quot;&gt;&lt;/a&gt;&lt;br&gt;The historical introduction by Robert Bruce Lindsay.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="The theory of sound" scheme="http://swang251.github.io/categories/The-theory-of-sound/"/>
+    
+    
+      <category term="Acoustics" scheme="http://swang251.github.io/tags/Acoustics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>first-post</title>
+    <link href="http://swang251.github.io/2017/11/18/first-post/"/>
+    <id>http://swang251.github.io/2017/11/18/first-post/</id>
+    <published>2017-11-18T18:03:55.000Z</published>
+    <updated>2017-11-22T02:30:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the first post, a test post.</p><p>The 1D Laplace equation:<br>$\dfrac{\partial^2 \phi}{\partial x^2}=0$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;This is the first post, a test post.&lt;/p&gt;
+&lt;p&gt;The 1D Laplace equation:&lt;br&gt;$\dfrac{\partial^2 \phi}{\partial x^2}=0$&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="test" scheme="http://swang251.github.io/categories/test/"/>
+    
+    
+      <category term="test" scheme="http://swang251.github.io/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://swang251.github.io/2017/11/18/hello-world/"/>
+    <id>http://swang251.github.io/2017/11/18/hello-world/</id>
+    <published>2017-11-18T17:58:44.000Z</published>
+    <updated>2017-11-18T17:58:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
