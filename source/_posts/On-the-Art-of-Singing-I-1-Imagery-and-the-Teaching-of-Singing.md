@@ -1,7 +1,7 @@
 ---
 title: On the Art of Singing I-1 Imagery and the Teaching of Singing
 date: 2018-06-22 18:39:45
-tags: [On the Art of Singing,Voice]
+tags: [On the Art of Singing, Voice]
 categories: Voice
 toc: true
 ---
