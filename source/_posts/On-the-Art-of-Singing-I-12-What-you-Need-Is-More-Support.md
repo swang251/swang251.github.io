@@ -7,7 +7,7 @@ toc: true
 
 ---
 
-Richard told us an interesting story that he has experienced. In a vocal lesson, a nineteen-year-old baritone sings the *Gia il sole dal Gange* exhibiting extreme nasality. His teacher tried different suggestions, "singing forward", "masque", "concentrate on forehead", "calvaria and chimney on the top", "funnel", "sing it to yourself", "give it more support", which however turns out to the same result - the student exhibits the same degree of nasality as previously.
+Richard told us an interesting story that he has experienced. In a vocal lesson, a nineteen-year-old baritone sings the *Già il sole dal Gange* exhibiting extreme nasality. His teacher tried different suggestions, "singing forward", "masque", "concentrate on forehead", "calvaria and chimney on the top", "funnel", "sing it to yourself", "give it more support", which however turns out to the same result - the student exhibits the same degree of nasality as previously.
 
 As we can learn from the story, 
 > As in so many cases, imaginative "placement" and "support" notions could not be trusted to remedy functional inadequacies present in the singing technique. 
