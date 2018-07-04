@@ -3,7 +3,6 @@ title: On the Art of Singing II-28 'The Two Poles of Bel Canto'
 date: 2018-06-29 07:38:56
 tags: [On the Art of Singing, Voice]
 categories: Voice
-toc: true
 ---
 
 Two factors to form the basis of all good technical singing are *sostenuto* and *coloratura*, literally meaning "sustained" and "coloring" in English. 
