@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-07-04T03:19:19.000Z</updated>
+  <updated>2018-08-12T04:15:41.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Practical Vocal Acoustics-Ch1-Modes and Registers</title>
+    <link href="http://swang251.github.io/2018/08/11/Practical-Vocal-Acoustics-Ch1-p5-Mode-of-Phonation/"/>
+    <id>http://swang251.github.io/2018/08/11/Practical-Vocal-Acoustics-Ch1-p5-Mode-of-Phonation/</id>
+    <published>2018-08-12T03:25:34.000Z</published>
+    <updated>2018-08-12T04:15:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>The <strong>mode of phonation</strong> relates to three factors: breath pressure, airflow, and glottal resistance. The modes could be decided by the glottal resistance which equals the breath pressure by the airflow. The mode could be:</p><ul><li><strong>pressed phonation</strong>: high resistance; stronger high harmonics; “metallic”, “overly bright”,</li><li><strong>breathy phonation</strong>: low resistance; weaker high harmonics; “airy”, “fluty”,</li><li><strong>flow phonation</strong>: moderate resistance.</li></ul><p>Different from the modes of <a href="https://completevocal.institute/" target="_blank" rel="noopener">CVT (Complete Vocal Technique)</a>, which is about the register and sound production mechanisms, including neutral, curbing, overdrive, and edge. The modes here is about phonation. It is more related to the sound, which is the results of different mechanisms, instead of the mechanisms itself.</p><p>The <strong>laryngeal register</strong> refers to the muscular adjustment of the vocal folds for pitch regulation, which is primarily controlled by:</p><ul><li><strong>the thyroarytenoids</strong> (TA): vocal fold shortening, thickening vocal fold muscles.</li><li><strong>the cricothyroids</strong> (CT): vocal fold stretching, thinning muscles that lies partly outside the larynx.</li></ul><p>Two laryngeal registers list here are:</p><ul><li><strong>chestier</strong> (shorter, thicker vocal folds), more and stronger high harmonics &lt;– the more complex pressure form &lt;– vertical phase difference &lt;– thicker vocal folds &lt;– TA,</li><li><strong>headier</strong> (longer, thinner vocal folds), fewer and weaker high harmonics &lt;– more sinusoidal pressure wave &lt;– little to no vertical phas difference &lt;– thinner vocal folds &lt;– CT.</li></ul><p>The chestier and headier register might correspond to the modal voice and falsetto voice register, respectively, in the 4 register system together with vocal fry register and the whistle register.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;The &lt;strong&gt;mode of phonation&lt;/strong&gt; relates to three factors: breath pressure, airflow, and glottal resistance. The modes could be dec
+      
+    
+    </summary>
+    
+      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
+    
+    
+      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
+    
+      <category term="Practical Vocal Acoustics" scheme="http://swang251.github.io/tags/Practical-Vocal-Acoustics/"/>
+    
+  </entry>
   
   <entry>
     <title>On the Art of Singing I-19 &#39;The Choral Conductor as Teacher of Vocal Technique&#39;</title>
