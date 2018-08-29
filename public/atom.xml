@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-08-12T04:15:41.000Z</updated>
+  <updated>2018-08-29T04:20:39.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -17,13 +17,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Practical Vocal Acoustics-Ch1-Modes and Registers</title>
+    <title>The guide for the Data Processor structure of Palabos</title>
+    <link href="http://swang251.github.io/2018/08/28/The-guide-for-the-Data-Processor-structure-of-Palabos/"/>
+    <id>http://swang251.github.io/2018/08/28/The-guide-for-the-Data-Processor-structure-of-Palabos/</id>
+    <published>2018-08-29T03:49:02.000Z</published>
+    <updated>2018-08-29T04:20:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>In this article, the running and calling sequences of the data processors related functions is briefly summarized, based on the <a href="http://www.palabos.org/documentation/userguide/data-processors.html" target="_blank" rel="noopener">official documentation</a>. Mainly six ‘layers’ are mentioned here.</p><h3 id="First-two-kinds-of-data-processors-are-used"><a href="#First-two-kinds-of-data-processors-are-used" class="headerlink" title="First, two kinds of data processors are used:"></a>First, two kinds of data processors are used:</h3><ul><li><strong>applyProcessingFunctional</strong>, the wrapper for <code>excuteDataProcessor</code>: is executed just once, on one or more blocks</li><li><strong>integrateProcessingFunctional</strong>, the wrapper for <code>addInternalProcessor</code>:  is added to a block and is part of the block and can be executed as many times as wished, blabla. The added processors are implicitly (to the users) called by the function <em>executeInternalProcessors</em></li></ul><h3 id="Second"><a href="#Second" class="headerlink" title="Second"></a>Second</h3><ul><li>The function <code>integrateProcessingFunctional</code> and <code>applyProcessingFunctional</code> are defined and implemented in <em>/src/multiBlock/multiDataProcessorWrapper2D.h/hh</em>.</li><li>The <em>/src/atomicBlock/dataProcessorWrapperXD.h/hh</em> stores the atomic Block version.</li><li>The function <code>applyProcessingFunctional</code> has three main parameters: 1) <code>BoxProcessingFunctionalXD_LSTN functional</code>, 2) <code>BoxXD domain</code> and, 3) <code>MultiBlockLatticeXD lattice</code>;</li><li>The function <code>integrateProcessingFunctional</code> has an additional parameter: <code>plint level</code>;</li></ul><h3 id="Third"><a href="#Third" class="headerlink" title="Third"></a>Third</h3><ul><li><code>applyProcessingFunctional</code> calls <code>excuteDataProcessor(BoxProcessorGeneratorXD(functional, domain), lattice);</code></li><li><code>integrateProcessingFunctional</code> calls <code>addInternalProcessor(BoxProcessorGeneratorXD(functional, domain), lattice, level);</code></li><li>So the <code>BoxProcessorGeneratorXD</code> has no difference for the two wrapper functions.</li></ul><h3 id="Fourth"><a href="#Fourth" class="headerlink" title="Fourth"></a>Fourth</h3><ul><li>the <code>excuteDataProcessor</code> and <code>addInternalProcessor</code> are defined and implemented in <em>/src/multiBlock/multiBlockOperationsXD.h/.cpp</em></li><li>Both functions has the parameter <code>DataProcessorGeneratorXD const&amp; generator</code></li><li>one of the overriden of the functions is the kernel one.</li><li>The kernel  <code>excuteDataProcessor</code>  and <code>addInternalProcessor</code> finally calls the corresponding atomicBlock versions which is defined and implemented in <em>/src/atomicBlock/atomicBlockOperationsXD.h/.cpp</em></li></ul><h3 id="Fifth-in-the-atomicBlock-versions"><a href="#Fifth-in-the-atomicBlock-versions" class="headerlink" title="Fifth, in the atomicBlock versions"></a>Fifth, in the atomicBlock versions</h3><ul><li><em>/src/atomicBlock/atomicBlockOperationsXD.h/.cpp</em></li><li>the kernel <code>excuteDataProcessor</code> calls the <code>processor -&gt; process()</code> where <code>processor</code> is a <code>DataProcessorXD</code> defined in <em>/src/atomicBlock/dataProcessingFunctionalXD.h/.cpp</em></li><li>the kernel <code>addInternalProcessor</code> calls the <code>actor.integrateDataProcessor</code>, where the <code>actor</code> is an <code>AtomicBlockXD</code> written in <em>/src/atomicBlock/atomicBlockXD.h/.cpp</em>, inside which the <code>integrateDataProcessor</code> runs <code>processors[level].push_back(processor)</code>;</li></ul><h3 id="Sixth"><a href="#Sixth" class="headerlink" title="Sixth"></a>Sixth</h3><ul><li><code>DataProcessorXD</code>  &lt;== <code>BoxProcessorXD</code> who overrides the function <code>process()</code> runing <code>functional -&gt; processGenericBlock(domain, atomicBlocks)</code> where <code>BoxProcessingFunctionalXD* functional</code> is written in the file <em>/src/atomicBlock/dataProcessingFunctionalXD.cpp</em></li><li><strong>BoxProcessingFunctionalXD</strong> is a base class defined in the same file which <strong>has many subclasses for different purposes</strong>.</li><li>The <code>processGenericBlock</code> calls the <code>process</code> function in the tons of subclasses functionals of the class <code>BoxProcessingFunctionalXD</code>, like <code>NTensorFieldBoxProcessingFunctional3D</code> or <code>BoxProcessingFunctionalXD_LL</code></li><li>The <code>process()</code> would be finally overriden by the subclasses of <code>BoxProcessingFunctionalXD_LL</code> or so, and implemented. likely in <code>class TurbulentLatticeToPassiveAdvDiff3X : public BoxProcessingFunctionalXD_LL</code> in <em>/src/multiPhysics/advectionDiffusion3D.h/.hh</em></li><li><code>SpecialFunctional</code> ==&gt; <code>BoxProcessingFunctionalXD_LL</code> etc.  ==&gt; <code>BoxProcessingFunctionalXD</code></li></ul><h3 id="In-addition-about-excuteInternalProcessors"><a href="#In-addition-about-excuteInternalProcessors" class="headerlink" title="In addition, about excuteInternalProcessors()"></a>In addition, about <code>excuteInternalProcessors()</code></h3><ul><li>It is called in 1) <code>MultiBlockLatticeXD::stream()</code>, 2) <code>MultiBlockLatticeXD::collideAndStream()</code> and 3) <code>MultiBlockXD::initialize()</code></li><li>The <code>MultiBlockXD::executeInternalProcessors(level)</code> calls the <code>getComponent(blockId).excuteInternalProcessors(leve)</code> which is at the atomicBlocks unit. (line511@<em>/arc/multiBlock/multiBlock3D.cpp</em>)</li><li>The <code>AtomicBlockXD::executeInternalProcessors(level, processors)</code> finally calls the processors -&gt; process(); in (line254@<em>/src/atomicBlock/atomicBlock3D.cpp</em>)</li></ul><h3 id="An-example"><a href="#An-example" class="headerlink" title="An example"></a>An example</h3><p><em>/examples/showCases/boussinesqThermal2d/rayleighBenard2D.cpp</em></p><ul><li>line 171:</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">applyProcessingFunctional (</span><br><span class="line">            new IniTemperatureRayleighBenardProcessor2D&lt;T,NSDESCRIPTOR,ADESCRIPTOR&gt;(parameters), </span><br><span class="line">            adLattice.getBoundingBox(),  adLattice );</span><br></pre></td></tr></table></figure><p>where the <code>Struct IniTemperatureRayleighBenardProcessor2D : public BoxProcessingFunctional2D_L&lt;T,adDescriptor&gt;</code> is a functional</p><ul><li>line 293: </li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">integrateProcessingFunctional (new BoussinesqThermalProcessor2D&lt;&gt;(), nslattice.getBoundingBox(), nslattice, adLattice, processorlevel );</span><br></pre></td></tr></table></figure><p>where the <code>class BoussinesqThermalProcessor2D : BoxProcessingFunctional2D_LL</code> is a functional defined and implemented in <em>/src/multiPhysics/boussinesqThermalProcessor2D.h/.hh</em>.</p><p><strong>NOTA:</strong> the code used here is Palabos version 2.0</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;In this article, the running and calling sequences of the data processors related functions is briefly summarized, based on the &lt;a href=&quot;
+      
+    
+    </summary>
+    
+      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
+    
+    
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
+      <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
+    
+      <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Practical Vocal Acoustics Ch3 Vocal Resonance</title>
+    <link href="http://swang251.github.io/2018/08/12/Practical-Vocal-Acoustics-Ch3-Vocal-Resonance/"/>
+    <id>http://swang251.github.io/2018/08/12/Practical-Vocal-Acoustics-Ch3-Vocal-Resonance/</id>
+    <published>2018-08-12T13:36:38.000Z</published>
+    <updated>2018-08-12T13:37:34.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
+    
+    
+      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
+    
+      <category term="Practical Vocal Acoustics" scheme="http://swang251.github.io/tags/Practical-Vocal-Acoustics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Practical Vocal Acoustics Ch1-Modes and Registers</title>
     <link href="http://swang251.github.io/2018/08/11/Practical-Vocal-Acoustics-Ch1-p5-Mode-of-Phonation/"/>
     <id>http://swang251.github.io/2018/08/11/Practical-Vocal-Acoustics-Ch1-p5-Mode-of-Phonation/</id>
     <published>2018-08-12T03:25:34.000Z</published>
-    <updated>2018-08-12T04:15:41.000Z</updated>
+    <updated>2018-08-12T04:21:12.000Z</updated>
     
-    <content type="html"><![CDATA[<p>The <strong>mode of phonation</strong> relates to three factors: breath pressure, airflow, and glottal resistance. The modes could be decided by the glottal resistance which equals the breath pressure by the airflow. The mode could be:</p><ul><li><strong>pressed phonation</strong>: high resistance; stronger high harmonics; “metallic”, “overly bright”,</li><li><strong>breathy phonation</strong>: low resistance; weaker high harmonics; “airy”, “fluty”,</li><li><strong>flow phonation</strong>: moderate resistance.</li></ul><p>Different from the modes of <a href="https://completevocal.institute/" target="_blank" rel="noopener">CVT (Complete Vocal Technique)</a>, which is about the register and sound production mechanisms, including neutral, curbing, overdrive, and edge. The modes here is about phonation. It is more related to the sound, which is the results of different mechanisms, instead of the mechanisms itself.</p><p>The <strong>laryngeal register</strong> refers to the muscular adjustment of the vocal folds for pitch regulation, which is primarily controlled by:</p><ul><li><strong>the thyroarytenoids</strong> (TA): vocal fold shortening, thickening vocal fold muscles.</li><li><strong>the cricothyroids</strong> (CT): vocal fold stretching, thinning muscles that lies partly outside the larynx.</li></ul><p>Two laryngeal registers list here are:</p><ul><li><strong>chestier</strong> (shorter, thicker vocal folds), more and stronger high harmonics &lt;– the more complex pressure form &lt;– vertical phase difference &lt;– thicker vocal folds &lt;– TA,</li><li><strong>headier</strong> (longer, thinner vocal folds), fewer and weaker high harmonics &lt;– more sinusoidal pressure wave &lt;– little to no vertical phas difference &lt;– thinner vocal folds &lt;– CT.</li></ul><p>The chestier and headier register might correspond to the modal voice and falsetto voice register, respectively, in the 4 register system together with vocal fry register and the whistle register.</p>]]></content>
+    <content type="html"><![CDATA[<p>The <strong>mode of phonation</strong> relates to three factors: breath pressure, airflow, and glottal resistance. The modes could be decided by the glottal resistance which equals the breath pressure by the airflow. The mode could be:</p><ul><li><strong>pressed phonation</strong>: high resistance; stronger high harmonics; “metallic”, “overly bright”,</li><li><strong>breathy phonation</strong>: low resistance; weaker high harmonics; “airy”, “fluty”,</li><li><strong>flow phonation</strong>: moderate resistance.</li></ul><p>Different from the modes of <a href="https://completevocal.institute/" target="_blank" rel="noopener">CVT (Complete Vocal Technique)</a>, which is about the register and sound production mechanisms, including neutral, curbing, overdrive, and edge. The modes here is about phonation. It is more related to the sound, which is the results of different mechanisms, instead of the mechanisms itself.</p><p>The <strong>laryngeal register</strong> refers to the muscular adjustment of the vocal folds for pitch regulation, which is primarily controlled by:</p><ul><li><strong>the thyroarytenoids</strong> (TA): vocal fold shortening, thickening vocal fold muscles.</li><li><strong>the cricothyroids</strong> (CT): vocal fold stretching, thinning muscles that lie partly outside the larynx.</li></ul><p>Two laryngeal registers list here are:</p><ul><li><strong>chestier</strong> (shorter, thicker vocal folds), more and stronger high harmonics &lt;– the more complex pressure form &lt;– vertical phase difference &lt;– thicker vocal folds &lt;– TA,</li><li><strong>headier</strong> (longer, thinner vocal folds), fewer and weaker high harmonics &lt;– more sinusoidal pressure wave &lt;– little to no vertical phase difference &lt;– thinner vocal folds &lt;– CT.</li></ul><p>The chestier and headier register might correspond to the modal voice and falsetto voice register, respectively, in the four-register system together with the vocal fry register and the whistle register.</p><p>Here the word <strong>register</strong> should be carefully used, which is determined by three key elements: </p><ol><li>A register is composed of contiguous pitches;</li><li>Pitches within any given register are produced in the same physiological manner;</li><li>Pitches within any given register share the same basic timbre.</li></ol><blockquote><p>By the word register we mean a series of consecutive and homogeneous tones going from low to high, produced by the development of the same mechanical principle, and whose nature differs essentially from another series of tones, equally consecutive and homogeneous, produced by another mechanical principle (Garcia, 1847)</p></blockquote>]]></content>
     
     <summary type="html">
     
@@ -222,55 +271,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Emacs Tutorial (cheat sheet version)</title>
-    <link href="http://swang251.github.io/2017/11/22/Emacs-Tutorial-short-version/"/>
-    <id>http://swang251.github.io/2017/11/22/Emacs-Tutorial-short-version/</id>
-    <published>2017-11-22T14:21:58.000Z</published>
-    <updated>2018-06-22T21:54:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is a cheat sheet of Emacs following the official tutorial.<br><a id="more"></a></p><ul><li>C-x C-c    Exit</li><li><p>C-x C-s    Save </p></li><li><p>C-v        View next screen</p></li><li>M-v        View previous screen</li><li><p>C-l        Redisplay screen (current line to center, top, bottom)</p></li><li><p>C-p        Move to previous line</p></li><li>C-n        Move to next line</li><li>C-f        Move forward a character</li><li>C-b        Move backward a character</li><li>M-f        Move forward a word</li><li>M-b        Move backward a word</li><li>C-a        Move to beginning of line</li><li>C-e        Move to end of line</li><li>M-a        Move back to beginning of sentence</li><li>M-e        Move forward to end of sentence</li><li>M-&lt;        Move to beginning of buffer</li><li>M-&gt;        Move to end of buffer</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is a cheat sheet of Emacs following the official tutorial.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Emacs" scheme="http://swang251.github.io/categories/Emacs/"/>
-    
-    
-      <category term="Emacs" scheme="http://swang251.github.io/tags/Emacs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>first-post</title>
-    <link href="http://swang251.github.io/2017/11/18/first-post/"/>
-    <id>http://swang251.github.io/2017/11/18/first-post/</id>
-    <published>2017-11-18T18:03:55.000Z</published>
-    <updated>2018-06-22T21:54:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the first post, a test post.</p><p>The 1D Laplace equation:<br>$\dfrac{\partial^2 \phi}{\partial x^2}=0$</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;This is the first post, a test post.&lt;/p&gt;
-&lt;p&gt;The 1D Laplace equation:&lt;br&gt;$\dfrac{\partial^2 \phi}{\partial x^2}=0$&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="test" scheme="http://swang251.github.io/categories/test/"/>
-    
-    
-      <category term="test" scheme="http://swang251.github.io/tags/test/"/>
     
   </entry>
   
