@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-09-10T20:30:26.000Z</updated>
+  <updated>2018-09-12T02:59:32.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Setup tips for NI hardware + DAQ Toolbox on Matlab + Windows XP (SP3)</title>
+    <link href="http://swang251.github.io/2018/09/11/daqplot-windowsxp-caml/"/>
+    <id>http://swang251.github.io/2018/09/11/daqplot-windowsxp-caml/</id>
+    <published>2018-09-12T02:19:12.000Z</published>
+    <updated>2018-09-12T02:59:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Working on old version software and hardware is not as easy and direct as it seems to be. I am recently trying to set up the Dantec Dynamics CTA hot-wire anemometer. Because the software could only run on Windows XP or other versions in the same era, I have to install Windows XP on the PC of our lab. </p><p>This blog writes about the setup on Windows XP (SP3) 32-bit for the NI PCI-4472 data acquisition board and DaqPlot, a program for data acquisition and analysis written by Gary P. Scavone and is a simplified version of DataLogger by James Woodhouse.</p><ul><li>The latest release of Matlab for Windows XP (SP3) 32-bit is R2015b (<a href="https://www.mathworks.com/support/sysreq/previous_releases.html" target="_blank" rel="noopener">details here</a>);</li><li>The earliest release of Matlab (or Data Acquisition Toolbox) supporting NI PCI-4472 is R2014a (<a href="https://www.mathworks.com/hardware-support/nidaqmx.html" target="_blank" rel="noopener">details here</a>);</li><li>The latest release of NI-DAQmx supporting Windows XP (SP3) 32-bit is NI-DAQmx 15.5.1;</li><li>The earliest release of NI-DAQmx for NI PCI-4472 required by Data Acquisition Toolbox on Matlab is NI-DAQmx 9.0 (or 9.1);</li><li>Check <a href="https://www.mathworks.com/help/daq/troubleshooting-tips.html" target="_blank" rel="noopener">troubleshooting tips</a> for Data Acquisition Toolbox when needed, e.g. the comments recommended <code>daq.getVendors</code> and <code>daq.getDevices</code>.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Working on old version software and hardware is not as easy and direct as it seems to be. I am recently trying to set up the Dantec Dynam
+      
+    
+    </summary>
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/categories/Research-Daily/"/>
+    
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/tags/Research-Daily/"/>
+    
+      <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
+    
+  </entry>
   
   <entry>
     <title>Palabos Dynamics Calling Relationships</title>
@@ -246,30 +273,6 @@
         &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;In this chapter, the author talks about the “covering (遮盖)” which is another important and widely used term in most voc
       
-    
-    </summary>
-    
-      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
-    
-    
-      <category term="On the Art of Singing" scheme="http://swang251.github.io/tags/On-the-Art-of-Singing/"/>
-    
-      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>On the Art of Singing I-1 Imagery and the Teaching of Singing</title>
-    <link href="http://swang251.github.io/2018/06/22/On-the-Art-of-Singing-I-1-Imagery-and-the-Teaching-of-Singing/"/>
-    <id>http://swang251.github.io/2018/06/22/On-the-Art-of-Singing-I-1-Imagery-and-the-Teaching-of-Singing/</id>
-    <published>2018-06-22T22:39:45.000Z</published>
-    <updated>2018-06-26T20:51:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>It has been a while since I set up this blog and I haven’t contributed any meaningful articles yet. Recently, I found a fascinating  book, <em>On the Art of Singing</em>, written by Dr. <a href="https://en.wikipedia.org/wiki/Richard_Miller_(singer" target="_blank" rel="noopener">Richard Miller</a>) who has also composed another famous book <em>The Structure of Singing</em>. The book is structured as a collection of different topics and deserved to read. So I decided to read one chapter and write the reading summary every few days. Hope this could be a good start of my blog.</p><a id="more"></a><p>The first chapter is called <em>Imagery and the Teaching of Singing</em>. The title attracts me very much because I was always interested in the relationship between the acoustic and physiologic explanation of singing and the traditional pedagogy. The imagery is quite an important part of teaching voice. I was kept being reminded by my voice teacher of many different imageries like “the mask”, “‘head’ voice”, “‘chest’ voice”, “singing forward”, “a sip of water in the mouth” and so on. Some of them are useful while the others are confusing. This chapter settles several of my confusions and here are the key points listed.</p><h3 id="Imagery"><a href="#Imagery" class="headerlink" title="Imagery"></a>Imagery</h3><ul><li>Imagery, like the mask, the third eye, and winding wheels, is useful in teaching. “However, it is mostly of value if it is associated with already established, repeatable functional freedom.” <ul><li>Comments: “Functional freedom” might refer to the comprehensive vocal techniques and funcions like the breath management, proper laryngeal and resonatory response, etc.</li></ul></li><li>The superimposition of imagery must be done <em>after</em> the singer has learned to coordinate different functions so that an image may be useful in unifying those functions. If not, the student might be confused. So imagery should not be part of the first steps in teaching the technical coordination of the singing. </li><li>Every singer could have his own private images. But no matter what the imagery is, it should be <strong>projected</strong> to established functions including both psychological and physical orientation.</li><li>“Many outstanding professional singers never use detailed physiologic or technical imagery. For them, imagery occurs only at the interpretative level. They maintain a <em>dual channel</em> of psychological and physical orientation in which the technical foundation that has already been established permits <em>imaginative textual and musical projection</em>. Imaging in singing should ideally be directed to the artistic realization of text, drama, and musical content, <strong>not</strong> to the control of physical aspects of vocal technique.”<ul><li>Comments: The same idea is expressed by Bartholomew in 1935 saying, “When imagery becomes so vivid that it is transferred into the physical field and used to explain physiologic and acoustic phenomena, it becomes extremely dubious, unreliable and even false It is this misuse which is largely responsible for the bitter controversies over vocal methods, as well as for their often comical expressions.” This is quite interesting because for me, as an amateur singer, most of the imageries I have experienced are physiologic or technical. My voice teacher keep trying to inspire me in training with imageries. In my understanding, the phsiologic and technical imageries are the measure of teaching instead of performance which need the <em>artistic imaging</em>.</li></ul></li></ul><h3 id="Some-inspiring-points"><a href="#Some-inspiring-points" class="headerlink" title="Some inspiring points"></a>Some inspiring points</h3><ul><li>“Singing is largely a <strong>subjective</strong> action.”</li><li>“Singing results from a <em>gestalt (完型)</em> (an organized whole that is perceived as more than the sum of its parts) summons up previous experiences of physical coordination, proprioceptive sensation, and vocal sound.”<ul><li>Comments: Everything, especially the art, could results from a gestalt. Look at the music, the fine art and the architecture. It is even for science, technology and engineering.</li></ul></li><li>“The <em>gestalt</em> includes both directly controllable and non-controllable actions.”” </li><li>“Fine singers seldom analyze the things they do in performance. Instead, they depend on recall as to how they have done in well before.”<ul><li>Comments: singing is based on experiences. Like what <a href="https://en.wikipedia.org/wiki/Giovanni_Battista_Lamperti" target="_blank" rel="noopener">Giovanni Battista Lamperti</a> said, “Thought and muscle are schooled until instinct and reaction develop and take command. Then what was arbitrary becomes automatic.”</li></ul></li><li>“A good teacher must be able to objectify the components of performance and convey them to the student, regardless of the student’s vocal category.””</li><li>“There is an increasing realization that the voice as an instrument can best be trained through exact communicative language. For this we can thank the dissemination of factual information from interdisciplinary sources.”<ul><li>Comments: This is true. However, we should always notice that the art will never thrive without the imaging which though could be projected to specific technical functions.</li></ul></li><li>“<strong>Artistry can be only as complete as coordinated function permits</strong>.””</li><li>Functions and imaging<ul><li><em>Free function</em> permits <em>artistic imaging</em>; </li><li><em>Performance function</em> permits <em>physical imagery</em>; </li><li><em>Technical function</em> permits <em>technical imaging</em>.</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;It has been a while since I set up this blog and I haven’t contributed any meaningful articles yet. Recently, I found a fascinating  book, &lt;em&gt;On the Art of Singing&lt;/em&gt;, written by Dr. &lt;a href=&quot;https://en.wikipedia.org/wiki/Richard_Miller_(singer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Richard Miller&lt;/a&gt;) who has also composed another famous book &lt;em&gt;The Structure of Singing&lt;/em&gt;. The book is structured as a collection of different topics and deserved to read. So I decided to read one chapter and write the reading summary every few days. Hope this could be a good start of my blog.&lt;/p&gt;
     
     </summary>
     
