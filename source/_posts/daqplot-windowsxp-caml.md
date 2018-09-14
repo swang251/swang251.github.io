@@ -14,3 +14,6 @@ This blog writes about the setup on Windows XP (SP3) 32-bit for the NI PCI-4472 
 - The latest release of NI-DAQmx supporting Windows XP (SP3) 32-bit is NI-DAQmx 15.5.1;
 - The earliest release of NI-DAQmx for NI PCI-4472 required by Data Acquisition Toolbox on Matlab is NI-DAQmx 9.0 (or 9.1);
 - Check [troubleshooting tips](https://www.mathworks.com/help/daq/troubleshooting-tips.html) for Data Acquisition Toolbox when needed, e.g. the comments recommended `daq.getVendors` and `daq.getDevices`.
+
+In addition,
+- The latest StreamWare for Dantec Dynamics CTA system supporting NI-DAQmx driver is StreamWare v3.40 SP4.
