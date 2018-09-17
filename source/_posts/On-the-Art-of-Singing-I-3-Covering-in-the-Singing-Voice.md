@@ -6,10 +6,9 @@ categories: Voice
 toc: true
 ---
 
-<!--more-->
-
 In this chapter, the author talks about the "covering (遮盖)" which is another important and widely used term in most vocal pedagogies while the word itself is confusing and misleading. I used to confuse the "cover" and the "mask" because a "mask" might always "cover" the face. However, the expression "vowel modification" in English or "元音修正" in Chinese might be the preferable translation of *copertura*, the italian origin of "covering (遮盖)".
 
+<!--more-->
 
 ### Copertura
 Firstly, it should be known that the well-balanced resonance or a *chiaroscuro* (light-dark) timbre should be "maintained among harmonic partials in all parts of the spectrum regardless of the vowel or the pitch being sung." and ***copertura*** is the way to achieve it. "*Copertura* is best described as the process of conscious equalization of the ascending scale through vowel modification so as to diminish register demarcations, not to exaggerate them." It is a technique of subtle adjustment (*aggiustamento*) of vocal timbre that produces the equalized scale in mounting pitch." *Copertura* serves in upper-middle and upper ranges of the singing voice. It gradually processes the voice in the *zona di passaggio* (passage zone or 换声点) to avoid the sudden registration shifts in upper-middle voice, and additional vowel modification takes place in the upper range (*voce di testa*). In the modern international school, moderate vowel modification is initiated at the *primo passaggio* near the termination of the speech range, and additional but gradual modification of the vowel takes place as the scale approaches the *secondo passaggio*.
