@@ -1,6 +1,7 @@
 ---
 title: About
 layout: page
+comments: false
 ---
 I am now a PhD candidate at Computational Acoustic Modeling Group (CAML), Schulich School of Music, McGill University.
 

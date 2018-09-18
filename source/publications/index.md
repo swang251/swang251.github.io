@@ -1,6 +1,7 @@
 ---
 title: Publications
 layout: page
+comments: false
 ---
 
 ## Journal Articles
