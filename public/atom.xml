@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-09-17T22:11:41.000Z</updated>
+  <updated>2018-10-04T20:20:38.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Passwordless SSH connection to a Cluster</title>
+    <link href="http://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/"/>
+    <id>http://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/</id>
+    <published>2018-10-04T19:10:09.000Z</published>
+    <updated>2018-10-04T20:20:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>I am using the cluster <a href="https://docs.computecanada.ca/wiki/Graham" target="_blank" rel="noopener">GRAHAM</a> for our simulation, and it uses SSH (Secure Shell) to connect to the remote servers. It is found annoying to type the password everytime you try to log in or copy files from the server. Herewith several simple commands, we could domake the password-less connection (for MacOS only).</p><a id="more"></a><ol><li><code>cd ~/.ssh/</code>, enter the folder where the ssh keys are kept.</li><li><code>ssh-keygen -t rsa</code>, create a new ssh key pair. You would be asked to<br><code>Enter file in which to save the key:</code> and I use <code>graham</code> here.</li><li><code>ssh-add -K graham</code>, add the ssh private key to the ssh-agent to store the passphrase the keychain.</li><li><code>cat graham.pub &gt;&gt; authorized_keys</code>, write the public key into the file authorized_keys.</li><li><code>ssh-copy-id -i graham.pub USER@graham.computecanada.ca</code>, <code>ssh-copy-id</code> is to use locally available keys to authorize logins on a remote machine. The authorized_keys is copied to the cluster.</li></ol><p><strong>Done!</strong></p><p>PS: add <code>alias graham=&#39;ssh -y USER@graham.comoputecanada.ca&#39;</code> into <code>~./bash_profile</code> for convenience</p><h3 id="Userful-links"><a href="#Userful-links" class="headerlink" title="Userful links"></a>Userful links</h3><ul><li><a href="https://www.ssh.com/ssh/key/" target="_blank" rel="noopener">SSH Key</a></li><li><a href="https://www.msri.org/realvideo/ln/msri/usered/ssh/bernstein/1/7.html" target="_blank" rel="noopener">SSH Files</a></li><li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">Github Help</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I am using the cluster &lt;a href=&quot;https://docs.computecanada.ca/wiki/Graham&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GRAHAM&lt;/a&gt; for our simulation, and it uses SSH (Secure Shell) to connect to the remote servers. It is found annoying to type the password everytime you try to log in or copy files from the server. Herewith several simple commands, we could domake the password-less connection (for MacOS only).&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/categories/Research-Daily/"/>
+    
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/tags/Research-Daily/"/>
+    
+      <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
+    
+  </entry>
   
   <entry>
     <title>LBM-based Solver</title>
@@ -253,33 +277,6 @@
       
         &lt;p&gt;This article discusses the relationship between the diction and the vocal technique. &lt;/p&gt;
 &lt;p&gt;The singing tone is not the results of a uni
-      
-    
-    </summary>
-    
-      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
-    
-    
-      <category term="On the Art of Singing" scheme="http://swang251.github.io/tags/On-the-Art-of-Singing/"/>
-    
-      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>On the Art of Singing II-28 &#39;The Two Poles of Bel Canto&#39;</title>
-    <link href="http://swang251.github.io/2018/06/29/On-the-Art-of-Singing-28/"/>
-    <id>http://swang251.github.io/2018/06/29/On-the-Art-of-Singing-28/</id>
-    <published>2018-06-29T11:38:56.000Z</published>
-    <updated>2018-07-02T18:35:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Two factors to form the basis of all good technical singing are <em>sostenuto</em> and <em>coloratura</em>, literally meaning “sustained” and “coloring” in English. </p><p>In the form of the operatic <em><a href="https://en.wikipedia.org/wiki/Concert_aria" target="_blank" rel="noopener">scena</a></em>, <em>cavatina</em> and <em>cabaletta</em> exhibite, in which the singer was expected to show the two chief technical facets of skillful singing: <em>legato</em> and <em>agility</em>.</p><p>These two vocal techniques are Siamese twins. One completes the other cannot exist without the other.</p><p>Examples of <em>scene</em> or “double arias”: Handel’s <em>Piangerò</em>. Mozart’s <em>Non mi dir</em>, Bellini’s <em>Non mi credea</em>, and Verdi’s <em>Ah! fors’è lui!</em></p><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">Sustained</th><th style="text-align:center">Coloring</th></tr></thead><tbody><tr><td style="text-align:center"><strong>Techiniques</strong></td><td style="text-align:center">Sostenuto</td><td style="text-align:center">Coloratura</td></tr><tr><td style="text-align:center"><strong>Scena Sections</strong></td><td style="text-align:center">Cavatina</td><td style="text-align:center">cabaletta</td></tr><tr><td style="text-align:center"><strong>Technical Facets</strong></td><td style="text-align:center">legato</td><td style="text-align:center">agility</td></tr><tr><td style="text-align:center"><strong>Adjectives</strong></td><td style="text-align:center">verismo</td><td style="text-align:center">pyrotechnical melismatic</td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Two factors to form the basis of all good technical singing are &lt;em&gt;sostenuto&lt;/em&gt; and &lt;em&gt;coloratura&lt;/em&gt;, literally meaning “sustained”
       
     
     </summary>
