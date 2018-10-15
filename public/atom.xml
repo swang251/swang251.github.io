@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-10-04T20:20:38.000Z</updated>
+  <updated>2018-10-15T19:27:49.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -17,13 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Passwordless SSH connection to a Cluster</title>
+    <title>3D Printing and Musical Instruments</title>
+    <link href="http://swang251.github.io/2018/10/06/3D-Printer/"/>
+    <id>http://swang251.github.io/2018/10/06/3D-Printer/</id>
+    <published>2018-10-06T21:29:47.000Z</published>
+    <updated>2018-10-15T19:27:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>3D printing is becoming more and more popular in a variety of areas and there are already many application in musical instruments. Here I will briefly talks about the main techniques and some of my preliminary attemps in printing a mouthpiece.</p><a id="more"></a><h2 id="3D-Printing-Techniques"><a href="#3D-Printing-Techniques" class="headerlink" title="3D Printing Techniques"></a>3D Printing Techniques</h2><p>This article deserves reading, <a href="https://all3dp.com/1/types-of-3d-printers-3d-printing-technology/" target="_blank" rel="noopener">All 10 Types of 3D Printing Technology in 2018 - All3DP</a>, inside which it classify the 3D printing techniques into, <em>material extrusion</em>, <em>vat polymerization</em>, <em>material jetting</em>, <em>binder jetting</em>, and <em>powder bed fusion (polymers or metals)</em>.</p><h3 id="Fused-Deposition-Modeling-FDM-Material-Extrusion"><a href="#Fused-Deposition-Modeling-FDM-Material-Extrusion" class="headerlink" title="Fused Deposition Modeling (FDM) - Material Extrusion"></a>Fused Deposition Modeling (FDM) - Material Extrusion</h3><p>The model is built layer by layer by the deposited materials which is melt through a nozzle in the extrusion head. The model is normally built from the bottom to the top.</p><h3 id="Stereolithography-Apparatus-SLA-Vat-Polymerization"><a href="#Stereolithography-Apparatus-SLA-Vat-Polymerization" class="headerlink" title="Stereolithography Apparatus (SLA) - Vat Polymerization"></a>Stereolithography Apparatus (SLA) - Vat Polymerization</h3><p>SLA is the earliest commercialized 3D printing technique. The 3D model is fabricated layer by layer from the liquid resin which is selectively solidified or polymerized by the ultraviolet (UV) rays through the lenses and the mirror. The object is normally built from the top to the bottom. A good introductory guide is provided by <a href="https://formlabs.com/blog/ultimate-guide-to-stereolithography-sla-3d-printing/" target="_blank" rel="noopener">Formlab</a>.</p><h3 id="Selective-Laser-Sintering-SLS-Power-Bed-Fusion"><a href="#Selective-Laser-Sintering-SLS-Power-Bed-Fusion" class="headerlink" title="Selective Laser Sintering (SLS) - Power Bed Fusion"></a>Selective Laser Sintering (SLS) - Power Bed Fusion</h3><p>SLS is similar to SLA. A thin layer of material powder is dispersed on the platform and preheated to the temperature just below the melting point. The the laser as the power source is used to sinter the materials (nylon or polymers). A good introductory guide is provided by <a href="https://formlabs.com/blog/what-is-selective-laser-sintering/#origins-sls" target="_blank" rel="noopener">Formlab</a>.</p><h3 id="PolyJet-Material-Jetting"><a href="#PolyJet-Material-Jetting" class="headerlink" title="PolyJet - Material Jetting"></a>PolyJet - Material Jetting</h3><p>PolyJet provide a faster and more accurate 3D printing compared with the techniques mentioned above. The print head deposits hundreds of tiny liquid droplets of the UV curable materials on the platform and the UV light attached to the print head simultaniously cures/solidifies the materials. A brief introduction could be found the <a href="http://www.stratasys.com/polyjet-technology" target="_blank" rel="noopener">Stratsys website</a> or the <a href="https://youtu.be/Som3CddHfZE" target="_blank" rel="noopener">introduction video</a> provided by Solid Concepts.</p><h3 id="Comparisons-between-them"><a href="#Comparisons-between-them" class="headerlink" title="Comparisons between them"></a>Comparisons between them</h3><ul><li><a href="https://www.cadimensions.com/blog/sla-vs-polyjet-need-know/" target="_blank" rel="noopener">SLA vs. PolyJet</a></li><li><a href="https://pinshape.com/blog/fdm-vs-sla-how-does-3d-printer-tech-work/" target="_blank" rel="noopener">FDM vs. SLA</a></li><li><a href="https://all3dp.com/fdm-vs-sla/" target="_blank" rel="noopener">FDM vs. SLA</a></li></ul><h2 id="3D-Printed-Musical-Instruments-the-real-functional-instruments-instead-of-the-ones-just-for-fun"><a href="#3D-Printed-Musical-Instruments-the-real-functional-instruments-instead-of-the-ones-just-for-fun" class="headerlink" title="3D Printed Musical Instruments - the real functional instruments instead of the ones just for fun"></a>3D Printed Musical Instruments - the real functional instruments instead of the ones just for fun</h2><h3 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h3><p>Two of the 3D printed violins are <a href="https://www.3d-varius.com/" target="_blank" rel="noopener">3Dvarius</a>, the first electronic 3D printed violin inspired by Stradivarius and made by SLA, and <a href="http://www.hovalabs.com/hova-instruments/hovalin" target="_blank" rel="noopener">HOVALIN</a>, an open source 3D printable acoustic violin made by FDM.</p><h3 id="Brass-instruments"><a href="#Brass-instruments" class="headerlink" title="Brass instruments"></a>Brass instruments</h3><p><a href="http://jeromewiss.com/en/" target="_blank" rel="noopener">Jerome Wiss</a> use 3D printing for the prototype of his brass instruments.</p><h3 id="Saxophone-Mouthpiece"><a href="#Saxophone-Mouthpiece" class="headerlink" title="Saxophone Mouthpiece"></a>Saxophone Mouthpiece</h3><p>It is tested by Lorenzoni et al. (2013) that PolyJet is the best technique for 3D printing a mouthpiece. <a href="https://www.syos.co/en/" target="_blank" rel="noopener">SYOS</a> is using FDM for making customized mouthpiece. </p><p>Personnaly, I have tried both FDM (Ultimaker 2+/3)and SLA (Form2) in 3D printing a saxophone mouthpiece. SLA provides a better resolution with an easier operation while you have to play with hundreds of parameters to print an acceptable mouthpiece by FDM. Such parameters might include:</p><ul><li>Resolution</li><li>Nozzle sizes</li><li>Layer thickness</li><li>Line width</li><li>Infilling</li><li>Ironing</li></ul><h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref."></a>Ref.</h2><ul><li><a href="https://www.syos.co/en/blog/lab/3-d-printing-musical-instruments" target="_blank" rel="noopener">3D printing: future of the music instrument making? - Syos Blog</a></li><li><a href="https://www.3dnatives.com/en/top-15-3d-printing-music210620174/" target="_blank" rel="noopener">TOP 15 3D Printed Music Instruments &amp; Music Applications</a></li><li><a href="http://www.3ddayin.net/fuwu/3Ddayinbaike/23932.html" target="_blank" rel="noopener">常见三种3D打印技术：FDM、SLS、SLA技术原理</a></li><li><a href="http://www.cnpowdertech.com/2017/kejifazhan_0327/20974.html" target="_blank" rel="noopener">20张动图秒懂SLA、CLIP、3DP、PolyJet和FDM 3D打印原理</a></li><li><a href="https://www.quora.com/How-does-a-Form2-3D-printer-compare-to-an-Ultimaker2+-What-is-the-failure-rate-and-how-much-maintenance-is-needed" target="_blank" rel="noopener">How does a Form2 3D printer compare to an Ultimaker2+? What is the failure rate and how much maintenance is needed?-Quora</a></li><li>Lorenzoni, Valerio, E. L. Doubrovski, and J. C. Verlinden. 2013. “Embracing the Digital in Instrument Making: Towards a Musician-Tailored Mouthpiece by 3D Printing.” In Proceedings of the Stockholm Music Acoustics Conference 2013, SMAC 2013, Stockholm (Sweden), 30 July-3 August, 2013.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;3D printing is becoming more and more popular in a variety of areas and there are already many application in musical instruments. Here I will briefly talks about the main techniques and some of my preliminary attemps in printing a mouthpiece.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/categories/Research-Daily/"/>
+    
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/tags/Research-Daily/"/>
+    
+      <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSH connection to a Cluster</title>
     <link href="http://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/"/>
     <id>http://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/</id>
     <published>2018-10-04T19:10:09.000Z</published>
-    <updated>2018-10-04T20:20:38.000Z</updated>
+    <updated>2018-10-06T21:33:10.000Z</updated>
     
-    <content type="html"><![CDATA[<p>I am using the cluster <a href="https://docs.computecanada.ca/wiki/Graham" target="_blank" rel="noopener">GRAHAM</a> for our simulation, and it uses SSH (Secure Shell) to connect to the remote servers. It is found annoying to type the password everytime you try to log in or copy files from the server. Herewith several simple commands, we could domake the password-less connection (for MacOS only).</p><a id="more"></a><ol><li><code>cd ~/.ssh/</code>, enter the folder where the ssh keys are kept.</li><li><code>ssh-keygen -t rsa</code>, create a new ssh key pair. You would be asked to<br><code>Enter file in which to save the key:</code> and I use <code>graham</code> here.</li><li><code>ssh-add -K graham</code>, add the ssh private key to the ssh-agent to store the passphrase the keychain.</li><li><code>cat graham.pub &gt;&gt; authorized_keys</code>, write the public key into the file authorized_keys.</li><li><code>ssh-copy-id -i graham.pub USER@graham.computecanada.ca</code>, <code>ssh-copy-id</code> is to use locally available keys to authorize logins on a remote machine. The authorized_keys is copied to the cluster.</li></ol><p><strong>Done!</strong></p><p>PS: add <code>alias graham=&#39;ssh -y USER@graham.comoputecanada.ca&#39;</code> into <code>~./bash_profile</code> for convenience</p><h3 id="Userful-links"><a href="#Userful-links" class="headerlink" title="Userful links"></a>Userful links</h3><ul><li><a href="https://www.ssh.com/ssh/key/" target="_blank" rel="noopener">SSH Key</a></li><li><a href="https://www.msri.org/realvideo/ln/msri/usered/ssh/bernstein/1/7.html" target="_blank" rel="noopener">SSH Files</a></li><li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">Github Help</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>I am using the cluster <a href="https://docs.computecanada.ca/wiki/Graham" target="_blank" rel="noopener">GRAHAM</a> for our simulation, and it uses SSH (Secure Shell) to connect to the remote servers. It is found annoying to type the password everytime you try to log in or copy files from the server. Herewith several simple commands, we could domake the password-less connection (for MacOS only).</p><a id="more"></a><ol><li><code>cd ~/.ssh/</code>, enter the folder where the ssh keys are kept.</li><li><code>ssh-keygen -t rsa</code>, create a new ssh key pair. You would be asked to<br><code>Enter file in which to save the key:</code> and I use <code>graham</code> here.</li><li><code>ssh-add -K graham</code>, add the ssh private key to the ssh-agent to store the passphrase the keychain.</li><li><code>cat graham.pub &gt;&gt; authorized_keys</code>, write the public key into the file authorized_keys.</li><li><code>ssh-copy-id -i graham.pub USER@graham.computecanada.ca</code>, <code>ssh-copy-id</code> is to use locally available keys to authorize logins on a remote machine. The authorized_keys is copied to the cluster.</li></ol><p><strong>Done!</strong></p><p>PS: add <code>alias graham=&#39;ssh -y USER@graham.comoputecanada.ca&#39;</code> into <code>~./bash_profile</code> for convenience</p><h3 id="Userful-links"><a href="#Userful-links" class="headerlink" title="Userful links"></a>Userful links</h3><ul><li><a href="https://www.ssh.com/ssh/key/" target="_blank" rel="noopener">SSH Key</a></li><li><a href="https://www.msri.org/realvideo/ln/msri/usered/ssh/bernstein/1/7.html" target="_blank" rel="noopener">SSH Files</a></li><li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">Github Help</a></li><li><a href="https://docs.computecanada.ca/wiki/SSH" target="_blank" rel="noopener">Compute Canada Wiki</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -37,6 +61,8 @@
       <category term="Research Daily" scheme="http://swang251.github.io/tags/Research-Daily/"/>
     
       <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
+    
+      <category term="HPC" scheme="http://swang251.github.io/tags/HPC/"/>
     
   </entry>
   
@@ -249,34 +275,6 @@
       
       
         &lt;p&gt;As a 10-year-chorister, this article resolves some of my confusions. Especially what is claimed at the very beginning, there is no differ
-      
-    
-    </summary>
-    
-      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
-    
-    
-      <category term="On the Art of Singing" scheme="http://swang251.github.io/tags/On-the-Art-of-Singing/"/>
-    
-      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>On the Art of Singing I-6 &#39;Diction and Vocal Technique&#39;</title>
-    <link href="http://swang251.github.io/2018/07/01/On-the-Art-of-Singing-6/"/>
-    <id>http://swang251.github.io/2018/07/01/On-the-Art-of-Singing-6/</id>
-    <published>2018-07-01T21:13:30.000Z</published>
-    <updated>2018-07-02T02:52:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This article discusses the relationship between the diction and the vocal technique. </p><p>The singing tone is not the results of a universal, neutral timbre superimposed by a series of vowels. Instead, the tone, or acoustically the timbre, or physiologically the shape of the articulators, should be adjusted based on the difference of the vowel. The diction does not exist as a separate entity from the tone. The shapes of the resonator (vocal tract) keep matching that of the generator (larynx). </p><blockquote><p>For the singing voice, as for the speaking voice, neither undistorted tone nor recognizable diction can be superimposed on a single predetermined acoustic posture. As spectrum analysis demonstrates, diction need not be inimical to tone, because it is part of the timbre balance.</p></blockquote><p>In addition, as claimed by the Richard, “the clean diction is not produced by exaggerated, heavy consonants, but by quickly occurring consonants (except for consonantal doubling in languages that require it) that do not impede the connected flow of well-defined vowels.” This point deserves more notice as we are always required to exaggerate the consonant in order to make it audible to the audience. However, the key point for a clear and clean diction is the <strong>flow connection</strong> of the vowels. That means <em>the consonant should never disturb the continuous matching adjustment of the larynx and the vocal tract</em>.</p><p>As a conclusion, we should keep in mind that <strong>vowel is the timbre</strong>.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;This article discusses the relationship between the diction and the vocal technique. &lt;/p&gt;
-&lt;p&gt;The singing tone is not the results of a uni
       
     
     </summary>

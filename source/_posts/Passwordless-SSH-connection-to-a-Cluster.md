@@ -1,7 +1,7 @@
 ---
-title: Passwordless SSH connection to a Cluster
+title: SSH connection to a Cluster
 date: 2018-10-04 15:10:09
-tags: [Research Daily, CAML]
+tags: [Research Daily, CAML, HPC]
 categories: Research Daily
 ---
 
@@ -23,5 +23,6 @@ PS: add `alias graham='ssh -y USER@graham.comoputecanada.ca'` into `~./bash_prof
 - [SSH Key](https://www.ssh.com/ssh/key/)
 - [SSH Files](https://www.msri.org/realvideo/ln/msri/usered/ssh/bernstein/1/7.html)
 - [Github Help](https://help.github.com/articles/connecting-to-github-with-ssh/)
+- [Compute Canada Wiki](https://docs.computecanada.ca/wiki/SSH)
 
 
