@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-10-15T19:27:49.000Z</updated>
+  <updated>2018-10-22T04:45:29.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Reflection at Discontinuities</title>
+    <link href="http://swang251.github.io/2018/10/21/Reflection-at-Discontinuities/"/>
+    <id>http://swang251.github.io/2018/10/21/Reflection-at-Discontinuities/</id>
+    <published>2018-10-22T03:58:25.000Z</published>
+    <updated>2018-10-22T04:45:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>I got suddenly confused about how the reflection coefficient is computed, and it took me a whole night to figure out my mistake.</p><a id="more"></a><p>Consider such a case, when a wave is propagating, there is an abrupt discontinuity, which separates two different medium $M1$ and $M2$ to the left and right of the discontinuity point, respectively. The two medium has two different characteristic impedance $Z_1$ and $Z_2$. (It could also be the same media with different cross-section areas in a tube).</p><p>The pressure in $M1$ is decomposed into a right-going wave $p_1^+$ and a left-going wave $p_2^-$, which correspond to incident and reflection, respectively. So the right- and left-going volume flow rate are $\dfrac{p_1^+}{Z_1}$ and $-\dfrac{p_1^-}{Z_1}$. (the “$-$” sign means the left-going traveling direction) </p><p>Assuming the continuity of the pressure and the conservation of the volume flow at the boundary, we have:<br>$$p_1^+ + p_1^- = p_2^+ + p_2^-  \quad\quad (1)$$<br>and<br>$$\dfrac{p_1^+ - p_1^-}{Z_1} = \dfrac{p_2^+ - p_2^-}{Z_2}\quad\quad (2)$$</p><p><strong>From here the problem comes.</strong> I try to compute the reflection coefficient from the above two equations, but of course, I can’t get anything. <strong>This is because</strong> the reflection coefficient is not related to $Z_2$. Instead, it relates to the load impedance $Z_{load}$, e.g., the input impedance of the system to the right of the discontinuity point. So we will replace the eq. (1) and (2) by<br>$$p_1^+ + p_1^- = p_2   \quad\quad (3)$$<br>and<br>$$\dfrac{p_1^+ - p_1^-}{Z_1} = \dfrac{p_2}{Z_{load}} \quad\quad (4)$$.<br>This way, we get the reflection coefficient<br>$$R = \dfrac{Z_{load}-Z_1}{Z_{load}+Z_1} \quad\quad(5)$$</p><p><strong>Wait!</strong> But why I always see the reflection coefficient with two different characteristic impedances?<br><strong>The answer is,</strong> to calculate the reflection coefficient based on characteristic impedance, it is assumed that $p_2^-=0$, indicating an infinite length of $M2$ with no reflection or right-going wave. This way the input impedance of $M2$ is simply its characteristic impedance $Z_2$. Then we get<br>$$R = \dfrac{Z_2-Z_1}{Z_2+Z_1} \quad\quad(6)$$</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I got suddenly confused about how the reflection coefficient is computed, and it took me a whole night to figure out my mistake.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Acoustics" scheme="http://swang251.github.io/categories/Acoustics/"/>
+    
+    
+      <category term="Acoustics" scheme="http://swang251.github.io/tags/Acoustics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Descriptor and External Field of Palabos</title>
+    <link href="http://swang251.github.io/2018/10/15/Palabos-Descriptor-External-Field/"/>
+    <id>http://swang251.github.io/2018/10/15/Palabos-Descriptor-External-Field/</id>
+    <published>2018-10-15T19:29:31.000Z</published>
+    <updated>2018-10-15T21:03:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>For the lattice Boltzmann method, the descriptor has to be defined in advance. Here we briefly discuss the descriptor structure in Palabos. </p><a id="more"></a> <h2 id="Descriptor"><a href="#Descriptor" class="headerlink" title="Descriptor"></a>Descriptor</h2><p>In palabos, the descriptors are stored in <code>/src/latticeBoltzmann/nearestNeighborLatticesXD.h</code>, where $X=2,3$.</p><p>Each descriptor is a <strong>combination</strong> of the lattice schema and the external field, so that must inherit from at least two <em><code>DescriptorBase</code></em> including the basic  <em><code>DdQqDescriptorBase</code></em> defining the lattice-related variables, and a <em><code>EXTERNALVARLISTDescriptorBase</code></em> with external variables or <code>NoExternalFieldBase</code> if the problem involves no external variables. (<em><code>DdQqDescriptorBase</code></em> could be <code>D2Q9DescriptorBase</code>, and <em><code>EXTERNALVARLISTDescriptorBase</code></em> could be <code>RhoBarVelocityPiNeqOmegaDescriptorBase2D</code>).</p><ul><li><p>In <em><code>DdQqDescriptorBase</code></em>, it defines the <code>d</code>, the <code>q</code>, the lattice velocity <code>c[q][d]</code>, lattice weight <code>t[q]</code>, square speed of sound <code>cs2</code> and so on by means of <code>DdQqConstants</code>. </p></li><li><p>The <em><code>EXTERNALVARLISTDescriptorBaseXD</code></em> is written in <code>/src/latticeBoltzmann/externalFields.h</code>. In <em><code>EXTERNALVARLISTDescriptorBaseXD</code></em>, it defines the problem-specific <code>ExternalField</code> as <code>EXTERNALVARLISTDescriptorXD</code>. Here the <code>DdQq</code> of <code>EXTERNALVARLISTDdQqDescriptor</code> must correspond to the one in <code>DdQqDescriptorBase</code>. Here above <code>EXTERNALVARLIST-</code> represents the name list of the external variables, e.g., <code>EXTERNALVARLIST=RhoBarVelocityPiNeqOmega</code> and <code>EXTERNALVARLIST=ForcedRhoBarJ</code> for <code>RhoBarVelocityPiNeqOmegaD2Q9Descriptor</code> and <code>ForcedRhoBarJD2Q9Descriptor</code>, respectively.</p></li></ul><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><ul><li>Take the <code>RhoBarVelocityPiNeqOmegaD2Q9Descriptor</code> as an example to illustrate the structure, it inherits from <code>D2Q9DescriptorBase</code> and <code>RhoBarVelocityPiNeqOmegaDescriptorBase2D</code>. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template &lt;typename T&gt; struct RhoBarVelocityPiNeqOmegaD2Q9Descriptor</span><br><span class="line">   : public D2Q9DescriptorBase&lt;T&gt;, </span><br><span class="line">     public RhoBarVelocityPiNeqOmegaDescriptorBase2D</span><br><span class="line">&#123;</span><br><span class="line">    static const char name[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li></ul><h3 id="DdQqDescriptorBase"><a href="#DdQqDescriptorBase" class="headerlink" title="DdQqDescriptorBase"></a>DdQqDescriptorBase</h3><ul><li><p>The <code>D2Q9DescriptorBase</code> is defined as </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template &lt;typename T&gt; struct D2Q9DescriptorBase</span><br><span class="line">    : public D2Q9Constants&lt;T&gt;, public DefaultRoundOffPolicy&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    typedef D2Q9DescriptorBase&lt;T&gt; BaseDescriptor;</span><br><span class="line">    enum &#123; numPop=D2Q9Constants&lt;T&gt;::q &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li><li><p>where the lattce-related variables are defined in </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;typename T&gt; struct D2Q9Constants</span><br><span class="line">&#123;</span><br><span class="line">    enum &#123; d = 2, q = 9 &#125;;        ///&lt; number of dimensions/distr. functions</span><br><span class="line">    static const T invD;          ///&lt; 1 / (number of dimensions)</span><br><span class="line">    static const int vicinity;    ///&lt; size of neighborhood</span><br><span class="line">    static const int c[q][d];     ///&lt; lattice directions</span><br><span class="line">    static const int cNormSqr[q]; ///&lt; norm-square of the vector c</span><br><span class="line">    static const T t[q];          ///&lt; lattice weights</span><br><span class="line">    static const T cs2;           ///&lt; lattice constant cs2 (in BGK, this is the square-speed-of-sound)</span><br><span class="line">    static const T invCs2;        ///&lt; 1 / cs2</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></li></ul><h3 id="EXTERNALVARLISTDescriptorBaseXD"><a href="#EXTERNALVARLISTDescriptorBaseXD" class="headerlink" title="EXTERNALVARLISTDescriptorBaseXD"></a>EXTERNALVARLISTDescriptorBaseXD</h3><ul><li><p>The <code>RhoBarVelocityPiNeqOmegaDescriptorBase2D</code> has a component <code>ExternalField</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct RhoBarVelocityPiNeqOmegaDescriptorBase2D &#123;</span><br><span class="line">    typedef RhoBarVelocityPiNeqOmegaDescriptor2D ExternalField;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li><li><p>and the <code>RhoBarVelocityPiNeqOmegaDescriptor2D</code> would store</p><ul><li>the number of scalars,</li><li>the number of the species,</li><li>the index each variable starts,</li><li>the size of each variable (2 for 2d and 3 for 3d tensors),<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">struct RhoBarVelocityPiNeqOmegaDescriptor2D &#123;</span><br><span class="line">    static const int numScalars       = 7;</span><br><span class="line">    static const int numSpecies       = 4;</span><br><span class="line">    static const int rhoBarBeginsAt   = 0;</span><br><span class="line">    static const int sizeOfRhoBar     = 1;</span><br><span class="line">    static const int velocityBeginsAt = 1; </span><br><span class="line">    static const int sizeOfVelocity   = 2;</span><br><span class="line">    static const int piNeqBeginsAt    = 3;</span><br><span class="line">    static const int sizeOfPiNeq      = 3;</span><br><span class="line">    static const int omegaBeginsAt    = 6;</span><br><span class="line">    static const int sizeOfOmega      = 1;</span><br><span class="line">    static const int sizeOfForce      = 0;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>meaning <code>ForcedRhoBarJdescriptor3DRhoBarVelocityPiNeqOmegaDescriptor2D</code> have 4 species including <code>rhoBar</code>, <code>velocity</code>, <code>piNeq</code> and <code>omega</code>, with 1, 2, 3 and 1 as the sizes, respectively. So the scalar number would be $1+2+3+1=7$ in total.</p></li></ul><h2 id="Setting-up-the-external-field"><a href="#Setting-up-the-external-field" class="headerlink" title="Setting up the external field"></a>Setting up the external field</h2><p>Once the descriptor with an external field is defined, the memory of <code>external</code> inside the <code>cell</code> is allocated (see <code>src/core/cell.h</code>). For initializing or simply setting values to the external field, one would use the data processor, i.e., <code>setExternalVector</code> or <code>setExternalScalar</code> with the variable start index like <code>DESCRIPTOR&lt;T&gt;::ExternalField::rhoBarBeginsAt</code>.</p><ul><li><p>An example of external force flow would be found in the project <code>/examples/showCases/womersley/</code>. Where the external forces is set by an array, i.e., the force is uniformally deployed in the domain.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Array&lt;T,NSDESCRIPTOR&lt;T&gt;::d&gt; force(womersleyForce((T)0, amplitude, frequency, parameters),0.);</span><br><span class="line">setExternalVector(lattice,lattice.getBoundingBox(),NSDESCRIPTOR&lt;T&gt;::ExternalField::forceBeginsAt,force);</span><br></pre></td></tr></table></figure></li><li><p>For position-dependent external variables, one could use a <code>MultiScalarFieldXD</code> or <code>MultiTensorFieldXD</code>, initialized from a functional, as the input of <code>setExternalVector</code> or <code>setExternalScalar</code> and use a functional to initialize the <code>MultiXXXXFieldXD</code>. For the setup of the absorbing layers, I use</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MultiScalarField2D&lt;T&gt; sigma(lattice);</span><br><span class="line">WaveAbsorptionSigmaFunction2D&lt;T&gt; sigmaFunction2D(lattice.getBoundingBox(), numSpongeCells ,bulkValue);</span><br><span class="line">setToFunction(sigma, lattice.getBoundingBox(), sigmaFunction2D);</span><br><span class="line">setExternalScalar(lattice, lattice.getBoundingBox(),</span><br><span class="line">                      DESCRIPTOR&lt;T&gt;::ExternalField::sigmaBeginsAt, sigma );</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;For the lattice Boltzmann method, the descriptor has to be defined in advance. Here we briefly discuss the descriptor structure in Palabos. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
+    
+    
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
+      <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
+    
+      <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
+    
+  </entry>
   
   <entry>
     <title>3D Printing and Musical Instruments</title>
@@ -84,11 +132,11 @@
       <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
     
     
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
       <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
     
       <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
     
       <category term="OpenLB" scheme="http://swang251.github.io/tags/OpenLB/"/>
     
@@ -121,11 +169,11 @@
       <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
     
     
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
       <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
     
       <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
     
   </entry>
   
@@ -177,11 +225,11 @@
       <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
     
     
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
       <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
     
       <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
     
   </entry>
   
@@ -206,11 +254,11 @@
       <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
     
     
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
       <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
     
       <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
     
   </entry>
   
@@ -231,60 +279,6 @@
       <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
     
       <category term="Practical Vocal Acoustics" scheme="http://swang251.github.io/tags/Practical-Vocal-Acoustics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Practical Vocal Acoustics Ch1-Modes and Registers</title>
-    <link href="http://swang251.github.io/2018/08/11/Practical-Vocal-Acoustics-Ch1-p5-Mode-of-Phonation/"/>
-    <id>http://swang251.github.io/2018/08/11/Practical-Vocal-Acoustics-Ch1-p5-Mode-of-Phonation/</id>
-    <published>2018-08-12T03:25:34.000Z</published>
-    <updated>2018-08-12T04:21:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>The <strong>mode of phonation</strong> relates to three factors: breath pressure, airflow, and glottal resistance. The modes could be decided by the glottal resistance which equals the breath pressure by the airflow. The mode could be:</p><ul><li><strong>pressed phonation</strong>: high resistance; stronger high harmonics; “metallic”, “overly bright”,</li><li><strong>breathy phonation</strong>: low resistance; weaker high harmonics; “airy”, “fluty”,</li><li><strong>flow phonation</strong>: moderate resistance.</li></ul><p>Different from the modes of <a href="https://completevocal.institute/" target="_blank" rel="noopener">CVT (Complete Vocal Technique)</a>, which is about the register and sound production mechanisms, including neutral, curbing, overdrive, and edge. The modes here is about phonation. It is more related to the sound, which is the results of different mechanisms, instead of the mechanisms itself.</p><p>The <strong>laryngeal register</strong> refers to the muscular adjustment of the vocal folds for pitch regulation, which is primarily controlled by:</p><ul><li><strong>the thyroarytenoids</strong> (TA): vocal fold shortening, thickening vocal fold muscles.</li><li><strong>the cricothyroids</strong> (CT): vocal fold stretching, thinning muscles that lie partly outside the larynx.</li></ul><p>Two laryngeal registers list here are:</p><ul><li><strong>chestier</strong> (shorter, thicker vocal folds), more and stronger high harmonics &lt;– the more complex pressure form &lt;– vertical phase difference &lt;– thicker vocal folds &lt;– TA,</li><li><strong>headier</strong> (longer, thinner vocal folds), fewer and weaker high harmonics &lt;– more sinusoidal pressure wave &lt;– little to no vertical phase difference &lt;– thinner vocal folds &lt;– CT.</li></ul><p>The chestier and headier register might correspond to the modal voice and falsetto voice register, respectively, in the four-register system together with the vocal fry register and the whistle register.</p><p>Here the word <strong>register</strong> should be carefully used, which is determined by three key elements: </p><ol><li>A register is composed of contiguous pitches;</li><li>Pitches within any given register are produced in the same physiological manner;</li><li>Pitches within any given register share the same basic timbre.</li></ol><blockquote><p>By the word register we mean a series of consecutive and homogeneous tones going from low to high, produced by the development of the same mechanical principle, and whose nature differs essentially from another series of tones, equally consecutive and homogeneous, produced by another mechanical principle (Garcia, 1847)</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;The &lt;strong&gt;mode of phonation&lt;/strong&gt; relates to three factors: breath pressure, airflow, and glottal resistance. The modes could be dec
-      
-    
-    </summary>
-    
-      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
-    
-    
-      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
-    
-      <category term="Practical Vocal Acoustics" scheme="http://swang251.github.io/tags/Practical-Vocal-Acoustics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>On the Art of Singing I-19 &#39;The Choral Conductor as Teacher of Vocal Technique&#39;</title>
-    <link href="http://swang251.github.io/2018/07/03/On-the-Art-of-Singing-19/"/>
-    <id>http://swang251.github.io/2018/07/03/On-the-Art-of-Singing-19/</id>
-    <published>2018-07-03T23:38:01.000Z</published>
-    <updated>2018-07-04T03:19:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>As a 10-year-chorister, this article resolves some of my confusions. Especially what is claimed at the very beginning, there is no difference nor conflict between the training of the solo voice and that of a chorister. Even though, the voice today in modern music conservatories are different from the one of Josquin, Palestrina, or Gesualdo.</p><p>In traditional choral literature, it is required to be “blend” at all <em>tessitura</em> and dynamic levels which might be problematic because of the unbalanced voices between the professionals and amateurs and the unique timbre characteristics of each vocal instrument. What might be worse is that trying to submerge the voice into the surrounding bland sound threats to the professionals’ vocal health. In order to solve such problem, the choral conductor should pursue the balancing voices instead of the blend voices. </p><p>The choral conductor is responsible to teach the choristers how to become efficient singers. “It is not necessary to be a professional singer in order to be a fine teacher of singing, but it is necessary that one achieve a good level of technical proficiency with one’s own instrument.” Three main areas of vocal technique should be developed including <em>breath management/appoggio</em> (onset, agility, and sostenuto exercises), <em>free laryngeal function</em> (vibrato) and <em>resonance balancing</em> (vowel definition exercises). </p><p>Here below are some useful points:</p><ul><li>At the cessation of each sound, the vocal folds and the breath should be replenished in a synergistic manner.</li><li>In all onset, agility, and sostenuto exercises, the abdominal wall, although flexible while articulating the laughter-like impulses, remains stable and neither pulls inward nor presses outward at the moment of onset.</li><li>Many tuning problems in choral ensembles are the consequence of the singers’ inability to clearly differentiate vowels.</li><li>Dropping the jaw tends to narrow the pharynx.</li><li>Singers need to learn to “track the vowel” by changing the shapes of the vocal tract to the corresponding target vowel and the laryngeal configuration.</li><li>The particular vowel, the tessitura, and the intensity determine the degree of jaw opening (and also the form of all the articulators).</li><li>An even vibrato, the result of relaxant laryngeal function, is an inherent characteristic of freely produced vocal sound which should not be avoided in a choir. However, of course, a too wide and too slow “wobble” sound or a too narrow and too swift vibrato should be avoided.</li><li>Musical accuracy is the major priority for each choral director.</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;As a 10-year-chorister, this article resolves some of my confusions. Especially what is claimed at the very beginning, there is no differ
-      
-    
-    </summary>
-    
-      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
-    
-    
-      <category term="On the Art of Singing" scheme="http://swang251.github.io/tags/On-the-Art-of-Singing/"/>
-    
-      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
     
   </entry>
   
