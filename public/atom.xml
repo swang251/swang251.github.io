@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-10-22T19:28:02.000Z</updated>
+  <updated>2018-11-08T22:44:27.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Calculating Fluctuation in Paraview</title>
+    <link href="http://swang251.github.io/2018/11/08/Calculating-Fluctuation-in-Paraview/"/>
+    <id>http://swang251.github.io/2018/11/08/Calculating-Fluctuation-in-Paraview/</id>
+    <published>2018-11-08T21:32:21.000Z</published>
+    <updated>2018-11-08T22:44:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is to show the way to calculate variable (e.g. pressure) fluctuation in Paraview. </p><a id="more"></a><p>To calculate the $\tilde{p} = p - \bar{p}$ in Paraview, where $\bar{p}$ is the time average.</p><ul><li>Open the data (.vtk files) as object <code>p</code> and saying it contains the variable <code>pressure</code>.</li><li>Calculate the time average using the filter <em>Temporal Statistics</em> (Filters -&gt; Temporal -&gt; Temporal Statistices) and the output is the object <code>TemporalStatistics1</code>.</li><li>Selecte the <code>p</code> and the <code>TemporalStatistics1</code>, and apply the filter <em>Append Attributes</em>. The output is <code>AppendAttributes1</code>.</li><li>Use a <em>Calculator</em> to subtract pressure_average from pressure.</li></ul><p><img src="/images/20181108/paraview_fluctuation.png" alt="Fig. 1 - The pipeline for calculating the fluctuation"></p><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Paraview Forum Discussion:  <a href="https://public.kitware.com/pipermail/paraview/2012-May/024845.html" target="_blank" rel="noopener">https://public.kitware.com/pipermail/paraview/2012-May/024845.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is to show the way to calculate variable (e.g. pressure) fluctuation in Paraview. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Paraview" scheme="http://swang251.github.io/categories/Paraview/"/>
+    
+    
+      <category term="Paraview" scheme="http://swang251.github.io/tags/Paraview/"/>
+    
+  </entry>
   
   <entry>
     <title>Reflection at Discontinuities</title>
@@ -93,9 +115,9 @@
     <link href="http://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/"/>
     <id>http://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/</id>
     <published>2018-10-04T19:10:09.000Z</published>
-    <updated>2018-10-06T21:33:10.000Z</updated>
+    <updated>2018-11-10T16:14:52.000Z</updated>
     
-    <content type="html"><![CDATA[<p>I am using the cluster <a href="https://docs.computecanada.ca/wiki/Graham" target="_blank" rel="noopener">GRAHAM</a> for our simulation, and it uses SSH (Secure Shell) to connect to the remote servers. It is found annoying to type the password everytime you try to log in or copy files from the server. Herewith several simple commands, we could domake the password-less connection (for MacOS only).</p><a id="more"></a><ol><li><code>cd ~/.ssh/</code>, enter the folder where the ssh keys are kept.</li><li><code>ssh-keygen -t rsa</code>, create a new ssh key pair. You would be asked to<br><code>Enter file in which to save the key:</code> and I use <code>graham</code> here.</li><li><code>ssh-add -K graham</code>, add the ssh private key to the ssh-agent to store the passphrase the keychain.</li><li><code>cat graham.pub &gt;&gt; authorized_keys</code>, write the public key into the file authorized_keys.</li><li><code>ssh-copy-id -i graham.pub USER@graham.computecanada.ca</code>, <code>ssh-copy-id</code> is to use locally available keys to authorize logins on a remote machine. The authorized_keys is copied to the cluster.</li></ol><p><strong>Done!</strong></p><p>PS: add <code>alias graham=&#39;ssh -y USER@graham.comoputecanada.ca&#39;</code> into <code>~./bash_profile</code> for convenience</p><h3 id="Userful-links"><a href="#Userful-links" class="headerlink" title="Userful links"></a>Userful links</h3><ul><li><a href="https://www.ssh.com/ssh/key/" target="_blank" rel="noopener">SSH Key</a></li><li><a href="https://www.msri.org/realvideo/ln/msri/usered/ssh/bernstein/1/7.html" target="_blank" rel="noopener">SSH Files</a></li><li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">Github Help</a></li><li><a href="https://docs.computecanada.ca/wiki/SSH" target="_blank" rel="noopener">Compute Canada Wiki</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>I am using the cluster <a href="https://docs.computecanada.ca/wiki/Graham" target="_blank" rel="noopener">GRAHAM</a> for our simulation, and it uses SSH (Secure Shell) to connect to the remote servers. It is found annoying to type the password everytime you try to log in or copy files from the server. Herewith several simple commands, we could domake the password-less connection (for MacOS only).</p><a id="more"></a><ol><li><code>cd ~/.ssh/</code>, enter the folder where the ssh keys are kept.</li><li><code>ssh-keygen -t rsa</code>, create a new ssh key pair. You would be asked to<br><code>Enter file in which to save the key:</code> and I use <code>graham</code> here.</li><li><code>ssh-add -K graham</code>, add the ssh private key to the ssh-agent to store the passphrase the keychain.</li><li><code>cat graham.pub &gt;&gt; authorized_keys</code>, write the public key into the file authorized_keys.</li><li><code>ssh-copy-id -i graham.pub USER@graham.computecanada.ca</code>, <code>ssh-copy-id</code> is to use locally available keys to authorize logins on a remote machine. The authorized_keys is copied to the cluster.</li><li>Add the following lines to <em>~/.ssh/config</em> to avoid <code>ssh-add</code> everytime after restart.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host graham.computecanada.ca</span><br><span class="line">  HostName graham.computecanada.ca</span><br><span class="line">  User Username</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/graham</span><br><span class="line">  UseKeychain yes</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure></li></ol><p><strong>Done!</strong></p><p>PS: add <code>alias graham=&#39;ssh -y USER@graham.comoputecanada.ca&#39;</code> into <code>~./bash_profile</code> for convenience</p><h3 id="Userful-links"><a href="#Userful-links" class="headerlink" title="Userful links"></a>Userful links</h3><ul><li><a href="https://www.ssh.com/ssh/key/" target="_blank" rel="noopener">SSH Key</a></li><li><a href="https://www.msri.org/realvideo/ln/msri/usered/ssh/bernstein/1/7.html" target="_blank" rel="noopener">SSH Files</a></li><li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">Github Help</a></li><li><a href="https://docs.computecanada.ca/wiki/SSH" target="_blank" rel="noopener">Compute Canada Wiki</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -259,26 +281,6 @@
       <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
     
       <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Practical Vocal Acoustics Ch3 Vocal Resonance</title>
-    <link href="http://swang251.github.io/2018/08/12/Practical-Vocal-Acoustics-Ch3-Vocal-Resonance/"/>
-    <id>http://swang251.github.io/2018/08/12/Practical-Vocal-Acoustics-Ch3-Vocal-Resonance/</id>
-    <published>2018-08-12T13:36:38.000Z</published>
-    <updated>2018-08-12T13:37:34.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Voice" scheme="http://swang251.github.io/categories/Voice/"/>
-    
-    
-      <category term="Voice" scheme="http://swang251.github.io/tags/Voice/"/>
-    
-      <category term="Practical Vocal Acoustics" scheme="http://swang251.github.io/tags/Practical-Vocal-Acoustics/"/>
     
   </entry>
   

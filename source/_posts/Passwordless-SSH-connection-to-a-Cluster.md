@@ -14,6 +14,16 @@ I am using the cluster [GRAHAM](https://docs.computecanada.ca/wiki/Graham) for o
 3. `ssh-add -K graham`, add the ssh private key to the ssh-agent to store the passphrase the keychain.
 4. `cat graham.pub >> authorized_keys`, write the public key into the file authorized_keys.
 5. `ssh-copy-id -i graham.pub USER@graham.computecanada.ca`, `ssh-copy-id` is to use locally available keys to authorize logins on a remote machine. The authorized_keys is copied to the cluster.
+6. Add the following lines to *~/.ssh/config* to avoid `ssh-add` everytime after restart.
+  ```
+  Host graham.computecanada.ca
+    HostName graham.computecanada.ca
+    User Username
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/graham
+    UseKeychain yes
+    AddKeysToAgent yes
+  ```
 
 **Done!**
 
