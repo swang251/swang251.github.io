@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-12-23T07:11:34.000Z</updated>
+  <updated>2018-12-23T08:01:56.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DSP First - Chapter 1 - Introduction</title>
+    <link href="http://swang251.github.io/2018/12/18/DSPFirst-Ch1/"/>
+    <id>http://swang251.github.io/2018/12/18/DSPFirst-Ch1/</id>
+    <published>2018-12-18T23:12:37.000Z</published>
+    <updated>2018-12-23T08:01:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Just got the TA position for the lecture <em>Digital Audio Signal Processing</em>. It is a class introducing the basic digital audio signal processing. Even so, I thought it better to prepare more for the lecture. So I decided to review the reference book <em>DSP FIRST - A multimedia Approach</em> during the break.</p><p>The contents in the book is well-structured and well-explained, and there is nothing tricky inside. All we need to do is to review and use it again and again to make it a solid in our mind. In the blogs, there is nothing else but a list of the key points presented in the book but hopefully, this could help me strengthen my understanding.</p><a id="more"></a><ul><li>This is a book about signals and systems.</li><li>A signal is something that carries information and the system is something that operates the signals.</li><li>In the other <a href="https://www.dspguide.com/ch5/1.htm" target="_blank" rel="noopener">book</a>: A signal is a description of how one parameter varies with another parameter. For instance, voltage changing over time in an electronic circuit, or brightness varying with distance in an image. A system is any process that produces an output signal in response to an input signal.</li></ul><h4 id="mathematical-representation-of-signals">1.1 Mathematical representation of signals</h4><ul><li><span class="math inline">\(s(t)\)</span>: the continuous signal</li><li><span class="math inline">\(s[n] = s(nT_s)\)</span>: the discrete-time signal, where <span class="math inline">\(T_s\)</span> is the sampling period.</li><li>Same for the image: <span class="math inline">\(p(x,y) \rightarrow p(m\Delta x, n\Delta y) = p[m, n]\)</span></li></ul><h4 id="mathematical-representation-of-systems">1.2 Mathematical representation of systems</h4><ul><li>A system is something that transform signals into new signals or different signal representations: <span class="math inline">\(y(t) = \mathcal{T}\{x(t)\}\)</span> where the system is represented by the operation <span class="math inline">\(\mathcal{T}\{\}\)</span>.</li><li>block diagram: a way for the visualization to represent operations and to show the interrelations among the signals.</li></ul><blockquote><p>A block diagram is a diagram of a system in which the principal parts or functions are represented by blocks connected by lines that show the relationships of the blocks. (from <a href="https://en.wikipedia.org/wiki/Block_diagram" target="_blank" rel="noopener">wiki</a>)</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Just got the TA position for the lecture &lt;em&gt;Digital Audio Signal Processing&lt;/em&gt;. It is a class introducing the basic digital audio signal processing. Even so, I thought it better to prepare more for the lecture. So I decided to review the reference book &lt;em&gt;DSP FIRST - A multimedia Approach&lt;/em&gt; during the break.&lt;/p&gt;
+&lt;p&gt;The contents in the book is well-structured and well-explained, and there is nothing tricky inside. All we need to do is to review and use it again and again to make it a solid in our mind. In the blogs, there is nothing else but a list of the key points presented in the book but hopefully, this could help me strengthen my understanding.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DSP" scheme="http://swang251.github.io/categories/DSP/"/>
+    
+    
+      <category term="DSP First" scheme="http://swang251.github.io/tags/DSP-First/"/>
+    
+  </entry>
   
   <entry>
     <title>DSP First - Appendix A Complex Numbers</title>
@@ -250,35 +273,6 @@
       <category term="Research Daily" scheme="http://swang251.github.io/tags/Research-Daily/"/>
     
       <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Palabos Dynamics Calling Relationships</title>
-    <link href="http://swang251.github.io/2018/09/10/Palabos-Dynamics-Calling-Relationships/"/>
-    <id>http://swang251.github.io/2018/09/10/Palabos-Dynamics-Calling-Relationships/</id>
-    <published>2018-09-10T19:59:43.000Z</published>
-    <updated>2018-09-10T20:30:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>In this article, the calling relationship of dynamics would be shown which helps write your own dynamic classes. The dynamics classes are mainly written in <em>/src/basicDynamics/</em> and <em>/src/complexDynamics/</em>. Here we will take <code>BGKdynamics</code> and <code>MRTdynamics</code> as examples for illustration.</p><h3 id="bgkdynamics">BGKdynamics</h3><ul><li>The calling graph: <code>BGKdynamics::collide()</code> &lt;-- <code>dynamicsTemplates::bgk_ma2_collision()</code> &lt;-- <code>dynamicsTemplatesImpl::bgk_ma2_collision()</code>.</li><li>The declaration and implementation of functions in class <code>BGKdynamics</code> are in <em>src/basicDynamics/isoThermalDynamics.h</em> and <em>../isoThermalDynamics.hh</em>, respectively.</li><li>The structs <code>dynamicsTemplates</code> and <code>dynamicsTemplatesImpl</code> and the two member functions with the same name <code>bgk_ma2_collision()</code> are written in <em>src/latticeBoltzmann/dynamicsTemplates.h</em></li></ul><h3 id="mrtdynamics">MRTdynamics</h3><ul><li>The calling graph: <code>MRTdynamics::collide()</code> &lt;-- <code>mrtTemplates::mrtCollision()</code> &lt;-- <code>mrtTemplatesImpl::mrtCollision()</code>.</li><li>The declaration and implementation of functions in class <code>MRTdynamics</code> are in <em>src/complexDynamics/mrtDynamics.h</em> and <em>../mrtDynamics.hh</em>, respectively.</li><li>The structs <code>mrtTemplates</code> and <code>mrtTemplatesImpl</code> and the two member functions with the same name <code>mrtCollision()</code> are written in <em>src/latticeBoltzmann/mrtTemplates.h</em></li></ul><h3 id="conclusion">Conclusion</h3><ul><li>The kernal function is the <code>XXXdynamics::collide()</code> which implements the collision step.</li><li>The <code>collide()</code> would call different computations from different <code>Templates</code> like <code>dynamicsTemplates</code>, <code>mrtTemplates</code>, <code>momentTemplates</code> and so on.</li><li>The <code>collide()</code> is implemented on <code>cell</code> level. So for non-local dynamics, a superclass <code>class NonLocalDynamics2D : public CompositeDynamics&lt;T,Descriptor&gt;</code> might be used.</li></ul><p>To better understand the calling relations, one could use <a href="https://romanegloo.wordpress.com/2012/03/29/generating-a-callgraph-by-using-doxygen-and-graphviz-13/" target="_blank" rel="noopener">Doxygen+GraphViz</a> to plot the call graph or get use of the structure or call graph/hierachy function within IDE.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;In this article, the calling relationship of dynamics would be shown which helps write your own dynamic classes. The dynamics classes are
-      
-    
-    </summary>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
-    
-    
-      <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
-    
-      <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
     
   </entry>
   
