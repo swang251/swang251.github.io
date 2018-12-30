@@ -1,5 +1,5 @@
 ---
-title: DSP First - Appendix A Complex Numbers
+title: DSP First - Appendix A - Complex Numbers
 date: 2018-12-17 22:18:05
 tags: DSP First
 categories: DSP
