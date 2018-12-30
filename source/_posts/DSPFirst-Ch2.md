@@ -1,5 +1,5 @@
 ---
-title: DSP First - Chapter 2 - SInusoids
+title: DSP First - Chapter 2 - Sinusoids
 date: 2018-12-19 11:11:09
 tags: DSP First
 categories: DSP

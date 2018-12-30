@@ -1,14 +1,13 @@
 ---
 title: DSP First - Appendix A - Complex Numbers
-date: 2018-12-17 22:18:05
+date: 2018-12-18 22:18:05
 tags: DSP First
 categories: DSP
 mathjax: true
 toc: true
 ---
 
-### A.0 Before Introduction
-- In this appendix, the basic manipulations off complex numbers are reviewed. There ideas are treated:
+- In this appendix, the basic manipulations of complex numbers are reviewed. There ideas are treated:
   - simple algebraic rules: operations on $z = x+jy$.
   - elimination of trigonometry: Euler's formula for the complex exponential $z = re^{j\theta}=r\cos\theta+jr\sin\theta$.
   - representation by vectors: a way for visualization.
@@ -73,7 +72,7 @@ For $z_1 = r_1e^{j\theta_1}$ and $z_2 = r_2e^{j\theta_2}$,
 - $|z|^2 = zz^*$
 
 ### A.5 Geometric views off complex operations
-A geometric view provide a convenient visualization for complex number operations.
+A geometric view provides a convenient visualization for complex number operations.
 
 ### A.6 Powers and Roots
 - $z^N = (re^{j\theta})^N = r^Ne^{jN\theta}$
