@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>DSP First - Appendix A - Complex Numbers | Song Wang</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">DSP First - Appendix A - Complex Numbers</h1><a id="logo" href="/.">Song Wang</a><p class="description"></p></div><div id="nav-menu"><a href="/About"><i class="fa fa-user"> About</i></a><a href="/publications/"><i class="fa fa-book"> Publications</i></a><a href="/"><i class="fa fa-coffee"> Blogs</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">DSP First - Appendix A - Complex Numbers</h1><div class="post-meta">Dec 18, 2018<span> | </span><span class="category"><a href="/categories/DSP/">DSP</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2018/12/18/DSPFirst-AppendixA/" href="/2018/12/18/DSPFirst-AppendixA/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#a.1-introduction"><span class="toc-number">1.</span> <span class="toc-text">A.1 Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a.2-notation-for-complex-numbers"><span class="toc-number">2.</span> <span class="toc-text">A.2 Notation for complex numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a.3-eulers-formula"><span class="toc-number">3.</span> <span class="toc-text">A.3 Euler's formula</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a.4-algebraic-rules-for-complex-numbers"><span class="toc-number">4.</span> <span class="toc-text">A.4 Algebraic rules for complex numbers</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rectangular-form"><span class="toc-number">4.1.</span> <span class="toc-text">Rectangular form</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#polar-form"><span class="toc-number">4.2.</span> <span class="toc-text">Polar form</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#others"><span class="toc-number">4.3.</span> <span class="toc-text">others</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a.5-geometric-views-off-complex-operations"><span class="toc-number">5.</span> <span class="toc-text">A.5 Geometric views off complex operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a.6-powers-and-roots"><span class="toc-number">6.</span> <span class="toc-text">A.6 Powers and Roots</span></a></li></ol></div></div><div class="post-content"><ul>
+<li>In this appendix, the basic manipulations of complex numbers are reviewed. There ideas are treated:
+<ul>
+<li>simple algebraic rules: operations on <span class="math inline">\(z = x+jy\)</span>.</li>
+<li>elimination of trigonometry: Euler's formula for the complex exponential <span class="math inline">\(z = re^{j\theta}=r\cos\theta+jr\sin\theta\)</span>.</li>
+<li>representation by vectors: a way for visualization.</li>
+</ul></li>
+<li>Symbol: <span class="math inline">\(i\)</span> or <span class="math inline">\(j\)</span>
+<ul>
+<li>Physicists and mathematicians use symbol <span class="math inline">\(i=\sqrt{-1}\)</span>.</li>
+<li>Electrical engineers use symbol <span class="math inline">\(j=\sqrt{-1}\)</span> instead because <span class="math inline">\(i\)</span> is left to the current.</li>
+</ul></li>
+<li>Algebraic vs. Trigonometric vs. Geometric.</li>
+</ul>
+<h3 id="a.1-introduction">A.1 Introduction</h3>
+<ul>
+<li>The way <span class="math inline">\(j\)</span> is introduced: <span class="math inline">\(z^2=-1\)</span> ==&gt; <span class="math inline">\(z=\pm j\)</span>.</li>
+<li>More general, complex numbers are the roots of quadratic equations.</li>
+</ul>
+<h3 id="a.2-notation-for-complex-numbers">A.2 Notation for complex numbers</h3>
+<ul>
+<li>There are two types complex number representations:
+<ul>
+<li>Rectangular form (Cartesian form): <span class="math inline">\(z = (x, y) = x + jy = \Re \{ z \} + j\Im\{z\}\)</span>, where <span class="math inline">\(\Re\{\}\)</span> and <span class="math inline">\(\Im\{\}\)</span> represent the real and imaginary parts of the complex number, respectively.</li>
+<li>Polar form: <span class="math inline">\(z \leftrightarrow r\angle\theta\)</span> where <span class="math inline">\(r\)</span> is the amplitude and <span class="math inline">\(\angle\theta\)</span> is the angle whose principal value belongs to <span class="math inline">\(-180^{\circ}&lt;\theta &lt; 180^{\circ}\)</span></li>
+<li>Conversion:
+<ul>
+<li>polar --&gt; rectangular: <span class="math inline">\(z=x + jy\)</span>, where <span class="math display">\[\begin{equation}
+      \begin{cases}
+      x = r\cos\theta,\\
+      y = r\sin\theta
+      \end{cases}
+ \end{equation}   \label{eq1}\]</span></li>
+<li>rectangular --&gt; polar: <span class="math inline">\(z = re^{j\theta}=|z|e^{j\, \text{arg}|z|}\)</span>, where <span class="math display">\[\begin{equation}
+      \begin{cases}
+      r = \sqrt{x^2+y^2},\\
+      \theta = \text{atan}(y, x)
+      \end{cases}
+ \end{equation}   \label{eq2}\]</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="a.3-eulers-formula">A.3 Euler's formula</h3>
+<ul>
+<li>Euler's formula <span class="math display">\[ \begin{equation} e^{j\theta} = \cos{\theta} + j\sin\theta \end{equation}\label{Euler} \]</span></li>
+<li>Inverse Euler fomulas <span class="math display">\[ \begin{align}
+    \cos\theta &amp;= \frac{e^{j\theta} + e^{-j\theta}}{2}\\
+    \sin\theta &amp;= \frac{e^{j\theta} - e^{-j\theta}}{2}
+ \end{align}\]</span></li>
+</ul>
+<h3 id="a.4-algebraic-rules-for-complex-numbers">A.4 Algebraic rules for complex numbers</h3>
+<h4 id="rectangular-form">Rectangular form</h4>
+<p>For <span class="math inline">\(z_1 = x_1 + jy_1\)</span> and <span class="math inline">\(z_2 = x_2+jy_2\)</span>,</p>
+<ul>
+<li>addition and subtraction: <span class="math inline">\(z_1 \pm z_2 = (x_1 \pm x_2) + j(y_1 \pm y_2)\)</span>.</li>
+<li>multiplication: <span class="math inline">\(z_1 z_2\)</span> = (x_1x_2-y_1y_2)+j(x_1y_2+x_2y_1)$</li>
+<li>conjugate: <span class="math inline">\(z_1^* = x_1 - jy_1\)</span></li>
+<li>division: <span class="math inline">\(\dfrac{z_1}{z_2} = \dfrac{z_1z_2^*}{z_2z_2^*} = \dfrac{z_1z_2^*}{|z_2|^2} = \dfrac{(x_1x_2+y_1y_2) + j(x_2y_1-x_1y_2)}{x_2^2+y_2^2}\)</span></li>
+</ul>
+<h4 id="polar-form">Polar form</h4>
+<p>For <span class="math inline">\(z_1 = r_1e^{j\theta_1}\)</span> and <span class="math inline">\(z_2 = r_2e^{j\theta_2}\)</span>,</p>
+<ul>
+<li>multiplication: <span class="math inline">\(z_1z_2 = (r_1r_2)e^{j(\theta_1+theta_2)}\)</span></li>
+<li>conjugate: <span class="math inline">\(z_1^* = r_1e^{-j\theta_1}\)</span></li>
+<li>division: <span class="math inline">\(\dfrac{z_1}{z_2} = \dfrac{r_1}{r_2}e^{j(\theta_1-\theta_2)}\)</span></li>
+<li>addition and subtraction: transfer to rectangular form and do the addition or subtraction, and then, transfer back to polar form.</li>
+</ul>
+<h4 id="others">others</h4>
+<ul>
+<li><span class="math inline">\(\Re\{z\} = \dfrac{z+z^*}{2}\)</span></li>
+<li><span class="math inline">\(\Im\{z\} = \dfrac{z-z^*}{2j}\)</span></li>
+<li><span class="math inline">\(|z|^2 = zz^*\)</span></li>
+</ul>
+<h3 id="a.5-geometric-views-off-complex-operations">A.5 Geometric views off complex operations</h3>
+<p>A geometric view provides a convenient visualization for complex number operations.</p>
+<h3 id="a.6-powers-and-roots">A.6 Powers and Roots</h3>
+<ul>
+<li><span class="math inline">\(z^N = (re^{j\theta})^N = r^Ne^{jN\theta}\)</span></li>
+<li>De Moivre's formula: <span class="math inline">\((\cos\theta + j\sin\theta)^N = \cos N\theta + j\sin N\theta\)</span> (because <span class="math inline">\((e^{j\theta})^N = e^{jN\theta}\)</span>)</li>
+<li>Roots of unity (<span class="math inline">\(z^N=1\)</span>): <span class="math inline">\(z=e^{j2\pi l/N}\)</span> for <span class="math inline">\(l=0,1,2\dots N-1\)</span></li>
+<li><span class="math inline">\(z^N=c=|c|e^{j\phi}\)</span>: <span class="math inline">\(z=re^{j\theta}\)</span>, where <span class="math display">\[\begin{cases}
+r = |c|^{1/N},\\
+\theta = \dfrac{\phi+2\pi l}{N},
+\end{cases}\]</span> and <span class="math inline">\(\theta\)</span> is the angular spacing.</li>
+</ul>
+<!-- the famous matter-energy equation $\eqref{eq1}$ proposed by Einstein ...-->
+</div><div class="tags"><a href="/tags/DSP-First/">DSP First</a></div><div class="post-nav"><a href="/2018/12/19/DSPFirst-Ch2/" class="pre">DSP First - Chapter 2 - Sinusoids</a><a href="/2018/12/17/DSPFirst-Ch1/" class="next">DSP First - Chapter 1 - Introduction</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'swang251';
+var disqus_identifier = '2018/12/18/DSPFirst-AppendixA/';
+var disqus_title = 'DSP First - Appendix A - Complex Numbers';
+var disqus_url = 'http://swang251.github.io/2018/12/18/DSPFirst-AppendixA/';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//swang251.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://swang251.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Acoustics/">Acoustics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Palabos/">Palabos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paraview/">Paraview</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Research-Daily/">Research Daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Voice/">Voice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/daily/">daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/OpenLB/" style="font-size: 15px;">OpenLB</a> <a href="/tags/Research-Daily/" style="font-size: 15px;">Research Daily</a> <a href="/tags/Paraview/" style="font-size: 15px;">Paraview</a> <a href="/tags/DSP-First/" style="font-size: 15px;">DSP First</a> <a href="/tags/MacOS/" style="font-size: 15px;">MacOS</a> <a href="/tags/Emacs/" style="font-size: 15px;">Emacs</a> <a href="/tags/LBM/" style="font-size: 15px;">LBM</a> <a href="/tags/CFD/" style="font-size: 15px;">CFD</a> <a href="/tags/Palabos/" style="font-size: 15px;">Palabos</a> <a href="/tags/CAML/" style="font-size: 15px;">CAML</a> <a href="/tags/XFlow/" style="font-size: 15px;">XFlow</a> <a href="/tags/PowerFlow/" style="font-size: 15px;">PowerFlow</a> <a href="/tags/ProLB/" style="font-size: 15px;">ProLB</a> <a href="/tags/On-the-Art-of-Singing/" style="font-size: 15px;">On the Art of Singing</a> <a href="/tags/Voice/" style="font-size: 15px;">Voice</a> <a href="/tags/HPC/" style="font-size: 15px;">HPC</a> <a href="/tags/Practical-Vocal-Acoustics/" style="font-size: 15px;">Practical Vocal Acoustics</a> <a href="/tags/Acoustics/" style="font-size: 15px;">Acoustics</a> <a href="/tags/test/" style="font-size: 15px;">test</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/30/GoogleCalendarOnMac/">Adding a Shared Google Calendar to the Calendar App on the Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/19/DSPFirst-Ch2/">DSP First - Chapter 2 - Sinusoids</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/18/DSPFirst-AppendixA/">DSP First - Appendix A - Complex Numbers</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/DSPFirst-Ch1/">DSP First - Chapter 1 - Introduction</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/08/Calculating-Fluctuation-in-Paraview/">Calculating Fluctuation in Paraview</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/21/Reflection-at-Discontinuities/">Reflection at Discontinuities</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/Palabos-Descriptor-External-Field/">Descriptor and External Field of Palabos</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/06/3D-Printer/">3D Printing and Musical Instruments</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/">SSH connection to a Cluster</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/17/LBM-based-Solver/">LBM-based Solver</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.music.mcgill.ca/caml" title="Computational Acoustic Modeling Laboratory (CAML)" target="_blank">Computational Acoustic Modeling Laboratory (CAML)</a><ul></ul><a href="http://www.mcgill.ca/music/" title="Schulich School of Music" target="_blank">Schulich School of Music</a><ul></ul><a href="http://www.cirmmt.org" title="CIRMMT" target="_blank">CIRMMT</a><ul></ul><a href="http://www.cuiwei.me" title="Wei Cui (Composer)" target="_blank">Wei Cui (Composer)</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Song Wang.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, TeX: {equationNumbers: { autoNumber: "AMS" }}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
