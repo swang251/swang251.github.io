@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2018-12-30T17:53:48.000Z</updated>
+  <updated>2019-01-07T06:20:15.000Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sync your blogs across different OSs in Hexo</title>
+    <link href="http://swang251.github.io/2019/01/07/Sync-your-blog-across-different-OSs-in-Hexo/"/>
+    <id>http://swang251.github.io/2019/01/07/Sync-your-blog-across-different-OSs-in-Hexo/</id>
+    <published>2019-01-07T06:13:04.000Z</published>
+    <updated>2019-01-07T06:20:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is an article about how to synchronize blogs across your different operating systems. <a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is an article about how to synchronize blogs across your different operating systems.
+    
+    </summary>
+    
+      <category term="daily" scheme="http://swang251.github.io/categories/daily/"/>
+    
+    
+      <category term="Hexo" scheme="http://swang251.github.io/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Adding a Shared Google Calendar to the Calendar App on the Mac</title>
@@ -228,40 +250,6 @@
       <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
     
       <category term="HPC" scheme="http://swang251.github.io/tags/HPC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LBM-based Solver</title>
-    <link href="http://swang251.github.io/2018/09/17/LBM-based-Solver/"/>
-    <id>http://swang251.github.io/2018/09/17/LBM-based-Solver/</id>
-    <published>2018-09-17T21:04:05.000Z</published>
-    <updated>2018-09-17T22:11:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is simply a list of different Lattice Boltzmann Method-based solvers.</p><a id="more"></a><h2 id="palabos"><a href="http://palabos.org" target="_blank" rel="noopener">Palabos</a></h2><ul><li>Short for &quot;PArallel LAttice BOltzmann Solver&quot;,</li><li>“Palabos” = “παλαβός” in Greek, meaning “Crazy”</li><li>Developed by <a href="https://www.flowkit.com/" target="_blank" rel="noopener">FlowKit Ltd. technology company</a></li><li>Supported by <a href="http://spc.unige.ch/doku.php" target="_blank" rel="noopener">Scientific and Parallel Computing Group (SPC)</a> at the University of Geneva.</li><li>A fork from OpenLB</li><li>Written in C++ with no external dependencies (only Posix and MPI). It also provides additional programmer interfaces for the Python and Java.</li></ul><h2 id="openlb"><a href="http://www.openlb.net/" target="_blank" rel="noopener">OpenLB</a></h2><ul><li>Developed by the <a href="http://www.lbrg.kit.edu/" target="_blank" rel="noopener">Lattice Boltzmann Research Group</a> at Karlsruhe Institute of Technology, which is led by Dr. Mathias J. Krause.</li><li>The <a href="http://www.openlb.net/authors" target="_blank" rel="noopener">author list</a></li></ul><h2 id="xflow-cfd"><a href="https://www.3ds.com/products-services/simulia/products/xflow/" target="_blank" rel="noopener">XFlow CFD</a></h2><ul><li>A SIMULIA product.</li><li>Using MRT-CM and Wall-Modeled Large Eddy Simulation (WMLES) for simulation.</li><li>The <a href="https://www.youtube.com/watch?v=dN92l2gp6lc" target="_blank" rel="noopener">co-simulation with Abaqus</a> sounds cool.</li></ul><h2 id="powerflow"><a href="https://exa.com/en/product/simulation-tools/powerflow-cfd-simulation" target="_blank" rel="noopener">PowerFlow</a></h2><ul><li>A product of <a href="https://exa.com/en" target="_blank" rel="noopener">Exa Corporation</a> which is acquired by Dassault Systèmes on November 17 (<a href="https://exa.com/en/message-our-customers" target="_blank" rel="noopener">news here</a>) and becomes part of SIMULIA, a Dassault Systèmes brand.</li><li><a href="https://exa.com/en/company/cfd-simulation-resources" target="_blank" rel="noopener">Demo video and literature</a> could be found in the link.</li><li><a href="https://exa.com/en/company/exa-lattice-boltzmann-technology" target="_blank" rel="noopener">Technology</a> including very large eddy simulation (VLES).</li></ul><h2 id="prolb"><a href="http://www.prolb-cfd.com/" target="_blank" rel="noopener">ProLB</a></h2><ul><li>A recently (maybe) built solver, one of whose creators is Prof. Pierre Sagaut.</li><li>Especially for aeroacoustic and aerodynamic simulation of weakly compressible flow.</li><li>The <a href="http://www.prolb-cfd.com/technology/" target="_blank" rel="noopener">technology</a> includes double relaxation time (DRT) for collision, wall-modeled large eddy simulation (WMLES) for turbulence modeling, immersed boundary model (IBM) for boundary conditions.</li></ul><p>PS: - <a href="https://www.3ds.com/" target="_blank" rel="noopener">Dassault Systèmes</a> , a subsidiary of Dassault Group, is a CAE/PLM software developing company whose subsidiaries including SIMULIA and SolidWorks. <a href="https://www.3ds.com/products-services/simulia/" target="_blank" rel="noopener">SIMULIA</a> products include Abaqus, XFLOW CFD, and now also PowerFlow. - Just forget me if anything description is wrong.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is simply a list of different Lattice Boltzmann Method-based solvers.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
-    
-    
-      <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
-    
-      <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
-    
-      <category term="OpenLB" scheme="http://swang251.github.io/tags/OpenLB/"/>
-    
-      <category term="XFlow" scheme="http://swang251.github.io/tags/XFlow/"/>
-    
-      <category term="PowerFlow" scheme="http://swang251.github.io/tags/PowerFlow/"/>
-    
-      <category term="ProLB" scheme="http://swang251.github.io/tags/ProLB/"/>
     
   </entry>
   
