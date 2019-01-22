@@ -54,7 +54,7 @@ $$ \begin{align}
 For $z_1 = x_1 + jy_1$ and $z_2 = x_2+jy_2$, 
 
 - addition and subtraction: $z_1 \pm z_2 = (x_1 \pm x_2) + j(y_1 \pm y_2)$.
-- multiplication: $z_1 z_2$ = (x_1x_2-y_1y_2)+j(x_1y_2+x_2y_1)$
+- multiplication: $z_1 z_2 = (x_1 x_2-y_1 y_2)+j(x_1 y_2+x_2 y_1)$
 - conjugate: $z_1^* = x_1 - jy_1$
 - division: $\dfrac{z_1}{z_2} = \dfrac{z_1z_2^*}{z_2z_2^*} = \dfrac{z_1z_2^*}{|z_2|^2} = \dfrac{(x_1x_2+y_1y_2) + j(x_2y_1-x_1y_2)}{x_2^2+y_2^2}$
 
