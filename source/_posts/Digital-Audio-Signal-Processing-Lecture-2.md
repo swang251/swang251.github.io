@@ -6,8 +6,8 @@ categories: DSP
 mathjax: true
 toc: true
 ---
-
-
+Notes of Digital Audio Signal Processing, Lecture 2.
+<!--more-->
 ## Dot product
 - $D(\mathbf{u},\mathbf{v})=\sum_{i=1}^3u_iv_i$
 - The [correlation](https://en.wikipedia.org/wiki/Correlation_and_dependence#Definition) is related to dot product, see [here](https://qr.ae/TUnqvl).
