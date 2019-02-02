@@ -113,6 +113,7 @@ $$p(t,r) = A_0\cos(2\pi f_0(t-\frac{r}{c}))$$
 
 #### Phasor
 - phasor $\leftrightarrow$ vector
+
 #### Linear chirp
 $$phi[n] = \phi_0 + 2\pi(\hat{f_0}+\frac{\beta(n+1)}{2})n$$
 instead of simply $\phi[n] = \phi_0+2\pi f[n]n$, where $f[n] = \hat{f_0}+\beta n$
