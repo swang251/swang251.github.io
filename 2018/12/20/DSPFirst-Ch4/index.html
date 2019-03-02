@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>DSP First - Chapter 4 - Sampling and Aliasing | Song Wang</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">DSP First - Chapter 4 - Sampling and Aliasing</h1><a id="logo" href="/.">Song Wang</a><p class="description"></p></div><div id="nav-menu"><a href="/About"><i class="fa fa-user"> About</i></a><a href="/publications/"><i class="fa fa-book"> Publications</i></a><a href="/"><i class="fa fa-coffee"> Blogs</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">DSP First - Chapter 4 - Sampling and Aliasing</h1><div class="post-meta">Dec 20, 2018<span> | </span><span class="category"><a href="/categories/DSP/">DSP</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/12/20/DSPFirst-Ch4/" href="/2018/12/20/DSPFirst-Ch4/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#review-of-sine-and-cosine-functions"><span class="toc-number">1.</span> <span class="toc-text">Review of sine and cosine functions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#properties"><span class="toc-number">1.1.</span> <span class="toc-text">Properties</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#trigonometric-identities"><span class="toc-number">1.2.</span> <span class="toc-text">Trigonometric identities</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sinusoidal-signals"><span class="toc-number">2.</span> <span class="toc-text">Sinusoidal signals</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-general-mathematical-formula-for-a-cosine-signal-is"><span class="toc-number">2.1.</span> <span class="toc-text">The general mathematical formula for a cosine signal is</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#phase-shift-and-time-shift"><span class="toc-number">2.2.</span> <span class="toc-text">Phase shift and time shift</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sampling-and-plotting-sinusoids"><span class="toc-number">3.</span> <span class="toc-text">Sampling and plotting sinusoids</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#complex-exponentials-and-phasors"><span class="toc-number">4.</span> <span class="toc-text">Complex exponentials and phasors</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#review-of-complex-numbers"><span class="toc-number">4.1.</span> <span class="toc-text">Review of complex numbers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#complex-exponentials-signal"><span class="toc-number">4.2.</span> <span class="toc-text">Complex exponentials signal</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#the-rotating-phasor-interpretation"><span class="toc-number">4.3.</span> <span class="toc-text">The rotating phasor interpretation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inverse-euler-formulas"><span class="toc-number">4.4.</span> <span class="toc-text">Inverse Euler formulas</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phasor-addition"><span class="toc-number">5.</span> <span class="toc-text">Phasor Addition</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#addition-of-complex-numbers"><span class="toc-number">5.1.</span> <span class="toc-text">Addition of complex numbers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#phasor-addition-rule"><span class="toc-number">5.2.</span> <span class="toc-text">Phasor addition rule</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tuning-fork-and-its-physics"><span class="toc-number">6.</span> <span class="toc-text">Tuning fork and its physics</span></a></li></ol></div></div><div class="post-content"><p>Sinusoids, or sinusoidal signals, representing the cosine or sine signals/waves, are the most basic signals in the theory of signals and systems. This chapter introduces the basic sinusoid concepts and operations.</p>
+<a id="more"></a>
+<h3 id="review-of-sine-and-cosine-functions">Review of sine and cosine functions</h3>
+<ul>
+<li>Basic <a href="https://en.wikipedia.org/wiki/Trigonometric_functions" target="_blank" rel="noopener">trigonometric functions</a>.</li>
+</ul>
+<h4 id="properties">Properties</h4>
+<ul>
+<li>Equivalence: <span class="math inline">\(\sin\theta = \cos(\theta-\pi/2)\)</span> or <span class="math inline">\(\cos\theta=\sin(\theta+\pi/2)\)</span>; <strong>the sine function is just a cosine function that is shifted to the right by <span class="math inline">\(\pi/2\)</span></strong>,</li>
+<li>Periodicity: <span class="math inline">\(\cos(\theta + 2\pi k) = \cos\theta\)</span>, where <span class="math inline">\(k\in \mathbb{Z}\)</span>,</li>
+<li>Evenness of cosine: <span class="math inline">\(\cos(-\theta) = \cos\theta\)</span>,</li>
+<li>Oddness of sine: <span class="math inline">\(\sin(-\theta) = -\sin\theta\)</span>,</li>
+<li>Zeros of sine: <span class="math inline">\(\sin(\pi k) = 0\)</span>, for <span class="math inline">\(k\in\mathbb{Z}\)</span>,</li>
+<li>Ones of sine: <span class="math inline">\(\cos(2\pi k) = 1\)</span>, for <span class="math inline">\(k\in\mathbb{Z}\)</span>,</li>
+<li>Minus ones of cosine: <span class="math inline">\(\cos[2\pi(k+\dfrac{1}{2})]=-1\)</span>, for <span class="math inline">\(k\in\mathbb{Z}\)</span>,x</li>
+<li>Derivatives: <span class="math inline">\(\dfrac{d \sin\theta}{d \theta} = \cos\theta\)</span> and <span class="math inline">\(\dfrac{d \cos\theta}{d \theta} = -\sin\theta\)</span>.</li>
+</ul>
+<h4 id="trigonometric-identities">Trigonometric identities</h4>
+<ul>
+<li><span class="math inline">\(\sin^2\theta + \cos^2\theta = 1\)</span>,</li>
+<li><span class="math inline">\(\cos^2\theta = \cos^2\theta - \sin^2\theta\)</span>,</li>
+<li><span class="math inline">\(\sin^2\theta = 2\sin\theta\cos\theta\)</span>,</li>
+<li><span class="math inline">\(\sin(\alpha\pm\beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta\)</span>,</li>
+<li><span class="math inline">\(\cos(\alpha\pm\beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta\)</span>,</li>
+<li><span class="math inline">\(\cos^2\theta = \frac{1}{2}(1+\cos 2\theta)\)</span>,</li>
+<li><span class="math inline">\(\sin^2\theta = \frac{1}{2}(1-\cos 2\theta)\)</span>.</li>
+</ul>
+<h3 id="sinusoidal-signals">Sinusoidal signals</h3>
+<h4 id="the-general-mathematical-formula-for-a-cosine-signal-is">The general mathematical formula for a cosine signal is</h4>
+<p><span class="math display">\[\begin{equation}
+   x(t) = A\cos(\omega_0 t + \phi) = A\cos(2\pi f_0 t + \phi),
+\end{equation}\label{cos}\]</span> where - <span class="math inline">\(A\)</span> is the <em>amplitude</em>, - <span class="math inline">\(\omega_0\)</span> is the <em>radian frequency</em> (rad/sec), - <span class="math inline">\(\phi\)</span> represents the <em>radian phase-shift</em> (rads), - <span class="math inline">\(f_0 = \omega_0/2\pi\)</span>, the <em>cyclic frequency</em> (sec<span class="math inline">\(^{-1}\)</span>), represents the number of periods (cycles) per second, - <span class="math inline">\(T_0 = \dfrac{1}{f_0} = \dfrac{2\pi}{\omega_0}\)</span>, the <em>period</em> (sec), is the one cycle length of the sinusoid in time.</p>
+<h4 id="phase-shift-and-time-shift">Phase shift and time shift</h4>
+<ul>
+<li>Having <span class="math inline">\(x_1(t) = x(t-t_1)\)</span>, we say <span class="math inline">\(x(t)\)</span> is a time-shifted version of <span class="math inline">\(s(t)\)</span>
+<ul>
+<li>if <span class="math inline">\(t_1 &gt; 0\)</span> (<em>positive</em>), shifted to the right = <em>delayed</em>,</li>
+<li>if <span class="math inline">\(t_1 &lt; 0\)</span> (<em>negative</em>), shifted to the left = <em>advanced</em>.</li>
+</ul></li>
+<li>Taking the sinusoid as the form in Eq. <span class="math inline">\(\eqref{cos}\)</span>,
+<ul>
+<li>convert time shift to a phase shift: <span class="math inline">\(x(t-t_1) = A\cos(\omega_0(t-t_1)+\phi) = A\cos(\omega_0t+\phi+\phi_1)\)</span>, where <span class="math inline">\(\phi_1 = -\omega_0t_1\)</span> is the phase shift.</li>
+<li><span class="math inline">\(t_1 = -\dfrac{\phi}{\omega_0} = -\dfrac{\phi}{2\pi f_0}\)</span>,</li>
+<li><span class="math inline">\(\phi_1 = -2\pi f_0 t_1 = -2\pi\dfrac{t_1}{T_0}\)</span>.</li>
+</ul></li>
+<li><strong>Based on the definition</strong> of the time shift and the phase shift, <strong>they have the opposite direction</strong>, e.g., if the time shift is positive (delay), the phase shift would be negative.</li>
+<li>modulo reduction and principal value of the phase.</li>
+</ul>
+<h3 id="sampling-and-plotting-sinusoids">Sampling and plotting sinusoids</h3>
+<ul>
+<li>Be careful of the use of <span class="math inline">\(n\)</span> and <span class="math inline">\(t\)</span>, meaning one can use either <span class="math inline">\(x(nT_s)\)</span> or <span class="math inline">\(x(t)\)</span> but never <span class="math inline">\(x(tT_s)\)</span>.</li>
+</ul>
+<h3 id="complex-exponentials-and-phasors">Complex exponentials and phasors</h3>
+<ul>
+<li>Complex exponentials signals provide an alternative representation for the real cosine signal and might make some manipulation or analysis easier.</li>
+</ul>
+<h4 id="review-of-complex-numbers">Review of complex numbers</h4>
+<ul>
+<li>Real part and imaginary part.</li>
+<li>Cartesian form or polar form.</li>
+<li>Magnitude and argument</li>
+<li>Euler's formula: <span class="math inline">\(e^{j\theta} = \cos\theta + j\sin\theta\)</span></li>
+</ul>
+<h4 id="complex-exponentials-signal">Complex exponentials signal</h4>
+<ul>
+<li><span class="math inline">\(\bar{x}(t) = Ae^{j(\omega_0t + \phi)}\)</span></li>
+<li><span class="math inline">\(x(t) = \Re{\{Ae^{j(\omega_0t+\phi)}\}} = A\cos(\omega_0t+\phi)\)</span></li>
+</ul>
+<h4 id="the-rotating-phasor-interpretation">The rotating phasor interpretation</h4>
+<ul>
+<li>The complex exponential signal could be expressed as <span class="math inline">\(\bar{x}(t)=Xe^{j\omega_0t}\)</span>, i.e., the product of the <em>complex amplitude</em> <span class="math inline">\(X=Ae^{j\phi}\)</span> and the <em>complex-valued</em> function <span class="math inline">\(e^{j\omega_0t}\)</span>.</li>
+<li>The complex amplitude <span class="math inline">\(X\)</span> is also called the <strong>phasor</strong> (vs. vector) (相量 vs. 向量).</li>
+<li><span class="math inline">\(\bar{x}(t)=Xe^{j\omega_0t}=Ae^{j\theta(t)}\)</span>, where <span class="math inline">\(\theta(t) = \omega_0t + \phi\)</span>.</li>
+<li>In the complex plane, <span class="math inline">\(\bar{x}(t)\)</span> is simply a rotating vector at a constant rate <span class="math inline">\(\omega_0\)</span> with initial phase <span class="math inline">\(\phi\)</span> (<span class="math inline">\(t=0\)</span>). So <em>a complex exponential signal</em> is a <strong>rotating phasor</strong>.
+<ul>
+<li><span class="math inline">\(\omega_0 &gt; 0\)</span>: rotating counterclockwise,</li>
+<li><span class="math inline">\(\omega_0 &lt; 0\)</span>: rotating clockwise.</li>
+</ul></li>
+</ul>
+<h4 id="inverse-euler-formulas">Inverse Euler formulas</h4>
+<ul>
+<li>Applying the inverse Euler's formula, the real cosine signal with radian frequency <span class="math inline">\(\omega_0\)</span> is composed of two conjugated complex exponential signals with frequencies of <span class="math inline">\(\omega_0\)</span> and <span class="math inline">\(-\omega_0\)</span>, and also complex amplitudes of <span class="math inline">\(\frac{1}{2}Ae^{j\phi}\)</span> and <span class="math inline">\(-\frac{1}{2}Ae^{j\phi}\)</span>, respectively. <span class="math display">\[x(t) = A\cos(\omega_0t+\phi) = \frac{1}{2}\bar{x}(t) + \frac{1}{2}\bar{x}^*(t) = \Re{\{\bar{x}(t)\}}\]</span></li>
+</ul>
+<h3 id="phasor-addition">Phasor Addition</h3>
+<ul>
+<li>Additions of sinusoids with the same frequency but different amplitudes and phases</li>
+</ul>
+<h4 id="addition-of-complex-numbers">Addition of complex numbers</h4>
+<ul>
+<li><span class="math inline">\(z_1+z_2= (x_1+x_2)+j(y_1+y_2)\)</span>.</li>
+</ul>
+<h4 id="phasor-addition-rule">Phasor addition rule</h4>
+<ul>
+<li><em>The summation of sinusoids with the same frequency is a sinusoid with the identical frequency with the amplitude and phase of a certain phasor calculated by the summation of the phasors of each sinusoid.</em></li>
+<li>Summation of phasors is also a phasor: <span class="math display">\[\begin{equation}
+    \sum_{k=1}^N A_ke^{j\phi_k} = Ae^{j\phi}
+    \end{equation} \label{phasor_sum}\]</span></li>
+<li>Finally, lead us to: <span class="math display">\[\sum_{k=1}^N A_k\cos(\omega_0t + \phi_k) = A\cos(\omega_0t + \phi)\]</span> which could be proved either by
+<ul>
+<li>trigonometric identities, or</li>
+<li>summation of phasors following the steps:
+<ol type="1">
+<li>Get the phasors <span class="math inline">\(X_k = A_ke^{j\phi_k}\)</span> of each individual cosine signals,</li>
+<li>Add phasors using Eq. <span class="math inline">\(\eqref{phasor_sum}\)</span>, employing polar-to-Cartesian-to-polar conversion,</li>
+<li>Multiply the resulting phasor <span class="math inline">\(X=Ae^{j\phi}\)</span> with the rotating function <span class="math inline">\(e^{j\omega_0t}\)</span> and get <span class="math inline">\(\bar{x}(t)\)</span>,</li>
+<li>Take the real part and get <span class="math inline">\(x(t) = \bar{x}(t)\)</span>.</li>
+</ol></li>
+</ul></li>
+</ul>
+<h3 id="tuning-fork-and-its-physics">Tuning fork and its physics</h3>
+<ul>
+<li>higher-frequency &quot;ting&quot; and the lower-frequency &quot;hum&quot;, where the &quot;ting&quot; comes from the <em>transient</em>.</li>
+</ul>
+</div><div class="tags"><a href="/tags/DSP-First/">DSP First</a></div><div class="post-nav"><a class="pre" href="/2018/12/30/GoogleCalendarOnMac/">Adding a Shared Google Calendar to the Calendar App on the Mac</a><a class="next" href="/2018/12/19/DSPFirst-Ch3/">DSP First - Chapter 3 - Spectrum Representation</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://swang251.github.io/2018/12/20/DSPFirst-Ch4/';
+    this.page.identifier = '2018/12/20/DSPFirst-Ch4/';
+    this.page.title = 'DSP First - Chapter 4 - Sampling and Aliasing';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//swang251.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//swang251.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://swang251.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://swang251.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Acoustics/">Acoustics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Palabos/">Palabos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paraview/">Paraview</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Research-Daily/">Research Daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Voice/">Voice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/daily/">daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/LBM/" style="font-size: 15px;">LBM</a> <a href="/tags/Research-Daily/" style="font-size: 15px;">Research Daily</a> <a href="/tags/Paraview/" style="font-size: 15px;">Paraview</a> <a href="/tags/HPC/" style="font-size: 15px;">HPC</a> <a href="/tags/DSP-First/" style="font-size: 15px;">DSP First</a> <a href="/tags/Lecture-Notes-DASP/" style="font-size: 15px;">Lecture Notes (DASP)</a> <a href="/tags/Emacs/" style="font-size: 15px;">Emacs</a> <a href="/tags/MacOS/" style="font-size: 15px;">MacOS</a> <a href="/tags/On-the-Art-of-Singing/" style="font-size: 15px;">On the Art of Singing</a> <a href="/tags/Voice/" style="font-size: 15px;">Voice</a> <a href="/tags/CAML/" style="font-size: 15px;">CAML</a> <a href="/tags/CFD/" style="font-size: 15px;">CFD</a> <a href="/tags/Palabos/" style="font-size: 15px;">Palabos</a> <a href="/tags/OpenLB/" style="font-size: 15px;">OpenLB</a> <a href="/tags/XFlow/" style="font-size: 15px;">XFlow</a> <a href="/tags/PowerFlow/" style="font-size: 15px;">PowerFlow</a> <a href="/tags/ProLB/" style="font-size: 15px;">ProLB</a> <a href="/tags/Practical-Vocal-Acoustics/" style="font-size: 15px;">Practical Vocal Acoustics</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/Acoustics/" style="font-size: 15px;">Acoustics</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/Digital-Audio-Signal-Processing-Lecture-6/">Digital Audio Signal Processing Lecture 6 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/05/Digital-Audio-Signal-Processing-Lecture-5/">Digital Audio Signal Processing Lecture 5 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/Commands-and-Routine-of-Simulation-on-Graham-Compute-Canada-Cluster/">Commands and Routine of Simulation on Graham, a Compute Canada Cluster</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/Digital-Audio-Signal-Processing-Lecture-4/">Digital Audio Signal Processing Lecture 4 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/Digital-Audio-Signal-Processing-Lecture-3/">Digital Audio Signal Processing-Lecture 3 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/Digital-Audio-Signal-Processing-Lecture-1/">Digital Audio Signal Processing Lecture 1 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/Digital-Audio-Signal-Processing-Lecture-2/">Digital Audio Signal Processing-Lecture 2 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/07/Sync-your-blog-across-different-OSs-in-Hexo/">Sync your blogs across different OSs in Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/30/GoogleCalendarOnMac/">Adding a Shared Google Calendar to the Calendar App on the Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/DSPFirst-Ch4/">DSP First - Chapter 4 - Sampling and Aliasing</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.music.mcgill.ca/caml" title="Computational Acoustic Modeling Laboratory (CAML)" target="_blank">Computational Acoustic Modeling Laboratory (CAML)</a><ul></ul><a href="http://www.mcgill.ca/music/" title="Schulich School of Music" target="_blank">Schulich School of Music</a><ul></ul><a href="http://www.cirmmt.org" title="CIRMMT" target="_blank">CIRMMT</a><ul></ul><a href="http://www.cuiwei.me" title="Wei Cui (Composer)" target="_blank">Wei Cui (Composer)</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Song Wang.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, TeX: {equationNumbers: { autoNumber: "AMS" }}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
