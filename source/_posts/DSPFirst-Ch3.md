@@ -121,7 +121,7 @@ The beat note and the amplitude modulation (AM)
 
 ### Frequency modulation: chirp signals
 - $x(t)=\Re{Ae^{j\psi(t)}}=A\cos(\psi(t))$, where $\psi(t)$ is the angle function.
-- **Instantaneous frequency** $\omega_i(t) = \dfrac{d}{dt}\psi(t) \; \text{rad/s}$ and $\f_i(t) = \dfrac{1}{2\pi}\dfrac{d}{dt}\psi(t) \; \text{Hz}$
+- **Instantaneous frequency** $\omega_i(t) = \dfrac{d}{dt}\psi(t) \; \text{rad/s}$ and $f_i(t) = \dfrac{1}{2\pi}\dfrac{d}{dt}\psi(t) \; \text{Hz}$
 - Quadratic angle function
   - $\psi(t)=2\pi\mu t^2 + 2\pi f_0 t + \phi$.
   - $f_i(t)=2\mu t + f_0$ $\rightarrow$ *linear Frequency modulation* or *chirp*

@@ -1,22 +1,73 @@
 ---
-title: Commands and Routine of Simulation on Graham, a Compute Canada Cluster
+title: Simulation Routine, and Code/Result Management across Laptop and Cluster
 toc: true
 date: 2019-01-30 05:41:19
 tags: [Research Daily, HPC, CAML]
 categories: Research Daily
 ---
-Again, I am using the cluster [GRAHAM](https://docs.computecanada.ca/wiki/Graham) for the simulation and here is the routine I normally use in the cluster end for my project.
+
+
+For my research involving the lattice Boltzmann method, I normally run most of the simulation on the cluster [GRAHAM](https://docs.computecanada.ca/wiki/Graham) of Compute Canada. It is boring and inconvenient to manage the code and the simulation results across my own laptop and the cluster. But still, I am building up my own way to manage everything and try to make it as easy as possible. Here I briefly note down how I organize my codes using Cmake and Git, and what is the routine of running simulation on the cluster.
+
 <!--more-->
 
+### Software/Tool List
+- [Git](https://git-scm.com/) (version control)
+- [Bitbucket](https://bitbucket.org/) (remote repository storage)
+- [Sourcetree](https://www.sourcetreeapp.com/) (Git GUI)
+- [CMake](https://cmake.org/) (cross-platform building software)
+- [CLion](https://www.jetbrains.com/clion/) (C++ IDE)
+- [Emacs](https://www.gnu.org/software/emacs/) (Text editor for code editing on the cluster)
+- [Slurm](https://slurm.schedmd.com/overview.html) (job scheduler used by Compute Canada clusters)
+- [Globus](https://www.globus.org/) (file transfer)
+- [Paraview](https://www.paraview.org/) (result visualization)
+
+
 ### Login and Version Control
-- For convenience, I make an alias of the ssh connection called `graham`. Details could be check in the [previous blog](https://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/).
+- For convenience, I make an alias of the ssh connection called `graham`. Details could be check in my [previous blog](https://swang251.github.io/2018/10/04/Passwordless-SSH-connection-to-a-Cluster/).
 - I am using [Git](https://git-scm.com/) and [Bitbucket](https://bitbucket.org/) for version control.
 
-### Compilation
+### File Structure
 - For the LBM simulation, I got my projects stored in the folder *lbm* and the Palabos library in *palabos*, make sure they are in the same directory level.
-- I am using [CMake](https://cmake.org/) for cross-platform compiling. I use CMake because my laptop for a preliminary test is MacBook with MacOS but the cluster will always be Linux.
-- I got two folders *cmake-build-debug* for locally compiling and *cmake-cluster* for the cluster end.
-- The local version is built using CLion, everything is straightforward. On the cluster end, go to the folder *cmake-cluster* and use the command `cmake ../`
+- Each project is named as the case short name + dimension. For example, I have *aeolianToneCylinder2D* and *ductRadiation2DAxisymmetric*.
+- In each project, the file structure is shown below. It includes 
+  - *main.cpp*: the main c++ file, 
+  - *CMakeLists.txt*: the CMake configuration file,
+  - *./laptop-cmake-build-debug/*: the workspace folder for the laptop, including the 
+    - CMAKE workspace files,
+	- Makefile,
+	- excutable file,
+	- .xml simulation setup file,
+  - *./cluster-cmake-build-debug/*: the workspace folder for the cluster,
+    - CMAKE workspace files,
+	- Makefile,
+	- excutable file,
+	- .xml simulation setup file ,
+	- .sh file for submitting batch jobs,
+  - *./Analysis/*: the folder for the simulation results and the analysis scripts.
+    - .m matlab script
+	- .vtk for visualization
+	- .dat for simulaiton 
+```
+aeolianToneCylinder2D
++-- main.cpp
++-- CMakeLists.txt
++-- laptop-cmake-build-debug
+|   +-- aeolianToneCylinder2D.xml
++-- cluster-cmake-build-debug
+|   +-- aeolianToneCylinder2D.xml
+|   +-- aeolianToneCylinder2D.sh
++-- Analysis
+|   +-- *.m
+|   +-- ResultFolders
+```
+
+### Build and Compilation
+
+- I am using [CMake](https://cmake.org/) for cross-platform project building (MacOS for my laptop and Linux on the cluster).
+- Each platform owns its own workspace folder, i.e., *./laptop-cmake-build-debug* for the laptop and *./cluster-cmake-build-debug* for the cluster.
+- The project on the laptop is built and debugged through CLion which is straight forward.
+- On the cluster end, go to the folder *./cluster-cmake-build-debug* and use the command `cmake ../` to build the project. Then, use `make` to compile everything.
 - Sometimes, we need to manually load cmake module. Use `module avail cmake` to check the available cmake version and use, e.g., `module load cmake/3.12.3` to load the new cmake version.
 
 ### Running Jobs
@@ -29,9 +80,14 @@ Again, I am using the cluster [GRAHAM](https://docs.computecanada.ca/wiki/Graham
 #SBATCH --mem-per-cpu=128M
 #SBATCH --job-name=JOBNAME
 #SBATCH --output=%x-%j-np64.out
+#SBATCH --mail-user=EMAILADDRESS
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL 
 
-mpirun -np 64 ./projectName
+mpirun -np 64 ./projectName ./projectName.xml
 ```
+  - `--mail` provides the option for notification at different stage of the simulation which is quite useful.
 
 - make sure everything is included
   - output directory created (or automatically created)
