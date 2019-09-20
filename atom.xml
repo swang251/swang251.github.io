@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2019-02-15T20:50:06.588Z</updated>
+  <updated>2019-06-12T21:23:41.447Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Palabos Immersed Boundary-Lattice Boltzmann Method</title>
+    <link href="http://swang251.github.io/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/"/>
+    <id>http://swang251.github.io/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/</id>
+    <published>2019-06-12T14:31:43.000Z</published>
+    <updated>2019-06-12T21:23:41.447Z</updated>
+    
+    <content type="html"><![CDATA[<p>The immersed boundary method (IBM) is proposed by Peskin in 1972 in his Ph.D. thesis and then is widely used for complex boundaries and moving boundary problems. IBM is applied in the context of lattice Boltzmann method (LBM) for the first time in 2004 by Feng and Michaelides (Feng and Michaelides, J. Comput. Phys, 2004). People also call such combination immersed boundary-lattice Boltzmann method (IB-LBM). In Palabos, different off-lattice methods have been implemented, including the Filippo-Hanel method, the Guo-Zheng-Shi method, the Bouzidi method and also the IBM.</p><a id="more"></a><p>In Palabos, there is a demo showing how to use the IBM to solve the moving wall problems (<em>example/showCases/movingWall</em>). As one can notice, in Palabosv2.0r0, only 3D IBM is implemented and the corresponding implementaions can be found in</p><ul><li><em>src/offLattice/immersedWalls3D.h</em></li><li><em>src/offLattice/immersedWalls3D.hh</em></li></ul><p>Here I will discuss only how the method used in the showCase works.</p><p>In the moving wall case, the multi direct-forcing IB-LBM proposed by Inamuro (2012) is used. Two main function are used:</p><ul><li><code>instantiateImmersedWallData(vertices, areas, container)</code> for the wall boundary instantiation,</li><li><code>inamuroIteration(parameters)</code> for the main IBM iteration.</li></ul><h3 id="instantiateimmersedwalldata">InstantiateImmersedWallData</h3><p><code>instantiateImmersedWallData</code> is a function wrapper for the functional <code>instantiateImmersedWallData3D</code> where the boundary data is stored in a container block called <code>ImmersedWallData3D</code>.</p><h3 id="inamuroiteration">InamuroIteration</h3><p><code>inamuroIteration</code> is a function wrapper for the functional <code>InamuroIteration3D</code> which implements the IB-LBM algorithm following Inamuro (2012). In Inamuro's paper, there are 5 steps (from Step 0-5) in the iterative procedure and it iterate from Step 1 to Step 4. In Palabos, the iteration is implemented with a slighly different procedure.</p><ul><li><code>for (neighboring) {averageJ += W*nextJ;}</code> corresponds to Eq 2.22 (<em>Step -1</em>) and Eq. 2.28 (<em>Step 3.</em>) and the <span class="math inline">\(\mathbf{j}_l(\mathbf{X}_k)\)</span> is calculated instead of <span class="math inline">\(\mathbf{u}_l(\mathbf{X}_k)\)</span>;</li><li><code>for (vertices) {deltaG[i] = area[i]*(wallVelocity-averageJ);}</code> calculates the <span class="math inline">\(g_l(\mathbf{X}_k)\)</span> in <em>Step 0</em> and the last term of the RHS in Eq. 2.29, <em>Step 4</em>;</li><li><code>for (vertices) {g[i] += deltaG[i];}</code> (incompressible model), does the Eq. 2.29 in <em>Step. 4</em>;</li><li><code>for (neighboring) {nextJ += tau*W*deltaG[i];}</code> corresponds to <em>Step 1</em> and <em>Step 2</em> for spreading the force for correct the velocity at the Eulerian grid points. We can take it as substituting <span class="math inline">\(\mathbf{g}_l(\mathbf{x})\)</span> in Eq. 2.27 by Eq. 2.26.</li></ul><p>In the main function in <em>movingWall.cpp</em>, the iteration time depends on <code>param.ibIter</code>.</p><h4 id="n.b.">N.B.</h4><ul><li>The loop for neighboring starts range from -1 to 2. This is because the <code>plint</code> in the line <code>Array&lt;plint,3&gt; intPos ((plint)vertex[0], (plint)vertex[1], (plint)vertex[2])</code> floors the vertex point to the nearest smaller position.</li><li>Still don't understand how the <code>tau</code> in <code>nextJ += tau*W*deltaG[i]</code> helps calculate the moment.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The immersed boundary method (IBM) is proposed by Peskin in 1972 in his Ph.D. thesis and then is widely used for complex boundaries and moving boundary problems. IBM is applied in the context of lattice Boltzmann method (LBM) for the first time in 2004 by Feng and Michaelides (Feng and Michaelides, J. Comput. Phys, 2004). People also call such combination immersed boundary-lattice Boltzmann method (IB-LBM). In Palabos, different off-lattice methods have been implemented, including the Filippo-Hanel method, the Guo-Zheng-Shi method, the Bouzidi method and also the IBM.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
+    
+    
+      <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
+    
+      <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
+    
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
+  </entry>
   
   <entry>
     <title>Digital Audio Signal Processing Lecture 6 (Notes)</title>
@@ -80,9 +106,9 @@
     
       <category term="Research Daily" scheme="http://swang251.github.io/tags/Research-Daily/"/>
     
-      <category term="HPC" scheme="http://swang251.github.io/tags/HPC/"/>
-    
       <category term="CAML" scheme="http://swang251.github.io/tags/CAML/"/>
+    
+      <category term="HPC" scheme="http://swang251.github.io/tags/HPC/"/>
     
   </entry>
   
@@ -216,30 +242,6 @@
     
     
       <category term="MacOS" scheme="http://swang251.github.io/tags/MacOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DSP First - Chapter 5 - FIR Filters</title>
-    <link href="http://swang251.github.io/2018/12/24/DSPFirst-Ch5/"/>
-    <id>http://swang251.github.io/2018/12/24/DSPFirst-Ch5/</id>
-    <published>2018-12-24T18:10:07.000Z</published>
-    <updated>2019-03-11T23:56:56.988Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>A <strong>filter</strong> is a system that is designed to remove some component or modify some characteristic of a signal.</p></blockquote><a id="more"></a><p>Several different things are introduced, including: - <em>Finite impulse response (FIR)</em> systems: refered as FIR filters, are systems for which <em>each output value is the sum of a finite number of weighted values of the input sequence</em>. - <em>Difference equation</em>: the basis of the input-output structure of the FIR filter as a time-domain computation. - <em>Unit impulse response</em> - <em>Convolution</em> - <em>Linearity</em> and <em>time invariance</em> - <em>Discrete-time systems</em></p><h3 id="discrete-time-systems">Discrete-time systems</h3><blockquote><p>A discrete-time system is a computational process for transforming one sequence into another sequence. - <span class="math inline">\(x[n]\rightarrow \mathcal{T}\{\cdot\}\rightarrow y[n]=\mathcal{T}\{x[n]\}\)</span>, where <span class="math inline">\(x[n]\)</span> is the input signal and <span class="math inline">\(y[n]\)</span> is the output signal, both of which are discrete-time signals.</p></blockquote><h3 id="the-running-average-moving-average-filter">The running-average (moving-average) filter</h3><ul><li><a href="https://ccrma.stanford.edu/~jos/fp/Difference_Equation_I.html" target="_blank" rel="noopener">Difference equation</a>, e.g., the general, causal, linear and time invariant difference equation: <span class="math display">\[\begin{equation}  y[n] = \sum\limits_{k=0}^M b_k x[n-k] - \sum\limits_{l=0}^N a_l y[n-l],\end{equation}\label{DE}\]</span> where <span class="math inline">\(k\)</span> and <span class="math inline">\(l\)</span> are the "dummy" counting indices for the sum and <span class="math inline">\(n\)</span> denotes the index of the <span class="math inline">\(n^{th}\)</span> sample of the output sequence.</li><li>Causal and noncausal:<ul><li><em>Causal filter</em>: a filter that uses only the present and past values of the <strong>input</strong>.</li><li><em>Noncausal filter</em>: a filter that uses future values of the <strong>input</strong>.</li></ul></li><li>Causal running averager or backward averager, similarly, we have the centralized running averager and the forward averager.</li></ul><h3 id="the-general-fir-filter">The general FIR filter</h3><ul><li>The general causal difference equation <span class="math display">\[\begin{equation}  y[n] = \sum\limits_{k=0}^M b_k x[n-k],\end{equation}\label{FIR}\]</span> where the coefficients <span class="math inline">\(b_k\)</span> are fixed numbers.<ul><li><span class="math inline">\(M\)</span>, the <em>order</em> of the FIR filter</li><li><span class="math inline">\(L=M+1\)</span>, the number of filter coefficients is the filter <em>length</em></li></ul></li><li>Eq. <span class="math inline">\(\eqref{FIR}\)</span> could be written as <span class="math display">\[\begin{equation}  y[n] = \sum\limits_{l=n-M}^n b_{n-l} x[l],\end{equation}\label{FIR_l}\]</span> where <span class="math inline">\(l=n-k\)</span> showing the FIR is causal using the input <span class="math inline">\(x[l]\)</span> start from the previous <span class="math inline">\(M\)</span> samples, i.e. <span class="math inline">\(l=n-M\)</span>, up to the current one <span class="math inline">\(l=n\)</span></li><li>For finite length input signal, i.e., <span class="math inline">\(x[l]\neq 0\)</span> for <span class="math inline">\(l\in[0, N-1]\)</span> and a <span class="math inline">\(M^{th}\)</span>-order FIR filter (of length <span class="math inline">\(M+1\)</span>, i.e., involving <span class="math inline">\(M+1\)</span> samples), there would be <em>transient component</em> of the output including <span class="math inline">\(M\)</span> samples <em>running onto</em> and <em>running off</em> session. And the total output length would be <span class="math inline">\(N+M\text{ (order)}=N+L-1\)</span>.</li></ul><h3 id="the-unit-impulse-response-and-convolution">The unit impulse response and convolution</h3><blockquote><p>The impulse response provides a complete characterization of the FIR filter. - Three new ideas introduced: - the unit impulse sequence - the unit impulse response - the convolution sum</p></blockquote><h4 id="unit-impulse-sequence">Unit impulse sequence</h4><ul><li>Unit impulse, or mathematically taken as the Kronecker <em>delta function</em> <span class="math display">\[\begin{equation} \delta[n]=    \begin{cases}    1\quad n=0\\    0\quad n\neq 0    \end{cases}\end{equation}\label{deltaFunction}\]</span></li><li><em>Express any sequence interm of delta function</em> <span class="math display">\[\begin{equation}  x[n]=\sum\limits_k x[k]\delta[n-k]  \end{equation}\lab  el{x}\]</span><ul><li>the unit impulse is a sequence</li><li><span class="math inline">\(\mathbf{x}\)</span> is a summation of infinite impulse sequences <span class="math inline">\(\mathbf{\delta}_k\)</span></li></ul></li></ul><h4 id="unit-impulse-response-sequence">Unit impulse response sequence</h4><ul><li>The output from a filter is called the <strong>response</strong> to the input.</li><li><strong>Unit impulse response</strong> <span class="math inline">\(h[n]\)</span> represents the output when the input is the unit impulse <span class="math inline">\(\delta[n]\)</span>.</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;A &lt;strong&gt;filter&lt;/strong&gt; is a system that is designed to remove some component or modify some characteristic of a signal.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="DSP" scheme="http://swang251.github.io/categories/DSP/"/>
-    
-    
-      <category term="DSP First" scheme="http://swang251.github.io/tags/DSP-First/"/>
     
   </entry>
   
