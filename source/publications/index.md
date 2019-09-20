@@ -9,6 +9,10 @@ comments: false
 - Wei, J., **Wang, S.**, Hou, Q. and Dang, J. (2015) “Generalized Finite Difference Time Domain Method and Its Application to Acoustics.” Mathematical Problems in Engineering, Vol. 2015, No. 640305, pp. 1-13.
 
 ## Conference Papers and Abstracts
+- **Wang, S.**, and Scavone, G. (2019) “Computational Aeroacoustic Modeling of Single-Reed Mouthpiece Using Palabos.” In Proceeding of 23rd International Congress on Acoustics, Aachen, Germany
+- **Wang, S.**, and Scavone, G. (2019) “Computational Aeroacoustics for Low Mach Number Flow Using Lattice Boltzmann Method.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
+- Kemp, C., **Wang, S.**, and Scavone, G. (2019) “Design of a mechanical player system for fatigue-life evaluation of woodwind reeds.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
+- Ait Oubahou, R., **Wang, S.***, Chávez-Modena, M. and Mongeau, L. (2019) “Investigation of a New LBM Stabilization Strategery: MRT and Selective Filtering.” In Proceeding of 26th International Congress on Sound and Vibration, Montreal, Canada
 - Wang, F., Hou, Q., **Wang, S.** and Dang, J. (2017) “Particle interaction adaptivity and absorbing boundary conditions in the Lagrangian particle aeroacoustic model.” In Proceeding of the 11th International Seminar on Speech Production, Tianjin, China.
 - **Wang, S.** and Hou, Q. (2017) “Generalized finite difference time domain simulation of acoustical moving boundary problems.” 173rd Meeting of the Acoustical Society of America, Boston, MA. (Abstract/Best Student Paper Award in Engineering Acoustics)
 - **Wang, S.** and Scavone, G. (2017) “Finite Element Modeling of Sound Radiation at the Open End of a Conic Frustum.” In Proceeding of 2017 International Symposium on Musical Acoustics, Montreal, Canada. (Abstract)
