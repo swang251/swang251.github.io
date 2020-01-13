@@ -3,11 +3,11 @@ title: Building a Personal Palabos Git Repository
 mathjax: true
 toc: true
 date: 2019-12-17 01:05:22
-tags: Palabos, Git
-categories: Palabos, Research Daily
+tags: [Palabos, Git]
+categories: [Research Daily]
 ---
 [Palabos](https://palabos.unige.ch/) just released a new version (v2.1r0) and pushed everything on [GitLab](https://gitlab.com/unigespc/palabos). This is something that all the Palabos community used to looking forward and makes it easier for the users to get official updates and contribute their own code. Personally, I would like to build my own Palabos version with in-house developed code while keeping updated from the official one. In this post, I am trying to talk about the Git workflow I use, which is mainly based on the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) and the [Git Workflow](https://nvie.com/posts/a-successful-git-branching-model/).
-
+![](/images/20191217/PalabosGitFlow.jpg)
 <!--more-->
 ## Requirements
 The workflow has to at least fulfill the following requirements.
@@ -76,16 +76,24 @@ Remember here we always use the flag `--no-ff` to avoid fast-forward merge.
 > The --no-ff flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature. 
 
 ### Feature branch
-The **feature** branch is used for both algorithm implementations and new functions/dataProcessors. It can be used for implementing both published and unpublished algorithms. The **feature** branch has a name convention **feature-***. Whenever starting a new **feature**, it should be branched off from the **develop** branch.
+The **feature** branch is used for both algorithm implementations and new functions/dataProcessors. It can be used for implementing both published and unpublished algorithms. The **feature** branch has a name convention **feature-***. Whenever starting a new **feature**, it should be branched off from either the **master** branch or the **develop** branch.
+
+When you want to implement an algorithm that would be contributed to the upstream Palabos repository, you should branch off the **master** branch:
+```
+$ git checkout -b feature-DESCRIPTION master
+```
+Otherwise, you should branch off the **develop** branch:
 ```
 $ git checkout -b feature-DESCRIPTION develop
 ```
-When the development of a new feature is done and tested, it should be merged back to the **develop** branch. 
+
+When the development of a new feature is done and tested, it should be merged to the **develop** branch. 
 ```
 $ git checkout develop
 $ git merge --no-ff feature-DESCRIPTION
 $ git push origin develop
 ```
+
 If you want to [contribute](https://gitlab.com/unigespc/palabos/blob/master/CONTRIBUTING.md) this new feature to Palabos, you can create a [`merge request`](https://docs.gitlab.com/ee/gitlab-basics/add-merge-request.html).
 
 You can also delete this branch once it is merged to both the **develop** branch and the official Palabos.
@@ -109,5 +117,5 @@ However, the Palabos Group might also fix the bug in the upstream branches if yo
 ## Conclusion
 Generally, this framework should work for most of our daily development and usage based on Palabos. My main doubt now is about the **master** branch. As it does nothing but saving a copy of the upstream, it seems reasonablbe to remove it. Everytime we see an new release from the upstream, the **upstream/master** could be directly merged in to the **develop** branch. However, the **master** branch is still kept for now to make the structure clearer.
 
-Even though the workflow is not perfect, it allows us to maintain a customized Palabos while keeping the repository up-to-date with the upstream official Palabos. It is also easy to contribute to Palabos if you want. Here attached is the flow diagram which is made based on the [Vincent Driessen](https://nvie.com/posts/a-successful-git-branching-model/)'s template. Don't be hesitate to leave a message if you have any comments or suggestions. Thank you.
-![](/images/20191217/PalabosGitFlow.jpg)
+Even though the workflow is not perfect, it allows us to maintain a customized Palabos while keeping the repository up-to-date with the upstream official Palabos. It is also easy to contribute to Palabos if you want. The flow diagram showed at the beginning is made based on [Vincent Driessen](https://nvie.com/posts/a-successful-git-branching-model/)'s template. Don't be hesitate to leave a message if you have any comments or suggestions. Thank you.
+
