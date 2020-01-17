@@ -22,11 +22,11 @@ Notes of Digital Audio Signal Processing, Lecture 2.
 - A matrix is a system.
 - [**Hadamard matrix**](https://en.wikipedia.org/wiki/Hadamard_matrix) $\rightarrow$ [Hadamard Transform](https://en.wikipedia.org/wiki/Hadamard_transform) is an example of a generalized class of Fourier transform. 
 - [**Rotation matrix**](https://en.wikipedia.org/wiki/Rotation_matrix)
-- In Matlab, `u.*v` equals `diag(u)*v`, where `diag(u)` is the **temporal envelope**.
+- In Matlab, `u.*v` equals `diag(u)*v` (element-wise multiplication), where `diag(u)` is the **temporal envelope**.
 - In Matlab, $B^{-1}C=$`B\C` and $B/C^{-1}=$`B/C`.
 - The relationship between **the deconvolution and the inverse of a matrix**
 - [**Toeplitz matrix**](https://en.wikipedia.org/wiki/Toeplitz_matrix) and its "upside down" version - [**Hankel matrix**](https://en.wikipedia.org/wiki/Hankel_matrix) $\rightarrow$ filter correlation $\rightarrow$ **Transmission line matrix (Waveguide)**
-- [**VanderMonde matrix**](https://en.wikipedia.org/wiki/Vandermonde_matrix) $\rightarrow$ damped sin wave (inversion) $\rightarrow nose cancellation
+- [**VanderMonde matrix**](https://en.wikipedia.org/wiki/Vandermonde_matrix) $\rightarrow$ damped sine wave (inversion) $\rightarrow$ noise cancellation
 - Matrices might not be inversable just like one might not recover the original signal from its projection onto one axis.
 - $(\mathbf{ABC})^\intercal = \mathbf{C}^\intercal\mathbf{B}^\intercal\mathbf{A}^\intercal$
 - [Eigenvector $\mathbf{v}$ and eigenvalues $\lambda$ ](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors). "Eigen" origins from German for "proper".
@@ -58,7 +58,7 @@ Notes of Digital Audio Signal Processing, Lecture 2.
 - `atan2`, "2" because it accepts two arguments and `angle` in Matlab uses `atan2`
 - phase in(de)crease infinitely but how?
 
-### Conjuage
+### Conjugate
 - [conjugate](http://www.oed.com/view/Entry/39266?rskey=5nAP9w&result=1&isAdvanced=false#eid) meaning the opposite angle
 - real coefficients of polynomial $\rightarrow$ roots must be grouped by pairs
 - Euler's formula$\rightarrow$
@@ -73,7 +73,9 @@ Notes of Digital Audio Signal Processing, Lecture 2.
   - [Complex conjugate root theorem](https://en.wikipedia.org/wiki/Complex_conjugate_root_theorem): real coefficients $\rightarrow$ roots are conjugate pairs.
   - symmetrical coefficients $\rightarrow$ roots are conjugate inverse pairs
   - when, $|z|=1$, $z^*=\dfrac{1}{z}$, roots are pairs of both inverse and conjugate, and are on unit circle.
-- $D(u,v)=\overline{D(v,u)}$
-- $D(u,v) = \sum_{i=1}^{N}\bar{u}_iv_i=u^{*T}v = u^Hv$, $H$ means transposed and conjugated $\rightarrow$ ```u'``` in Matlab
-- `u.'` only does the transpose
+- For [complex vectors](https://en.wikipedia.org/wiki/Dot_product#Complex_vectors) $\mathbf{u}$ and $\mathbf{v}$,
+  - $D(u,v) = \sum_{i=1}^{N}\bar{u}_iv_i=u^{*T}v = u^Hv$, $H$ means transposed and conjugated $\rightarrow$ ```u'``` in Matlab
+  - `u.'` only does the transpose
+  - $D(u,v)=\overline{D(v,u)}$
+  
 

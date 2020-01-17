@@ -61,7 +61,7 @@ For $z_1 = x_1 + jy_1$ and $z_2 = x_2+jy_2$,
 #### Polar form
 For $z_1 = r_1e^{j\theta_1}$ and $z_2 = r_2e^{j\theta_2}$,
 
-- multiplication: $z_1z_2 = (r_1r_2)e^{j(\theta_1+theta_2)}$
+- multiplication: $z_1z_2 = (r_1r_2)e^{j(\theta_1+\theta_2)}$
 - conjugate: $z_1^* = r_1e^{-j\theta_1}$
 - division: $\dfrac{z_1}{z_2} = \dfrac{r_1}{r_2}e^{j(\theta_1-\theta_2)}$
 - addition and subtraction: transfer to rectangular form and do the addition or subtraction, and then, transfer back to polar form.

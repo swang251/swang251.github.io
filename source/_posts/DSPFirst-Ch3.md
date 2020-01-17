@@ -18,9 +18,9 @@ Spectrum, a graphic representation of the frequency components of a signal, is
 - In this chapter, instead using Fourier transform, the spectrum is introduced from complex exponentials, illustrated as a clockwise and a counterclockwise rotating phasor.
 
 ### The Spectrum of a sum of sinusoids
-- Additive linear combination of sinusoids for new signals:
-  - real signals: $x(t) = A_0 + \sum\limits_{k=1}^N A_k\cos(2\pi f_k t + \phi_k)$.
-  - complex exponentials: $x(t) = X_0 + \sum\limits_{k=1}^N \Re{\{X_k e^{j2\pi f_kt}\}}$
+- Additive linear combination of sinusoids for new signals $x(t)$:
+  - represented as real signals: $x(t) = A_0 + \sum\limits_{k=1}^N A_k\cos(2\pi f_k t + \phi_k)$.
+  - represented as complex exponentials: $x(t) = X_0 + \sum\limits_{k=1}^N \Re{\{X_k e^{j2\pi f_kt}\}}$, where $X_0=A_0$
 - Two-sided spectrum
   - the inverse Euler formula leads the above equation to
     $$\begin{equation}
@@ -28,7 +28,7 @@ Spectrum, a graphic representation of the frequency components of a signal, is
 	\label{two-sided}
 	\end{equation}$$
 	as the real part of a complex number is equal to one-half the sum of that number and its complex conjugate.
-  - Eq. $\eqref{two-sided}$ means the sinusoids are decomposed into **two rotating phasors** with frequency $f_k$ and $-f_k$, i.e., $2N+1$ frequency components.
+  - Eq. $\eqref{two-sided}$ means the sinusoids are decomposed into **two rotating phasors** with frequency $f_k$ and $-f_k$, i.e., $2N+1$ frequency components ("1" corresponds to the $X_0$ which is the zero frequency DC component).
 - Frequency-domain representation (spectrum) vs. time-domain representation (waveform).
 - The spectrum is represented by the set of $(f_k, a_k)$ pairs, and the signal can be written as a single compact summation
   $$\begin{equation}
@@ -43,14 +43,14 @@ The beat note and the amplitude modulation (AM)
 - Multiplication of sinusoids could be rewritten as a sum of sinusoids.
 - Beat notes, an addition of two sinusoids:
   $$x(t) = \cos(2\pi f_1t)+\cos(2\pi f_2t) = 2\cos(2\pi f_{\Delta}t)\cos(2\pi f_c t),$$ 
-  with the *center frequency* $f_c=\frac{1}{2}(f_+f_2)$ and the *deviation frequency* $f_{\Delta}=\frac{1}{2}(f_2-f_1)$
+  with the *center frequency* $f_c=\frac{1}{2}(f_1+f_2)$ and the *deviation frequency* $f_{\Delta}=\frac{1}{2}(f_2-f_1)$
 - Envelope and amplitude modulation.
 
 #### Amplitude modulation (AM)
 - Amplitude modulation is the process of multiplying a high-frequency sinusoidal signals by a low-frequency signal.
   $$x(t) = v(t)\cos(2\pi f_ct ),$$
   where the $\cos(2\pi f_ct)$ is the carrier signal with the carrier frequency $f_c$ and the $v(t)$ is the modulating signal.
-- The AM envelope is usually set up to have no zero crossings.
+- The primary difference between the AM signal and the beat note signal is that the AM envelope ($v(t)$) is usually set up to have no zero crossings. However, the beat note signal, due to the property of adding sinusoids, the modulation signal is always a $\cos$ function so that brings in zero-crossings.
 
 #### AM spectrum
 - As the modulating signal $v(t)= V_0 + V\cos(2\pi f_m t)$, so the resulting spectrum consists of scaled copies of $f=\pm f_c$ because of $V_0$ and two similar subsets $+f_c \pm f_m$ and $-f_c \pm f_m$. Each subsets is a frequency-shifted and scaled version of the two-sided spectrum of $v(t)$.

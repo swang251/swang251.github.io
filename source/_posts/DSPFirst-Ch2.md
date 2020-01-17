@@ -61,7 +61,7 @@ where
 - Be careful of the use of $n$ and $t$, meaning one can use either $x(nT_s)$ or $x(t)$ but never $x(tT_s)$.
 
 ### Complex exponentials and phasors
-- Complex exponentials signals provide an alternative representation for the real cosine signal and might make some manipulation or analysis easier.
+- Complex exponential signals provide an alternative representation for the real cosine signal and might make some manipulation or analysis easier.
 
 #### Review of complex numbers
 - Real part and imaginary part.
