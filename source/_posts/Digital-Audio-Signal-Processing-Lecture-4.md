@@ -46,7 +46,7 @@ NOTA: All $f$ in this blog refers to the normalized frequency.
   - Properties of the Euclidean Inner Product: $\mathbf{u}\cdot\mathbf{v} = \overline{\mathbf{v}\cdot\mathbf{u}}$
 - **Fourier transform and inverse Fourier transform**
   - $X(f)=\sum\limits_{n\in\mathbb{Z}}x[n]e^{-2\pi jfn}$: the "-" sign comes from the conjugate of $\mathbf{p_f}$ during the dot products
-  - $x[n]=\int X(f)e^{+2\pi jfn}\text{d}f$: the "+" sign because these is the linear combination of $\mathbf{p_f}
+  - $x[n]=\int X(f)e^{+2\pi jfn}\text{d}f$: the "+" sign because these is the linear combination of $\mathbf{p_f}$
   
 ### More about Fourier Transform
 - Fourier Transform: $X(f) = \int x(t)e^{-2\pi jFt}\text{d}t$.

@@ -79,7 +79,7 @@ $$ \begin{align}
 - Stability: $\lVert x\rVert < B_x$ $\leftrightarrow$ $\lVert y\rVert < B_y$.
   - delay: stable
   - amplifier: stable
-  - accumulator: dependsf
+  - accumulator: depends
   
 ### Linear Time-Invariant system $\leftrightarrow$ filter
 - A filter is a LTI system.
