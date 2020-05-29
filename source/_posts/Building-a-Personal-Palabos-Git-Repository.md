@@ -4,7 +4,7 @@ mathjax: true
 toc: true
 date: 2019-12-17 01:05:22
 tags: [Palabos, Git]
-categories: [Research Daily]
+categories: [Palabos]
 ---
 [Palabos](https://palabos.unige.ch/) just released a new version (v2.1r0) and pushed everything on [GitLab](https://gitlab.com/unigespc/palabos). This is something that all the Palabos community used to looking forward and makes it easier for the users to get official updates and contribute their own code. Personally, I would like to build my own Palabos version with in-house developed code while keeping updated from the official one. In this post, I am trying to talk about the Git workflow I use, which is mainly based on the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) and the [Git Workflow](https://nvie.com/posts/a-successful-git-branching-model/).
 ![](/images/20191217/PalabosGitFlow.jpg)
