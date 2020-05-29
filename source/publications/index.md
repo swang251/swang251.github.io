@@ -10,7 +10,7 @@ comments: false
 
 ## Conference Papers and Abstracts
 - **Wang, S.**, Marcelo. M. M. and Scavone, G. (2020) “The Study of Mapping Strategies Between the Excitators of the Single-Reed Woodwind and the Bowed String.” In the Proceedings of the 7th Conference on Sound and Music Technology (CSMT), Harbin, China
-- **Wang, S.**, and Scavone, G. (2019) “Computational Aeroacoustics for Low Mach Number Flow Using Lattice Boltzmann Method.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
+- **Wang, S.**, and Scavone, G. (2019) “Computational aeroacoustic modeling of single-reed mouthpiece using Palabos.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
 - Kemp, C., **Wang, S.**, and Scavone, G. (2019) “Design of a mechanical player system for fatigue-life evaluation of woodwind reeds.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
 - Ait Oubahou, R., **Wang, S.**, Chávez-Modena, M. and Mongeau, L. (2019) “Investigation of a New LBM Stabilization Strategery: MRT and Selective Filtering.” In Proceeding of 26th International Congress on Sound and Vibration, Montreal, Canada
 - Wang, F., Hou, Q., **Wang, S.** and Dang, J. (2017) “Particle interaction adaptivity and absorbing boundary conditions in the Lagrangian particle aeroacoustic model.” In Proceeding of the 11th International Seminar on Speech Production, Tianjin, China.
