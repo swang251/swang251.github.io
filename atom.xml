@@ -45,7 +45,7 @@
     <published>2020-05-14T20:11:31.000Z</published>
     <updated>2020-05-14T20:34:04.307Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Here attached are the synthesized sound of two mouthpieces. (prepared for presentation on the <a href="https://www.cirmmt.org/activities/general-assembly" target="_blank" rel="noopener">CIRMMT-OICRM-BRAMS Student (COBS) Symposium 2020</a>) <a id="more"></a>         <div id="aplayer-IKppGXVE" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-IKppGXVE"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "Meyer 5M",              author: "Synthesized",              url: "Meyer5M.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>         <div id="aplayer-aOKgVKtF" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-aOKgVKtF"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "Selmer S80 C*",              author: "Synthesized",              url: "SelmerS80.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script></p><hr><p>Hexo audio plugin: <a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Here attached are the synthesized sound of two mouthpieces. (prepared for presentation on the <a href="https://www.cirmmt.org/activities/general-assembly" target="_blank" rel="noopener">CIRMMT-OICRM-BRAMS Student (COBS) Symposium 2020</a>) <a id="more"></a>         <div id="aplayer-mvFqUCRu" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-mvFqUCRu"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "Meyer 5M",              author: "Synthesized",              url: "Meyer5M.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>         <div id="aplayer-AqGxOkGa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-AqGxOkGa"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "Selmer S80 C*",              author: "Synthesized",              url: "SelmerS80.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script></p><hr><p>Hexo audio plugin: <a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a></p>]]></content>
     
     <summary type="html">
     
@@ -76,11 +76,11 @@
       <category term="Research Daily" scheme="http://swang251.github.io/categories/Research-Daily/"/>
     
     
+      <category term="Emacs" scheme="http://swang251.github.io/tags/Emacs/"/>
+    
       <category term="Zotero" scheme="http://swang251.github.io/tags/Zotero/"/>
     
       <category term="Org-mode" scheme="http://swang251.github.io/tags/Org-mode/"/>
-    
-      <category term="Emacs" scheme="http://swang251.github.io/tags/Emacs/"/>
     
   </entry>
   
