@@ -3,3 +3,4 @@ public/
 package-lock.json
 .deploy_git/
 db.json
+themes/maupassant
