@@ -9,8 +9,10 @@ categories: [Palabos]
 [Palabos](https://palabos.unige.ch/) just released a new version (v2.1r0) and pushed everything on [GitLab](https://gitlab.com/unigespc/palabos). This is something that all the Palabos community used to looking forward and makes it easier for the users to get official updates and contribute their own code. Personally, I would like to build my own Palabos version with in-house developed code while keeping updated from the official one. In this post, I am trying to talk about the Git workflow I use, which is mainly based on the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) and the [Git Workflow](https://nvie.com/posts/a-successful-git-branching-model/).
 ![](/images/20191217/PalabosGitFlow.jpg)
 <!--more-->
+
 ## Requirements
 The workflow has to at least fulfill the following requirements.
+
 - Allow private development: researchers might want to develop and test their own algorithms on Palabos. Some of the algorithms may not have been published yet. It is therefore reasonable to keep the repository private.
 - Allow easy merge requests: This is about implementations of published algorithms or some complement functions/dataProcessors that should definitely be contributed to the official Palabos version.
 - Allow updates from the UniGeSPC/Palabos: keep the personal repository up-to-date with the official one.
@@ -20,7 +22,13 @@ The workflow has to at least fulfill the following requirements.
 
 ## Forked Project
 - Firstly, [fork](https://docs.gitlab.com/ee/gitlab-basics/fork-project.html) the project [UniGeSPC/palabos](https://gitlab.com/unigespc/palabos). After this, you could find the folked project under *Projects-->Your Projects*
-- Go to your forked Palabos project. You can make it private by set the Project visibility to *private*. (Go to *Setting -->  General --> Visibility, project features, permissions --> Project visibility*)
+- Private Project? :
+  - **Initial solution***: Go to your forked Palabos project. You can make it private by set the Project visibility to *private*. (Go to *Setting -->  General --> Visibility, project features, permissions --> Project visibility*)
+  - The above solution simply doesn't work as GitLab (at least the project with CI/CD) requires the forked project to be public or you have to be a member of the `UniGeSPC/Palabos`, in order to automatically merge the branch. 
+  - The **Current Possible Solution** (I haven't tried it myself) would be: 
+    - forked from `UniGeSPC/palabos` as a public repository under the namespace A
+	- Create A Group B (with the namespace B)
+	- For your `A/palabos` into namespace B as `B/palabos` as a private repository.
 
 ## Branches
 There are four kinds of branches:
@@ -113,6 +121,22 @@ $ git merge --no-ff bugFix-issueX
 $ git push origin develop
 ```
 However, the Palabos Group might also fix the bug in the upstream branches if you don't create a `merge request` for your **bugFix** branch. If this happens, you might have to solve the conflict manually when you fetch **upstream/master** into the local **master** and then merged to the **develop**.
+
+## CI/CD
+The palabos repository has CI/CD to make it easier for integrating and testing the codes from different contributors. In general: 
+
+- GitLab CI/CD is configured by a file called `.gitlab-ci.yml`. You can find it in the palabos root directory.
+- `.gitlab-ci.yml` defines the **pipelines** to be done.
+- **[Pipelines](https://docs.gitlab.com/ee/ci/pipelines/index.html)** is composed of 
+  - **jobs**: i.e., what to do (compiling, testing, etc.),
+  - **Stages:**: i.e., when to do.
+- Jobs are excuted by **[Runners](https://docs.gitlab.com/ee/ci/runners/README.html)**
+
+I am totally new to CI/CD but only few things  we need to do in order to make a successful merge request:
+
+- [Configuring GitLab Runner](https://docs.gitlab.com/ee/ci/runners/README.html): under project --> **Settings** --> **CI/CD** --> **Runners** --> **Ennable shared Runners**. 
+- Then done! Once you've pushed your code to the repository, the pipeline will be automatically run.
+
 
 ## Conclusion
 Generally, this framework should work for most of our daily development and usage based on Palabos. My main doubt now is about the **master** branch. As it does nothing but saving a copy of the upstream, it seems reasonablbe to remove it. Everytime we see an new release from the upstream, the **upstream/master** could be directly merged in to the **develop** branch. However, the **master** branch is still kept for now to make the structure clearer.
