@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>The role of the vortex - sound generative or dissipative? | Song Wang</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">The role of the vortex - sound generative or dissipative?</h1><a id="logo" href="/.">Song Wang</a><p class="description"></p></div><div id="nav-menu"><a href="/About"><i class="fa fa-user"> About</i></a><a href="/publications/"><i class="fa fa-book"> Publications</i></a><a href="/"><i class="fa fa-coffee"> Blogs</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">The role of the vortex - sound generative or dissipative?</h1><div class="post-meta">2020-09-22<span> | </span><span class="category"><a href="/categories/Acoustics/">Acoustics</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2020/09/22/The-role-of-the-vortex/" href="/2020/09/22/The-role-of-the-vortex/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#generative-vortices"><span class="toc-number">1.</span> <span class="toc-text">Generative Vortices</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dissipative-vortices"><span class="toc-number">2.</span> <span class="toc-text">Dissipative Vortices</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol></div></div><div class="post-content"><p>We know that the vortex is generative based on the vortex sound theory. We also know that the vortex is dissipative at the end of the orifice. Is the vortex acoustic generative or dissipative?</p>
+<a id="more"></a>
+<h2 id="generative-vortices">Generative Vortices</h2>
+<p>Let's start with the role of the vorticity in generating the sound.</p>
+<ul>
+<li>The vortex sound equation: <span class="math display">\[\begin{equation}
+\left(\dfrac{D}{Dt}\left(\dfrac{1}{c^2}\dfrac{D}{Dt} \right) - \dfrac{1}{\rho}\nabla\cdot(\rho\nabla) \right)B = \dfrac{1}{\rho}\nabla\cdot(\rho\boldsymbol{\omega}\times \boldsymbol{v})
+\end{equation}\]</span>
+<ul>
+<li><blockquote>
+<p>Lighthill's equation can be recast in a form that emphasizes the prominent role of vorticity in the production of sound by taking the <strong>total enthalpy</strong> as the independent acoustic variable, in place of Lighthill's <span class="math inline">\(c_0^2(\rho-\rho_0)\)</span> -- <em>Howe, M. (Theory of Vortex Sound)</em></p>
+</blockquote></li>
+<li><a href="https://en.wikipedia.org/wiki/Enthalpy" target="_blank" rel="noopener">Enthalpy</a>: &quot;is defined as the sum of the system's internal energy and the product of its pressure and volume. The pressure-volume term expresses the work required to establish the system's physical dimensions, i.e. to make room for it by displacing its environment.&quot; <em>Enthalpy = internal energy + work required to establish the system's physical dimensions.</em></li>
+<li><a href="https://en.wikipedia.org/wiki/Stagnation_enthalpy" target="_blank" rel="noopener">Total Enthalpy</a>: <span class="math inline">\(\displaystyle B = \int\dfrac{dp}{\rho} + \dfrac{1}{2}v^2\)</span></li>
+<li>It is IMPORTANT to notice the following things:
+<ol type="1">
+<li>Originally proposed by Powell, the vortex sound equation is a reformation of the Lighthill's equation, which means it is applied to the <strong>unbounded homentropic flow</strong>.</li>
+<li>It is based on the <strong>low Mach number approximation</strong></li>
+<li>The term <span class="math inline">\(\nabla\cdot(\rho_0\boldsymbol{\omega}\times \boldsymbol{v})\)</span> is the <strong>dominant component of the Lighthill quadrupole</strong> <span class="math inline">\(\dfrac{\partial^2(\rho v_iv_j)}{\partial x_i\partial x_j}\)</span></li>
+</ol></li>
+</ul></li>
+</ul>
+<p>By the way,</p>
+<ul>
+<li>The equations in the wave equation format, i.e., Lighthill's equation and the vortex sound is derived by combining the continuity equation and the momentum equation.</li>
+<li>Crocc's equation is simply the <strong>Crocco's form</strong> of the <strong>momentum equation</strong> with the emphasis on the vorticity.</li>
+</ul>
+<h2 id="dissipative-vortices">Dissipative Vortices</h2>
+<p>Now, let's see why the vortices are acoustical dissipative as well.</p>
+<p>In general, it is because</p>
+<blockquote>
+<p>acoustic energy is expended in the generation of vorticity at an edge or corner, and the mean flow convects away the vorticity into regions where it can no longer continue to interact significantly with the acoustic field, and where its kinetic energy is ultimately dissipated as heat.</p>
+</blockquote>
+<ul>
+<li>Based on Howe, M. (1980), the absorbed acoustic energy is written as <span class="math display">\[\begin{equation}
+\displaystyle\pi_T = \int\rho_0\boldsymbol{\omega}\times\boldsymbol{u&#39;} \text{d}^3\boldsymbol{x} = -\int\varepsilon_{ij}\rho_0v_iv_j \text{d}^3\boldsymbol{x}
+\end{equation}\]</span>
+<ul>
+<li>where <span class="math inline">\(\boldsymbol{u&#39;}\)</span> is the <em>acoustic</em> particle velocity, <span class="math inline">\(\boldsymbol{v}\)</span> is the velocity and <span class="math inline">\(\varepsilon_{ij}\)</span> is the <em>acoustic</em> rate of the strain tensor</li>
+</ul></li>
+</ul>
+<p>As you might have noticed, the term (1) <span class="math inline">\(\rho_0\boldsymbol{\omega}\times\boldsymbol{u&#39;}\)</span> resembles the term <span class="math inline">\(\rho_0\boldsymbol{\omega}\times\boldsymbol{v}\)</span> in the vortex sound equation, only by replacing <span class="math inline">\(\boldsymbol{v}\)</span> with the acoustic counterpart <span class="math inline">\(\boldsymbol{u}&#39;\)</span>. The term (2) <span class="math inline">\(\varepsilon_{ij}\rho_0v_iv_j\)</span> is also simply the product of the low Mach number Lighthill stress tensor <span class="math inline">\(\rho_0v_iv_j\)</span> and the acoustic rate of the strain tensor.</p>
+<p>For both term (1) and (2), their counterparts in the generative case correspond to source term or RHS of the vortex sound equation and the Lighthill's equation, which describe the energy transfering from the fludic field to the acoustic field. Instead, term (1) and (2) is the other way round, the energy goes from the acoustic field to the fluidic field, or in other words, the acoustic energy is dissipated.</p>
+<p>Actually, there is another way to understand quickly the dissipative characteristic of the vortex.</p>
+<p>The velocity is related to the scalar potention <span class="math inline">\(\phi\)</span> and the stream function <span class="math inline">\(\boldsymbol{A}\)</span> <span class="math display">\[
+\begin{equation}
+\boldsymbol{v} = \nabla\phi + \nabla\times\boldsymbol{A}
+\end{equation}
+\]</span> where <span class="math inline">\(\nabla\phi = \boldsymbol{u}\)</span> is the irrotational field and the <span class="math inline">\(\nabla\times\boldsymbol{A}\)</span> is the solenoidal field.</p>
+<p>The acoustic field is irrotational as <span class="math inline">\(u&#39; = \nabla\phi&#39;\)</span>. The vorticity field is solenoidal as <span class="math inline">\(\boldsymbol{\omega} = \nabla\times \boldsymbol{v} =\nabla\times \nabla\times \boldsymbol{v}\)</span>, since <span class="math inline">\(\nabla(\nabla\times f) = \nabla\times(\nabla f) = 0\)</span>.</p>
+<p>When the kinetic energy is conserved, it simply flows from <span class="math inline">\(\nabla\times\boldsymbol{A}\)</span> (solenoidal/vorticity) to the <span class="math inline">\(\nabla\phi\)</span> (irrotational/acoustic) when the sound is generated and the other way round when the sound is dissipated.</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>[1] Howe, M. S., 2003, Theory of Vortex Sound, Cambridge University Press.</li>
+<li>[2] Howe, M. S., 1980, “The Dissipation of Sound at an Edge,” Journal of Sound and Vibration, 70(3), pp. 407–411.</li>
+<li>[3] Hirschberg, A., and Rienstra, S. W., 2004, “An Introduction to Aeroacoustics,” Eindhoven university of technology.</li>
+<li>[4] Kühnelt, H., 2016, “Studying the Vortex Sound of Recorder- and Flute-like Instruments by Means of the Lattice Boltzmann Method and Helmholtz Decomposition,” University of Music and Performing Arts Vienna.</li>
+</ul>
+</div><div class="tags"><a href="/tags/Acoustics/"><i class="fa fa-tag"></i>Acoustics</a><a href="/tags/Aero-acoustics/"><i class="fa fa-tag"></i>Aero-acoustics</a></div><div class="post-nav"><a class="next" href="/2020/06/04/Update-Hexo/">Update Hexo</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://swang251.github.io/2020/09/22/The-role-of-the-vortex/';
+    this.page.identifier = '2020/09/22/The-role-of-the-vortex/';
+    this.page.title = 'The role of the vortex - sound generative or dissipative?';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//swang251.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//swang251.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://swang251.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://swang251.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Acoustics/">Acoustics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Palabos/">Palabos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paraview/">Paraview</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Research-Daily/">Research Daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Voice/">Voice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/daily/">daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Research-Daily/" style="font-size: 15px;">Research Daily</a> <a href="/tags/CAML/" style="font-size: 15px;">CAML</a> <a href="/tags/Palabos/" style="font-size: 15px;">Palabos</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Paraview/" style="font-size: 15px;">Paraview</a> <a href="/tags/HPC/" style="font-size: 15px;">HPC</a> <a href="/tags/DSP-First/" style="font-size: 15px;">DSP First</a> <a href="/tags/Lecture-Notes-DASP/" style="font-size: 15px;">Lecture Notes (DASP)</a> <a href="/tags/Emacs/" style="font-size: 15px;">Emacs</a> <a href="/tags/MacOS/" style="font-size: 15px;">MacOS</a> <a href="/tags/Zotero/" style="font-size: 15px;">Zotero</a> <a href="/tags/Org-mode/" style="font-size: 15px;">Org-mode</a> <a href="/tags/LBM/" style="font-size: 15px;">LBM</a> <a href="/tags/CFD/" style="font-size: 15px;">CFD</a> <a href="/tags/OpenLB/" style="font-size: 15px;">OpenLB</a> <a href="/tags/XFlow/" style="font-size: 15px;">XFlow</a> <a href="/tags/PowerFlow/" style="font-size: 15px;">PowerFlow</a> <a href="/tags/ProLB/" style="font-size: 15px;">ProLB</a> <a href="/tags/On-the-Art-of-Singing/" style="font-size: 15px;">On the Art of Singing</a> <a href="/tags/Voice/" style="font-size: 15px;">Voice</a> <a href="/tags/Practical-Vocal-Acoustics/" style="font-size: 15px;">Practical Vocal Acoustics</a> <a href="/tags/Acoustics/" style="font-size: 15px;">Acoustics</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/Aero-acoustics/" style="font-size: 15px;">Aero-acoustics</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/The-role-of-the-vortex/">The role of the vortex - sound generative or dissipative?</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/Update-Hexo/">Update Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/Manage-Your-Own-Package-in-Spacemacs/">Manage Your Own Package in Spacemacs</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/How-do-I-use-Zotero/">How do I use Zotero?</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Building-a-Personal-Palabos-Git-Repository/">Building a Personal Palabos Git Repository</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/">Palabos Immersed Boundary-Lattice Boltzmann Method</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/Digital-Audio-Signal-Processing-Lecture-6/">Digital Audio Signal Processing Lecture 6 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/05/Digital-Audio-Signal-Processing-Lecture-5/">Digital Audio Signal Processing Lecture 5 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/Commands-and-Routine-of-Simulation-on-Graham-Compute-Canada-Cluster/">Simulation Routine, and Code/Result Management across Laptop and Cluster</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/Digital-Audio-Signal-Processing-Lecture-4/">Digital Audio Signal Processing Lecture 4 (Notes)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.music.mcgill.ca/caml" title="Computational Acoustic Modeling Laboratory (CAML)" target="_blank">Computational Acoustic Modeling Laboratory (CAML)</a><ul></ul><a href="http://www.mcgill.ca/music/" title="Schulich School of Music" target="_blank">Schulich School of Music</a><ul></ul><a href="http://www.cirmmt.org" title="CIRMMT" target="_blank">CIRMMT</a><ul></ul><a href="http://www.cuiwei.me" title="Wei Cui (Composer)" target="_blank">Wei Cui (Composer)</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Song Wang.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, TeX: {equationNumbers: { autoNumber: "AMS" }}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
