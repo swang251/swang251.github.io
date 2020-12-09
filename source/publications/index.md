@@ -9,6 +9,8 @@ comments: false
 - Wei, J., **Wang, S.**, Hou, Q. and Dang, J. (2015) “Generalized Finite Difference Time Domain Method and Its Application to Acoustics.” Mathematical Problems in Engineering, Vol. 2015, No. 640305, pp. 1-13.
 
 ## Conference Papers and Abstracts
+- **Wang, S.**, Maestre, E. and Scavone, G. (2020) "Two methods for acoustic modeling of the saxophone mouthpiece." The Journal of the Acoustical Society of America, Vol. 148, No. 3, p. 2611.
+- **WANG, S.**, Maestre, E. and Scavone, G. (2020) "Computational aeroacoustics for low Mach number flow using the lattice Boltzmann method." The Journal of the Acoustical Society of America, Vol. 148, No. 4, p. 2694.
 - **Wang, S.**, Marcelo. M. M. and Scavone, G. (2020) “The Study of Mapping Strategies Between the Excitators of the Single-Reed Woodwind and the Bowed String.” In the Proceedings of the 7th Conference on Sound and Music Technology (CSMT), Harbin, China
 - **Wang, S.**, and Scavone, G. (2019) “Computational aeroacoustic modeling of single-reed mouthpiece using Palabos.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
 - Kemp, C., **Wang, S.**, and Scavone, G. (2019) “Design of a mechanical player system for fatigue-life evaluation of woodwind reeds.” In Proceeding of the 2019 International Symposium on Musical Acoustics, Detmold, Germany
