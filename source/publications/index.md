@@ -5,6 +5,7 @@ comments: false
 ---
 
 ## Journal Articles
+- **Wang, S.**, Maestre, E. and Scavone, G. (2021) "Acoustical modeling of the saxophone mouthpiece as a transfer matrix." Journal of the Acoustical Society of America, Vol. 149, No. 3, pp. 1901-1912.
 - Wei, J., **Wang, S.**, Lu, W., Fang, Q. and Dang, J. (2016) “Multi-modal Recording and Modeling of Vocal Tract Movements.” Multimedia tools and applications, Vol. 75, No. 9, pp. 5247-5263.
 - Wei, J., **Wang, S.**, Hou, Q. and Dang, J. (2015) “Generalized Finite Difference Time Domain Method and Its Application to Acoustics.” Mathematical Problems in Engineering, Vol. 2015, No. 640305, pp. 1-13.
 
