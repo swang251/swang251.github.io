@@ -1,105 +1,108 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>The guide for the Data Processor structure of Palabos | Song Wang</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">The guide for the Data Processor structure of Palabos</h1><a id="logo" href="/.">Song Wang</a><p class="description"></p></div><div id="nav-menu"><a href="/About"><i class="fa fa-user"> About</i></a><a href="/publications/"><i class="fa fa-book"> Publications</i></a><a href="/"><i class="fa fa-coffee"> Blogs</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">The guide for the Data Processor structure of Palabos</h1><div class="post-meta">2018-08-28<span> | </span><span class="category"><a href="/categories/Palabos/">Palabos</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/08/28/The-guide-for-the-Data-Processor-structure-of-Palabos/" href="/2018/08/28/The-guide-for-the-Data-Processor-structure-of-Palabos/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#first-two-kinds-of-data-processors-are-used"><span class="toc-number">1.</span> <span class="toc-text">First, two kinds of data processors are used:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#second"><span class="toc-number">2.</span> <span class="toc-text">Second</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#third"><span class="toc-number">3.</span> <span class="toc-text">Third</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fourth"><span class="toc-number">4.</span> <span class="toc-text">Fourth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fifth-in-the-atomicblock-versions"><span class="toc-number">5.</span> <span class="toc-text">Fifth, in the atomicBlock versions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sixth"><span class="toc-number">6.</span> <span class="toc-text">Sixth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in-addition-about-excuteinternalprocessors"><span class="toc-number">7.</span> <span class="toc-text">In addition, about excuteInternalProcessors()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#an-example"><span class="toc-number">8.</span> <span class="toc-text">An example</span></a></li></ol></div></div><div class="post-content"><p>In this article, the running and calling sequences of the data processors related functions is briefly summarized, based on the <a href="http://www.palabos.org/documentation/userguide/data-processors.html" target="_blank" rel="noopener">official documentation</a>. Mainly six 'layers' are mentioned here.</p>
-<h3 id="first-two-kinds-of-data-processors-are-used">First, two kinds of data processors are used:</h3>
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>The guide for the Data Processor structure of Palabos | Song Wang</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">The guide for the Data Processor structure of Palabos</h1><a id="logo" href="/.">Song Wang</a><p class="description"></p></div><div id="nav-menu"><a href="/About"><i class="fa fa-user"> About</i></a><a href="/publications/"><i class="fa fa-book"> Publications</i></a><a href="/"><i class="fa fa-coffee"> Blogs</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">The guide for the Data Processor structure of Palabos</h1><div class="post-meta">2018-08-28<span> | </span><span class="category"><a href="/categories/Palabos/">Palabos</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#first-two-data-processor-wrappers-the-function-can-be-called-directly-by-the-end-users"><span class="toc-number">1.</span> <span class="toc-text">First, two data processor wrappers, the function can be called directly by the end users</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#second-two-multi-block-data-processor-operators"><span class="toc-number">2.</span> <span class="toc-text">Second, two multi block data processor operators</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#third-two-atomic-block-data-processor-operators"><span class="toc-number">3.</span> <span class="toc-text">Third, two atomic block data processor operators</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-a-summary"><span class="toc-number">4.</span> <span class="toc-text">As a summary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in-addition-boxprocessingfunctionalxd"><span class="toc-number">5.</span> <span class="toc-text">In addition: BoxProcessingFunctionalXD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in-addition-excuteinternalprocessors"><span class="toc-number">6.</span> <span class="toc-text">In addition: excuteInternalProcessors()</span></a></li></ol></div></div><div class="post-content"><p>In this article, the execution of data processors and the related functions are briefly summarized, based on the <a target="_blank" rel="noopener" href="https://palabos.unige.ch/get-started/palabos-documentation/">official documentation</a>.</p>
+<span id="more"></span>
+<h3 id="first-two-data-processor-wrappers-the-function-can-be-called-directly-by-the-end-users">First, two data processor wrappers, the function can be called directly by the end users</h3>
 <ul>
-<li><strong>applyProcessingFunctional</strong>, the wrapper for <code>excuteDataProcessor</code>: is executed just once, on one or more blocks</li>
-<li><strong>integrateProcessingFunctional</strong>, the wrapper for <code>addInternalProcessor</code>: is added to a block and is part of the block and can be executed as many times as wished, blabla. The added processors are implicitly (to the users) called by the function <em>executeInternalProcessors</em></li>
+<li>Two Data Processor Wrappers
+<ul>
+<li><strong><code>applyProcessingFunctional()</code></strong>,
+<ul>
+<li>the wrapper of <code>executeDataProcessor()</code></li>
+<li>executed just once, on one or more blocks</li>
+</ul></li>
+<li><strong><code>integrateProcessingFunctional()</code></strong>,
+<ul>
+<li>the wrapper of <code>addInternalProcessor()</code></li>
+<li>added data processors to a block, which becomes part of the block and can be executed as many times as wished. The added processors are implicitly (to the users) called by the function <em><code>executeInternalProcessors</code></em></li>
+</ul></li>
+</ul></li>
+<li>They accept three main parameters:
+<ol type="1">
+<li><code>BoxProcessingFunctionalXD_LSTN functional</code></li>
+<li><code>BoxXD domain</code></li>
+<li><code>MultiBlockLatticeXD lattice</code>;</li>
+<li>A <code>integrateProcessingFunctional</code> accepts an additional parameter: <code>plint level</code>;</li>
+</ol></li>
+<li><em>They are based on the <strong>functional</strong>, which defines the operation of the data processor.</em></li>
+<li>where in library
+<ul>
+<li>multiBlock version <em>/src/multiBlock/multiDataProcessorWrapperXD.h/hh/cpp</em>.</li>
+<li>atomicBlock version <em>/src/atomicBlock/dataProcessorWrapperXD.h/hh</em>.</li>
+</ul></li>
 </ul>
-<h3 id="second">Second</h3>
+<h3 id="second-two-multi-block-data-processor-operators">Second, two multi block data processor operators</h3>
 <ul>
-<li>The function <code>integrateProcessingFunctional</code> and <code>applyProcessingFunctional</code> are defined and implemented in <em>/src/multiBlock/multiDataProcessorWrapper2D.h/hh</em>.</li>
-<li>The <em>/src/atomicBlock/dataProcessorWrapperXD.h/hh</em> stores the atomic Block version.</li>
-<li>The function <code>applyProcessingFunctional</code> has three main parameters: 1) <code>BoxProcessingFunctionalXD_LSTN functional</code>, 2) <code>BoxXD domain</code> and, 3) <code>MultiBlockLatticeXD lattice</code>;</li>
-<li>The function <code>integrateProcessingFunctional</code> has an additional parameter: <code>plint level</code>;</li>
+<li>Two operators
+<ul>
+<li><code>excuteDataProcessor()</code></li>
+<li><code>addInternalProcessor()</code></li>
+</ul></li>
+<li>The <em>functional</em> is wrapped into a <code>DataProcessorGeneratorXD</code> and passed to either the <code>executeDataProcessor()</code> or <code>addInternalProcessor()</code>
+<ul>
+<li>The <code>DataProcessorGeneratorXD</code> stores a pointer to the <code>functional</code> as a private member.</li>
+</ul></li>
+<li>The main job is to deal with the multi-block structure and pass the functional into the <em>atomic block operators</em></li>
+<li>where in library
+<ul>
+<li>operators: <em>/src/multiBlock/multiBlockOperationsXD.h/cpp</em>.</li>
+<li>Data processor generators: <em>/src/atomicBlock/dataProcessingFunctionalXD.h/hh/cpp</em>.</li>
+<li>Data processor generator base struct: <em>/src/atomicBlock/dataProcessorXD.h/hh/cpp</em>.</li>
+</ul></li>
 </ul>
-<h3 id="third">Third</h3>
+<h3 id="third-two-atomic-block-data-processor-operators">Third, two atomic block data processor operators</h3>
 <ul>
-<li><code>applyProcessingFunctional</code> calls <code>excuteDataProcessor(BoxProcessorGeneratorXD(functional, domain), lattice);</code></li>
-<li><code>integrateProcessingFunctional</code> calls <code>addInternalProcessor(BoxProcessorGeneratorXD(functional, domain), lattice, level);</code></li>
-<li>So the <code>BoxProcessorGeneratorXD</code> has no difference for the two wrapper functions.</li>
+<li>The <code>DataProcessorGeneratorXD generator</code> is passed from the multi-block operators.</li>
+<li>The <code>generator</code> generates a <code>processor</code>: <code>generator.gererates(objects)</code> with the <code>functional</code> embeded.</li>
+<li>Two operators
+<ul>
+<li><code>excuteDataProcessor</code>
+<ul>
+<li>The processor is finally processed <code>processor-process()</code></li>
+</ul></li>
+<li><code>addInternalProcessor</code>
+<ul>
+<li>The processor is integrated using the function <code>integrateDataProcessor()</code> and the processor is pushed to the <code>vector&lt;processor&gt; processors</code> in each atomic block through <code>processors[level].push_back(processor)</code>;</li>
+</ul></li>
+</ul></li>
+<li>Folders
+<ul>
+<li>Operators: <em>/src/atomicBlock/atomicBlockOperationsXD.h/.cpp</em></li>
+<li>Data Processors: <em>/src/atomicBlock/dataProcessingFunctionalXD.h/.cpp</em></li>
+<li>Data Processor Base struct: <em>/src/atomicBlock/dataProcessorXD.h/.cpp</em></li>
+</ul></li>
 </ul>
-<h3 id="fourth">Fourth</h3>
+<h3 id="as-a-summary">As a summary</h3>
 <ul>
-<li>the <code>excuteDataProcessor</code> and <code>addInternalProcessor</code> are defined and implemented in <em>/src/multiBlock/multiBlockOperationsXD.h/.cpp</em></li>
-<li>Both functions has the parameter <code>DataProcessorGeneratorXD const&amp; generator</code></li>
-<li>one of the overriden of the functions is the kernel one.</li>
-<li>The kernel <code>excuteDataProcessor</code> and <code>addInternalProcessor</code> finally calls the corresponding atomicBlock versions which is defined and implemented in <em>/src/atomicBlock/atomicBlockOperationsXD.h/.cpp</em></li>
+<li>The <code>functional</code> is the key, where the main algorithm is implemented.</li>
+<li>It is first passed to the <code>applyProcessingFunctional()</code> as an argument, inside which, it is cloned to the newed <code>DataProcessorGenerator</code> that is passed to the <code>executeDataProcessor()</code>.</li>
+<li>It goes into the atomic version operator and finally cloned in to the <code>processor</code> generated from the <code>generator</code>.</li>
+<li>The <code>processor-&gt;process()</code> finally calls the <code>functional-&gt;process()</code>.</li>
 </ul>
-<h3 id="fifth-in-the-atomicblock-versions">Fifth, in the atomicBlock versions</h3>
+<h3 id="in-addition-boxprocessingfunctionalxd">In addition: <code>BoxProcessingFunctionalXD</code></h3>
 <ul>
-<li><em>/src/atomicBlock/atomicBlockOperationsXD.h/.cpp</em></li>
-<li>the kernel <code>excuteDataProcessor</code> calls the <code>processor -&gt; process()</code> where <code>processor</code> is a <code>DataProcessorXD</code> defined in <em>/src/atomicBlock/dataProcessingFunctionalXD.h/.cpp</em></li>
-<li>the kernel <code>addInternalProcessor</code> calls the <code>actor.integrateDataProcessor</code>, where the <code>actor</code> is an <code>AtomicBlockXD</code> written in <em>/src/atomicBlock/atomicBlockXD.h/.cpp</em>, inside which the <code>integrateDataProcessor</code> runs <code>processors[level].push_back(processor)</code>;</li>
+<li><code>BoxProcessingFunctionalXD</code> has the algorithm implemented in <code>processGenericBlock()</code> instead of <code>process()</code>
+<ul>
+<li><code>BoxProcessingFunctionalXD</code> is a base class defined in the same file as many of its subclasses.</li>
+</ul></li>
+<li><code>BoxProcessorXD :: DataProcessorXD</code> is designed for <code>BoxProcessingFunctionalXD</code>,which overrides the function <code>process()</code>
+<ul>
+<li><code>process()</code>runs <code>functional -&gt; processGenericBlock(domain, atomicBlocks)</code></li>
+</ul></li>
+<li>Inheritance: <code>ACertainFunctional</code> ==&gt; <code>BoxProcessingFunctionalXD_LL</code> etc. ==&gt; <code>BoxProcessingFunctionalXD</code>
+<ul>
+<li><em>src/atomicBlock/dataProcessingFunctionalXD.h</em></li>
+</ul></li>
 </ul>
-<h3 id="sixth">Sixth</h3>
+<h3 id="in-addition-excuteinternalprocessors">In addition: <code>excuteInternalProcessors()</code></h3>
 <ul>
-<li><code>DataProcessorXD</code> &lt;== <code>BoxProcessorXD</code> who overrides the function <code>process()</code> runing <code>functional -&gt; processGenericBlock(domain, atomicBlocks)</code> where <code>BoxProcessingFunctionalXD* functional</code> is written in the file <em>/src/atomicBlock/dataProcessingFunctionalXD.cpp</em></li>
-<li><strong>BoxProcessingFunctionalXD</strong> is a base class defined in the same file which <strong>has many subclasses for different purposes</strong>.</li>
-<li>The <code>processGenericBlock</code> calls the <code>process</code> function in the tons of subclasses functionals of the class <code>BoxProcessingFunctionalXD</code>, like <code>NTensorFieldBoxProcessingFunctional3D</code> or <code>BoxProcessingFunctionalXD_LL</code></li>
-<li>The <code>process()</code> would be finally overriden by the subclasses of <code>BoxProcessingFunctionalXD_LL</code> or so, and implemented. likely in <code>class TurbulentLatticeToPassiveAdvDiff3X : public BoxProcessingFunctionalXD_LL</code> in <em>/src/multiPhysics/advectionDiffusion3D.h/.hh</em></li>
-<li><code>SpecialFunctional</code> ==&gt; <code>BoxProcessingFunctionalXD_LL</code> etc. ==&gt; <code>BoxProcessingFunctionalXD</code></li>
-</ul>
-<h3 id="in-addition-about-excuteinternalprocessors">In addition, about <code>excuteInternalProcessors()</code></h3>
-<ul>
-<li>It is called in 1) <code>MultiBlockLatticeXD::stream()</code>, 2) <code>MultiBlockLatticeXD::collideAndStream()</code> and 3) <code>MultiBlockXD::initialize()</code></li>
-<li>The <code>MultiBlockXD::executeInternalProcessors(level)</code> calls the <code>getComponent(blockId).excuteInternalProcessors(leve)</code> which is at the atomicBlocks unit. (line511@<em>/arc/multiBlock/multiBlock3D.cpp</em>)</li>
+<li>It is called in
+<ol type="1">
+<li><code>MultiBlockLatticeXD::stream()</code>,</li>
+<li><code>MultiBlockLatticeXD::collideAndStream()</code></li>
+<li><code>MultiBlockXD::initialize()</code></li>
+</ol></li>
+<li>The <code>MultiBlockXD::executeInternalProcessors(level)</code> calls the <code>getComponent(blockId).excuteInternalProcessors(leve)</code> which is at the atomicBlocks unit. (line511@<em>/src/multiBlock/multiBlock3D.cpp</em>)</li>
 <li>The <code>AtomicBlockXD::executeInternalProcessors(level, processors)</code> finally calls the processors -&gt; process(); in (line254@<em>/src/atomicBlock/atomicBlock3D.cpp</em>)</li>
 </ul>
-<h3 id="an-example">An example</h3>
-<p><em>/examples/showCases/boussinesqThermal2d/rayleighBenard2D.cpp</em></p>
-<ul>
-<li>line 171:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">applyProcessingFunctional (</span><br><span class="line">            new IniTemperatureRayleighBenardProcessor2D&lt;T,NSDESCRIPTOR,ADESCRIPTOR&gt;(parameters), </span><br><span class="line">            adLattice.getBoundingBox(),  adLattice );</span><br></pre></td></tr></table></figure>
-<p>where the <code>Struct IniTemperatureRayleighBenardProcessor2D : public BoxProcessingFunctional2D_L&lt;T,adDescriptor&gt;</code> is a functional</p>
-<ul>
-<li>line 293:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">integrateProcessingFunctional (new BoussinesqThermalProcessor2D&lt;&gt;(), nslattice.getBoundingBox(), nslattice, adLattice, processorlevel );</span><br></pre></td></tr></table></figure>
-<p>where the <code>class BoussinesqThermalProcessor2D : BoxProcessingFunctional2D_LL</code> is a functional defined and implemented in <em>/src/multiPhysics/boussinesqThermalProcessor2D.h/.hh</em>.</p>
-<p><strong>NOTA:</strong> the code used here is Palabos version 2.0</p>
-</div><div class="tags"><a href="/tags/Palabos/"><i class="fa fa-tag"></i>Palabos</a><a href="/tags/LBM/"><i class="fa fa-tag"></i>LBM</a><a href="/tags/CFD/"><i class="fa fa-tag"></i>CFD</a></div><div class="post-nav"><a class="pre" href="/2018/09/10/Palabos-Dynamics-Calling-Relationships/">Palabos Dynamics Calling Relationships</a><a class="next" href="/2018/08/12/Practical-Vocal-Acoustics-Ch3-Vocal-Resonance/">Practical Vocal Acoustics Ch3 Vocal Resonance</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
-    this.page.url = 'http://swang251.github.io/2018/08/28/The-guide-for-the-Data-Processor-structure-of-Palabos/';
-    this.page.identifier = '2018/08/28/The-guide-for-the-Data-Processor-structure-of-Palabos/';
-    this.page.title = 'The guide for the Data Processor structure of Palabos';
-  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
-url: 'https://disqus.com/next/config.json',
-timeout: 2500,
-type: 'GET',
-success: function(){
-  var d = document;
-  var s = d.createElement('script');
-  s.src = '//swang251.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', + new Date());
-  (d.head || d.body).appendChild(s);
-  $('.disqus_click_btn').css('display', 'none');
-},
-error: function() {
-  $('.disqus_click_btn').css('display', 'block');
-}
-});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
-    (() => { // DON'T EDIT BELOW THIS LINE
-        var d = document;
-        var s = d.createElement('script');
-        s.src = '//swang251.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', + new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    $('.disqus_click_btn').css('display','none');
-});</script><script type="text/javascript" id="disqus-count-script">$(function() {
-     var xhr = new XMLHttpRequest();
-     xhr.open('GET', '//disqus.com/next/config.json', true);
-     xhr.timeout = 2500;
-     xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4 && xhr.status === 200) {
-         $('.post-meta .post-comments-count').show();
-         var s = document.createElement('script');
-         s.id = 'dsq-count-scr';
-         s.src = 'https://swang251.disqus.com/count.js';
-         s.async = true;
-         (document.head || document.body).appendChild(s);
-       }
-     };
-     xhr.ontimeout = function () { xhr.abort(); };
-     xhr.send(null);
-   });
-</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://swang251.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Acoustics/">Acoustics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Palabos/">Palabos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paraview/">Paraview</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Research-Daily/">Research Daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Voice/">Voice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/daily/">daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Research-Daily/" style="font-size: 15px;">Research Daily</a> <a href="/tags/CAML/" style="font-size: 15px;">CAML</a> <a href="/tags/Palabos/" style="font-size: 15px;">Palabos</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Paraview/" style="font-size: 15px;">Paraview</a> <a href="/tags/HPC/" style="font-size: 15px;">HPC</a> <a href="/tags/DSP-First/" style="font-size: 15px;">DSP First</a> <a href="/tags/Lecture-Notes-DASP/" style="font-size: 15px;">Lecture Notes (DASP)</a> <a href="/tags/Emacs/" style="font-size: 15px;">Emacs</a> <a href="/tags/MacOS/" style="font-size: 15px;">MacOS</a> <a href="/tags/Zotero/" style="font-size: 15px;">Zotero</a> <a href="/tags/Org-mode/" style="font-size: 15px;">Org-mode</a> <a href="/tags/LBM/" style="font-size: 15px;">LBM</a> <a href="/tags/CFD/" style="font-size: 15px;">CFD</a> <a href="/tags/OpenLB/" style="font-size: 15px;">OpenLB</a> <a href="/tags/XFlow/" style="font-size: 15px;">XFlow</a> <a href="/tags/PowerFlow/" style="font-size: 15px;">PowerFlow</a> <a href="/tags/ProLB/" style="font-size: 15px;">ProLB</a> <a href="/tags/On-the-Art-of-Singing/" style="font-size: 15px;">On the Art of Singing</a> <a href="/tags/Voice/" style="font-size: 15px;">Voice</a> <a href="/tags/Practical-Vocal-Acoustics/" style="font-size: 15px;">Practical Vocal Acoustics</a> <a href="/tags/Acoustics/" style="font-size: 15px;">Acoustics</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/Aero-acoustics/" style="font-size: 15px;">Aero-acoustics</a> <a href="/tags/Musical-Acoustics/" style="font-size: 15px;">Musical Acoustics</a> <a href="/tags/Wind-Instrument/" style="font-size: 15px;">Wind Instrument</a> <a href="/tags/Flute/" style="font-size: 15px;">Flute</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/03/14/Linking-error-when-including-stdlib-h-in-MacOS/">Linking error when including <stdlib.h> in MacOS</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/16/Specific-admittance-of-the-wall-for-modeling-the-thermoviscous-losses/">Specific admittance of the wall for modeling the thermoviscous losses</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/30/The-Jet-Drive-Model/">The Jet-Drive Model</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/The-role-of-the-vortex/">The role of the vortex - sound generative or dissipative?</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/Update-Hexo/">Update Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/Manage-Your-Own-Package-in-Spacemacs/">Manage Your Own Package in Spacemacs</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/How-do-I-use-Zotero/">How do I use Zotero?</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Building-a-Personal-Palabos-Git-Repository/">Building a Personal Palabos Git Repository</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/">Palabos Immersed Boundary-Lattice Boltzmann Method</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/Digital-Audio-Signal-Processing-Lecture-6/">Digital Audio Signal Processing Lecture 6 (Notes)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.music.mcgill.ca/caml" title="Computational Acoustic Modeling Laboratory (CAML)" target="_blank">Computational Acoustic Modeling Laboratory (CAML)</a><ul></ul><a href="http://www.mcgill.ca/music/" title="Schulich School of Music" target="_blank">Schulich School of Music</a><ul></ul><a href="http://www.cirmmt.org" title="CIRMMT" target="_blank">CIRMMT</a><ul></ul><a href="http://www.cuiwei.me" title="Wei Cui (Composer)" target="_blank">Wei Cui (Composer)</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">Song Wang.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<hr />
+<p>There is more to be discussed about the design for sure.</p>
+</div><div class="tags"><a href="/tags/Palabos/"><i class="fa fa-tag"></i>Palabos</a><a href="/tags/LBM/"><i class="fa fa-tag"></i>LBM</a><a href="/tags/CFD/"><i class="fa fa-tag"></i>CFD</a></div><div class="post-nav"><a class="pre" href="/2018/09/10/Palabos-Dynamics-Calling-Relationships/">Palabos Dynamics Calling Relationships</a><a class="next" href="/2018/08/12/Practical-Vocal-Acoustics-Ch3-Vocal-Resonance/">Practical Vocal Acoustics Ch3 Vocal Resonance</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://swang251.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Acoustics/">Acoustics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Palabos/">Palabos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paraview/">Paraview</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Research-Daily/">Research Daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Voice/">Voice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/daily/">daily</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Research-Daily/" style="font-size: 15px;">Research Daily</a> <a href="/tags/CAML/" style="font-size: 15px;">CAML</a> <a href="/tags/Palabos/" style="font-size: 15px;">Palabos</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Paraview/" style="font-size: 15px;">Paraview</a> <a href="/tags/HPC/" style="font-size: 15px;">HPC</a> <a href="/tags/DSP-First/" style="font-size: 15px;">DSP First</a> <a href="/tags/Lecture-Notes-DASP/" style="font-size: 15px;">Lecture Notes (DASP)</a> <a href="/tags/Emacs/" style="font-size: 15px;">Emacs</a> <a href="/tags/MacOS/" style="font-size: 15px;">MacOS</a> <a href="/tags/Zotero/" style="font-size: 15px;">Zotero</a> <a href="/tags/Org-mode/" style="font-size: 15px;">Org-mode</a> <a href="/tags/On-the-Art-of-Singing/" style="font-size: 15px;">On the Art of Singing</a> <a href="/tags/Voice/" style="font-size: 15px;">Voice</a> <a href="/tags/LBM/" style="font-size: 15px;">LBM</a> <a href="/tags/CFD/" style="font-size: 15px;">CFD</a> <a href="/tags/Practical-Vocal-Acoustics/" style="font-size: 15px;">Practical Vocal Acoustics</a> <a href="/tags/Acoustics/" style="font-size: 15px;">Acoustics</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Musical-Acoustics/" style="font-size: 15px;">Musical Acoustics</a> <a href="/tags/Wind-Instrument/" style="font-size: 15px;">Wind Instrument</a> <a href="/tags/Flute/" style="font-size: 15px;">Flute</a> <a href="/tags/OpenLB/" style="font-size: 15px;">OpenLB</a> <a href="/tags/XFlow/" style="font-size: 15px;">XFlow</a> <a href="/tags/PowerFlow/" style="font-size: 15px;">PowerFlow</a> <a href="/tags/ProLB/" style="font-size: 15px;">ProLB</a> <a href="/tags/Aero-acoustics/" style="font-size: 15px;">Aero-acoustics</a> <a href="/tags/test/" style="font-size: 15px;">test</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/16/Specific-admittance-of-the-wall-for-modeling-the-thermoviscous-losses/">Specific admittance of the wall for modeling the thermoviscous losses</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/30/The-Jet-Drive-Model/">The Jet-Drive Model</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/The-role-of-the-vortex/">The role of the vortex - sound generative or dissipative?</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/Update-Hexo/">Update Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/Manage-Your-Own-Package-in-Spacemacs/">Manage Your Own Package in Spacemacs</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/How-do-I-use-Zotero/">How do I use Zotero?</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Building-a-Personal-Palabos-Git-Repository/">Building a Personal Palabos Git Repository</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/">Palabos Immersed Boundary-Lattice Boltzmann Method</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/Digital-Audio-Signal-Processing-Lecture-6/">Digital Audio Signal Processing Lecture 6 (Notes)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/05/Digital-Audio-Signal-Processing-Lecture-5/">Digital Audio Signal Processing Lecture 5 (Notes)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.music.mcgill.ca/caml" title="Computational Acoustic Modeling Laboratory (CAML)" target="_blank">Computational Acoustic Modeling Laboratory (CAML)</a><ul></ul><a href="http://www.mcgill.ca/music/" title="Schulich School of Music" target="_blank">Schulich School of Music</a><ul></ul><a href="http://www.cirmmt.org" title="CIRMMT" target="_blank">CIRMMT</a><ul></ul><a href="http://www.cuiwei.me" title="Wei Cui (Composer)" target="_blank">Wei Cui (Composer)</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">Song Wang.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
