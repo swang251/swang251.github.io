@@ -91,6 +91,11 @@ math:
   cdn: //cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 ##mathjax: true
 
+## Image captions
+image_caption:
+  enable: true #false to disable
+  class_name: #if you wanna customize the style for the caption,you can assign a class name, default is 'image-caption'
+
 ## RSS
 feed:
   type: atom
