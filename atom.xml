@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2021-04-24T18:56:58.688Z</updated>
+  <updated>2021-05-01T20:12:18.556Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Palabos-OnLatticeBoundaryCondition</title>
+    <link href="http://swang251.github.io/2021/05/01/Palabos-OnLatticeBoundaryCondition/"/>
+    <id>http://swang251.github.io/2021/05/01/Palabos-OnLatticeBoundaryCondition/</id>
+    <published>2021-05-01T19:56:19.000Z</published>
+    <updated>2021-05-01T20:12:18.556Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>The boundary conditions implemented in Palabos can be generally divided in two categories 1. <code>OnLatticeBoundaryCondition</code>, mainly implemented in <strong>src/boundaryCondition/</strong> 2. <code>OffLatticeModel</code>, mainly implemented in <strong>src/offLattice/</strong></p><p>This article mainly focuses on the <code>OnLatticeBoundaryCondition</code>.</p><p><img src="/images/Palabos-OnLatticeBoundaryCondition/OnLatticeBoundaryCondition.png" alt="Class Diagram" /> <span id="more"></span></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The boundary conditions implemented in Palabos can be generally divided in two categories 1. &lt;code&gt;OnLatticeBoundaryCondition&lt;/code&gt;, mainly implemented in &lt;strong&gt;src/boundaryCondition/&lt;/strong&gt; 2. &lt;code&gt;OffLatticeModel&lt;/code&gt;, mainly implemented in &lt;strong&gt;src/offLattice/&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This article mainly focuses on the &lt;code&gt;OnLatticeBoundaryCondition&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Palabos-OnLatticeBoundaryCondition/OnLatticeBoundaryCondition.png&quot; alt=&quot;Class Diagram&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
+    
+    
+      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
+    
+      <category term="Design Patterns" scheme="http://swang251.github.io/tags/Design-Patterns/"/>
+    
+  </entry>
   
   <entry>
     <title>initializeAtEquilibrium() in Palabos</title>
@@ -240,29 +267,6 @@
       <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
     
       <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Digital Audio Signal Processing Lecture 6 (Notes)</title>
-    <link href="http://swang251.github.io/2019/02/12/Digital-Audio-Signal-Processing-Lecture-6/"/>
-    <id>http://swang251.github.io/2019/02/12/Digital-Audio-Signal-Processing-Lecture-6/</id>
-    <published>2019-02-13T00:33:47.000Z</published>
-    <updated>2020-02-21T18:55:32.751Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Notes of Digital Audio Signal Processing, Lecture 6. <span id="more"></span></p><h3 id="inverse-system">Inverse System</h3><ul><li><span class="math inline">\(y=\mathcal{T}\{x\}\)</span> and <span class="math inline">\(x = \mathcal{T_i}\{y\}\)</span>, where <span class="math inline">\(\mathcal{TT_i} = \mathcal{T_iT} = \mathbf{I}\)</span></li><li><span class="math inline">\(h*h_i = h_i*h = \delta\)</span></li><li><strong>E.g.</strong>, michrophone with a flare that is a high-pass system, needs an inverse system to get rid of the HP effect.</li><li><strong>E.g.</strong>, <span class="math inline">\(h[n]=u[n]\)</span> (accumulator) <span class="math inline">\(\leftrightarrow\)</span> <span class="math inline">\(h_i[n]=\delta[n]-\delta[n-1]\)</span>, where <span class="math inline">\(h*h_i = \delta\)</span></li><li>Infinite impulse response <span class="math inline">\(\longleftrightarrow\)</span> finite impulse response, where the stability needs to be checked when inversion is from finite IR to infinite IR.</li><li><span class="math inline">\(power \propto amplitude^2\)</span><ul><li>Power dB = <span class="math inline">\(10\log_{10}(\dfrac{p}{p_0}) = 20\log_{10}(\dfrac{a}{a_0})\)</span></li><li>Amplitude dB = <span class="math inline">\(5\log_{10}(\dfrac{p}{p_0}) = 10\log_{10}(\dfrac{a}{a_0})\)</span></li></ul></li></ul><h3 id="frequency-response-of-lti-system">Frequency Response of LTI System</h3><ul><li><span class="math inline">\(p_{f_0}[n] = e^{2\pi jf_0 n}\)</span> is the eigenvector of a filter</li><li>Eigenvalue &amp; eigenvector of LTI system<ul><li><span class="math display">\[ \begin{align} y[n] &amp;= h*p_{f_0} = \sum\limits_{k\in \mathbb{Z}}h[k]p_{f_0}[n-k] \\      &amp;= \sum\limits_{k\in \mathbb{Z}}h[k]e^{2\pi jf_0 (n-k)} \\      &amp;= e^{2\pi jf_0 n}\sum\limits_{k\in \mathbb{Z}}h[k]e^{-2\pi jf_0k} \\      &amp;= p_{f_0}[n]H(f_0) \end{align}\]</span></li><li>where <span class="math inline">\(p_{f_0}\)</span> is the eigenvector and <span class="math inline">\(H(f_0)\)</span> is the eigenvalue.</li></ul></li></ul><h3 id="notable-notes">Notable notes</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Notes of Digital Audio Signal Processing, Lecture 6.
-    
-    </summary>
-    
-    
-      <category term="DSP" scheme="http://swang251.github.io/categories/DSP/"/>
-    
-    
-      <category term="Lecture Notes (DASP)" scheme="http://swang251.github.io/tags/Lecture-Notes-DASP/"/>
     
   </entry>
   
