@@ -17,13 +17,7 @@ I just implemented the 2D selective filter<sup>1</sup> in Palabos. Because of th
 
 I finally decide to go to the last direction because I consider `nonLocalDynamicsXD` as a good interface to start with. So, the basic idea here is to keep every variables and function of the dynamics in the `dynamics` class and create each member function a functional for data processor. Likely, I write `SelectiveFilterBGKDynamics2D.nonLocalAction()` and `SelectiveFilterBGKDynamics2D.prepareFNeq()` and two functional inherited from `BoxProcessingFunctional2D_L`. In addition, the dynamics class has two private members for the original and the filtered $f_{neq}$. `applyProcessingFunctional` would be used in the main function.
 
-One important thing I found when writing a new dynamics is about the `serialize` and `unserialize`. I do need write `serializer.addValues()` and `unserializer.readValues()` for each member variables or there would be a problem. I don't get it totally understand it but hopefully, [this article](https://isocpp.org/wiki/faq/serialization) would help, and I will be back with the answer soon.
-
-
-
-
-
-
+Another important thing I found when writing a new dynamics is about the `serialize` and `unserialize`. It is extremely importantto deal with the additional allocated data (member variables) in the dynamics using `serializer.addValues()` and `unserializer.readValues()`. Otherwise, one will run into problems when running the program with multiple cores. I found [this article](https://isocpp.org/wiki/faq/serialization) helpful talking about serialization and unserialization. In general, serialization helps flatten the objects so that make non built-in data type transmittable.
 
 1. Ricot, Denis, Simon Marié, Pierre Sagaut, and Christophe Bailly. 2009. “Lattice Boltzmann Method with Selective Viscosity Filter.” Journal of Computational Physics 228 (12): 4478–4490.
 
