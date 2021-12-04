@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://swang251.github.io/"/>
-  <updated>2021-08-10T00:27:03.269Z</updated>
+  <updated>2021-12-04T07:30:09.600Z</updated>
   <id>http://swang251.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Matlab in Emacs</title>
+    <link href="http://swang251.github.io/2021/12/03/Matlab-in-Emacs/"/>
+    <id>http://swang251.github.io/2021/12/03/Matlab-in-Emacs/</id>
+    <published>2021-12-03T20:10:47.000Z</published>
+    <updated>2021-12-04T07:30:09.600Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Why programming and debugging Matlab in Emacs? There are two main reasons:</p><ol type="1"><li>There are no Emacs emulators/keybindings available in Matlab on macOS, which makes Matlab programming less efficient.</li><li>One might need to program and debug Matlab scripts remotely. <span id="more"></span></li></ol><h2 id="introduction">Introduction</h2><p>In order to program Matlab in Emacs, it must be able to</p><ul><li>edit, including basic syntax, warning and error highlight, basic code completion, and</li><li>debug, including running and debugging the scripts and basic command completion.</li></ul><p>These <a href="http://matlab-emacs.sourceforge.net/faq.shtml">features are supported by the MATLAB mode for Emacs</a>, which provides the <code>matlab-mode</code>, <code>matlab-shell</code> and <code>mlint-mode</code>.</p><h2 id="setup">Setup</h2><ol type="1"><li>Intall <code>matlab-mode</code> in Emacs,<ul><li>either from Melpa using package manager, or</li><li>clone the <a href="https://sourceforge.net/p/matlab-emacs/src/ci/master/tree/">repo</a> to a local directory and load it manually in the <code>init.el</code>.</li></ul></li><li>Add the following snippet into the <code>init.el</code> <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; associate .m file with the matlab-mode (major mode)</span></span><br><span class="line">(<span class="name">add-to-list</span> &#x27;auto-mode-alist &#x27;(<span class="string">&quot;\\.m$&quot;</span> . matlab-mode))</span><br><span class="line"></span><br><span class="line"><span class="comment">;; setup matlab-shell</span></span><br><span class="line">(<span class="name">setq</span> matlab-shell-command <span class="string">&quot;/Applications/MATLAB_R2021a.app/bin/matlab&quot;</span>)</span><br><span class="line">(<span class="name">setq</span> matlab-shell-command-switches (<span class="name">list</span> <span class="string">&quot;-nodesktop&quot;</span>))</span><br></pre></td></tr></table></figure></li></ol><h2 id="usage">Usage</h2><h3 id="editing">Editing</h3><ul><li>Open a <code>.m</code> file,<ul><li>It should be in <code>matlab-mode</code> with syntax highlights</li><li>The <code>mlint-minor-mode</code> should be associated with <code>matlab-mode</code> and be turned on by default, with warning/error highlights</li></ul></li><li><code>C-M-i</code> to complete symbol (call the function <code>matlab-complete-symbol</code>)</li><li><code>C-M-a</code> and <code>C-M-e</code> to jump to the beginning and end of a function ()</li><li>Jump to the line with warning/error highlights and <code>M-x mlint-show-warning</code> to display the warning/error.</li><li><code>M-x matlab-shell-describe-command</code></li></ul><h3 id="matlab-shell">Matlab-shell</h3><ul><li><code>M-x matlab-shell</code> to open the matlab shell, use it the same as the Command Window in a Matlab application.</li><li>To run commands/scripts, one needs to go to the end of buffer <code>M-&gt;</code>, to the <code>&gt;&gt;</code>, and type the command/script name to run it.</li><li>Press <code>&lt;up&gt;</code> will run the command <code>matlab-shell-previous-matching-input-from-input</code>, and shows previous run commands.</li><li><code>TAB</code> to complete commands</li><li>Variable related commands<ul><li><code>workspace</code> to open the <a href="https://www.mathworks.com/help/matlab/ref/workspace.html">workspace browser</a></li><li><code>who</code> to list all variables in workspace</li><li><code>open &lt;varName&gt;</code> or <code>openvar &lt;varName</code> to open a variable in the variable editor</li></ul></li></ul><h3 id="running-and-debugging-scripts">Running and Debugging Scripts</h3><ul><li><code>Evaluate Section</code> run the commands <code>M-x matlab-shell-run-cell</code> (<code>C-M-return</code>)</li><li><code>Evaluate Selection</code> select lines and run the commands <code>M-x matlab-shell-run-region</code> (<code>C-c C-r</code>)</li><li><code>matlab-emacs</code> use <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Debuggers.html">GUD (Grand Unified Debugger library)</a> to support for debugging<ul><li><code>C-x C-a C-b</code> (<code>gud-break()</code>) to set breakpoints</li><li><code>C-x C-a C-v</code> (<code>gud-list-breakpoints()</code>) to list all breakpoints</li><li><code>C-x C-a C-x</code> (<code>gud-remove()</code>) to remove breakpoints</li></ul></li><li>When the program is running, the script (<code>.m</code> file) will enter <code>matlab-shell-gud-minor-mode</code>, and becomes read-only. Use the following commands for debugging<ul><li><code>h</code>, <strong>open help</strong></li><li><code>b</code> <strong>add breakpoint</strong>, same as <code>C-x C-a C-b</code></li><li><code>x</code> <strong>remove breakpoint</strong>, same as <code>C-x C-a C-x</code></li><li><code>v</code> <strong>list breakpoints</strong>, same as <code>C-x C-a C-v</code></li><li><code>s</code> <strong>step</strong>, same as running <code>dbstep in</code> in the matlab shell</li><li><code>n</code> <strong>next</strong>, same as running <code>dbstep</code> in the matlab shell</li><li><code>f</code> <strong>finish function</strong>, same as running <code>dbstep out</code> in the matlab shell</li><li><code>c</code> <strong>continue</strong>, same as running <code>dbcont</code> in the matlab shell</li><li><code>q</code> <strong>quit</strong>, same as running <code>dbquit</code> in the matlab shell</li></ul></li><li><code>gut-list-breakpoints</code> will open a buffer under <code>mlg-breakpoint-mode</code> listing all breakpoints</li></ul><h2 id="possible-problems">Possible Problems</h2><ul><li>The <code>mlint</code> doesn't show warnings/errors highlights<ul><li><code>M-: matlab-toggle-show-mlint-warnings</code> to toggle it on, or</li><li>add <code>(setq matlab-show-mlint-warnings t)</code> to the <code>init.el</code></li></ul></li><li><code>Error: no MLint program available</code> when trying to toggle on the <code>matlab-toggle-show-mlint-warnings</code> <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; setup mlint for warnings and errors highlighting</span></span><br><span class="line">(<span class="name">add-to-list</span> &#x27;mlint-programs <span class="string">&quot;/Applications/MATLAB_R2021a.app/bin/maci64/mlint&quot;</span>) <span class="comment">;; add mlint program for macOS</span></span><br><span class="line">(<span class="name">add-to-list</span> &#x27;mlint-programs <span class="string">&quot;/usr/local/MATLAB/R2021a/bin/glnxa64/mlint&quot;</span>) <span class="comment">;; add mlint program for Linux</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="references">References</h2><ul><li><a href="http://matlab-emacs.sourceforge.net/">MATLAB/Emacs integration project main page</a></li><li><a href="https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/104/versions/3/previews/matlab-emacs-faq.html">MATLAB/Emacs FAQ</a></li><li><a href="https://sourceforge.net/p/matlab-emacs/src/ci/master/tree/">matlab-emacs git repo</a></li><li><a href="https://blogs.mathworks.com/community/2009/09/14/matlab-emacs-integration-is-back/">Blog - Matlab Emacs Integration Is Back</a></li><li><a href="https://www.emacswiki.org/emacs/MatlabMode">EmacsWiki - Matlab Mode</a></li><li><a href="https://www.mathworks.com/help/matlab/debugging-code.html">Matlab Documentation - Debugging and Analysis</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Why programming and debugging Matlab in Emacs? There are two main reasons:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;There are no Emacs emulators/keybindings available in Matlab on macOS, which makes Matlab programming less efficient.&lt;/li&gt;
+&lt;li&gt;One might need to program and debug Matlab scripts remotely.
+    
+    </summary>
+    
+    
+      <category term="Emacs" scheme="http://swang251.github.io/categories/Emacs/"/>
+    
+      <category term="Research Daily" scheme="http://swang251.github.io/categories/Emacs/Research-Daily/"/>
+    
+    
+      <category term="Emacs" scheme="http://swang251.github.io/tags/Emacs/"/>
+    
+      <category term="Matlab" scheme="http://swang251.github.io/tags/Matlab/"/>
+    
+  </entry>
   
   <entry>
     <title>Palabos-OnLatticeBoundaryCondition</title>
@@ -244,33 +274,6 @@
       <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
     
       <category term="Git" scheme="http://swang251.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Palabos Immersed Boundary-Lattice Boltzmann Method</title>
-    <link href="http://swang251.github.io/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/"/>
-    <id>http://swang251.github.io/2019/06/12/Palabos-Immersed-Boundary-Lattice-Boltzmann-Method/</id>
-    <published>2019-06-12T14:31:43.000Z</published>
-    <updated>2019-06-12T21:23:41.447Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>The immersed boundary method (IBM) is proposed by Peskin in 1972 in his Ph.D. thesis and then is widely used for complex boundaries and moving boundary problems. IBM is applied in the context of lattice Boltzmann method (LBM) for the first time in 2004 by Feng and Michaelides (Feng and Michaelides, J. Comput. Phys, 2004). People also call such combination immersed boundary-lattice Boltzmann method (IB-LBM). In Palabos, different off-lattice methods have been implemented, including the Filippo-Hanel method, the Guo-Zheng-Shi method, the Bouzidi method and also the IBM.</p><span id="more"></span><p>In Palabos, there is a demo showing how to use the IBM to solve the moving wall problems (<em>example/showCases/movingWall</em>). As one can notice, in Palabosv2.0r0, only 3D IBM is implemented and the corresponding implementaions can be found in</p><ul><li><em>src/offLattice/immersedWalls3D.h</em></li><li><em>src/offLattice/immersedWalls3D.hh</em></li></ul><p>Here I will discuss only how the method used in the showCase works.</p><p>In the moving wall case, the multi direct-forcing IB-LBM proposed by Inamuro (2012) is used. Two main function are used:</p><ul><li><code>instantiateImmersedWallData(vertices, areas, container)</code> for the wall boundary instantiation,</li><li><code>inamuroIteration(parameters)</code> for the main IBM iteration.</li></ul><h3 id="instantiateimmersedwalldata">InstantiateImmersedWallData</h3><p><code>instantiateImmersedWallData</code> is a function wrapper for the functional <code>instantiateImmersedWallData3D</code> where the boundary data is stored in a container block called <code>ImmersedWallData3D</code>.</p><h3 id="inamuroiteration">InamuroIteration</h3><p><code>inamuroIteration</code> is a function wrapper for the functional <code>InamuroIteration3D</code> which implements the IB-LBM algorithm following Inamuro (2012). In Inamuro's paper, there are 5 steps (from Step 0-5) in the iterative procedure and it iterate from Step 1 to Step 4. In Palabos, the iteration is implemented with a slighly different procedure.</p><ul><li><code>for (neighboring) &#123;averageJ += W*nextJ;&#125;</code> corresponds to Eq 2.22 (<em>Step -1</em>) and Eq. 2.28 (<em>Step 3.</em>) and the <span class="math inline">\(\mathbf{j}_l(\mathbf{X}_k)\)</span> is calculated instead of <span class="math inline">\(\mathbf{u}_l(\mathbf{X}_k)\)</span>;</li><li><code>for (vertices) &#123;deltaG[i] = area[i]*(wallVelocity-averageJ);&#125;</code> calculates the <span class="math inline">\(g_l(\mathbf{X}_k)\)</span> in <em>Step 0</em> and the last term of the RHS in Eq. 2.29, <em>Step 4</em>;</li><li><code>for (vertices) &#123;g[i] += deltaG[i];&#125;</code> (incompressible model), does the Eq. 2.29 in <em>Step. 4</em>;</li><li><code>for (neighboring) &#123;nextJ += tau*W*deltaG[i];&#125;</code> corresponds to <em>Step 1</em> and <em>Step 2</em> for spreading the force for correct the velocity at the Eulerian grid points. We can take it as substituting <span class="math inline">\(\mathbf{g}_l(\mathbf{x})\)</span> in Eq. 2.27 by Eq. 2.26.</li></ul><p>In the main function in <em>movingWall.cpp</em>, the iteration time depends on <code>param.ibIter</code>.</p><h4 id="n.b.">N.B.</h4><ul><li>The loop for neighboring starts range from -1 to 2. This is because the <code>plint</code> in the line <code>Array&lt;plint,3&gt; intPos ((plint)vertex[0], (plint)vertex[1], (plint)vertex[2])</code> floors the vertex point to the nearest smaller position.</li><li>Still don't understand how the <code>tau</code> in <code>nextJ += tau*W*deltaG[i]</code> helps calculate the moment.</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The immersed boundary method (IBM) is proposed by Peskin in 1972 in his Ph.D. thesis and then is widely used for complex boundaries and moving boundary problems. IBM is applied in the context of lattice Boltzmann method (LBM) for the first time in 2004 by Feng and Michaelides (Feng and Michaelides, J. Comput. Phys, 2004). People also call such combination immersed boundary-lattice Boltzmann method (IB-LBM). In Palabos, different off-lattice methods have been implemented, including the Filippo-Hanel method, the Guo-Zheng-Shi method, the Bouzidi method and also the IBM.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Palabos" scheme="http://swang251.github.io/categories/Palabos/"/>
-    
-    
-      <category term="Palabos" scheme="http://swang251.github.io/tags/Palabos/"/>
-    
-      <category term="LBM" scheme="http://swang251.github.io/tags/LBM/"/>
-    
-      <category term="CFD" scheme="http://swang251.github.io/tags/CFD/"/>
     
   </entry>
   
