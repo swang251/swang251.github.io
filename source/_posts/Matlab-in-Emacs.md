@@ -47,7 +47,8 @@ These [features are supported by the MATLAB mode for Emacs](http://matlab-emacs.
 - `C-M-i` to complete symbol (call the function `matlab-complete-symbol`)
 - `C-M-a` and `C-M-e` to jump to the beginning and end of a function ()
 - Jump to the line with warning/error highlights and `M-x mlint-show-warning` to display the warning/error.
-- `M-x matlab-shell-describe-command`
+- `M-x matlab-shell-describe-command` (`C-h RET f`): open the help of a command
+- `M-x matlab-shell-locate-fcn` (`C-c .`): open the corresponding file of the function
 
 ### Matlab-shell
 - `M-x matlab-shell` to open the matlab shell, use it the same as the Command Window in a Matlab application.
